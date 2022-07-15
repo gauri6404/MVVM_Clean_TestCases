@@ -25,24 +25,30 @@ public final class NetworkLoggerImplementation: NetworkLogger {
     }
 
     private func log(request: URLRequest) {
-        ("request: \(request.url!)").printIfDebug()
-        ("headers: \(request.allHTTPHeaderFields!)").printIfDebug()
-        ("method: \(request.httpMethod!)").printIfDebug()
+        debugPrint(for: "request: \(request.url!)")
+        debugPrint(for: "headers: \(request.allHTTPHeaderFields!)")
+        debugPrint(for: "method: \(request.httpMethod!)")
         if let httpBody = request.httpBody, let result = ((try? JSONSerialization.jsonObject(with: httpBody, options: []) as? [String: AnyObject]) as [String: AnyObject]??) {
-            "body: \(String(describing: result))".printIfDebug()
+            debugPrint(for: "body: \(String(describing: result))")
         } else if let httpBody = request.httpBody, let resultString = String(data: httpBody, encoding: .utf8) {
-            "body: \(String(describing: resultString))".printIfDebug()
+            debugPrint(for: "body: \(String(describing: resultString))")
         }
     }
 
     private func log(response: URLResponse?, data: Data?) {
         guard let data = data else { return }
         if let dataDict = try? JSONSerialization.jsonObject(with: data, options: []) as? [String: Any] {
-            ("responseData: \(String(describing: dataDict))").printIfDebug()
+            debugPrint(for: "responseData: \(String(describing: dataDict))")
         }
     }
 
     private func log(error: Error) {
-        ("\(error)").printIfDebug()
+        debugPrint(for: "\(error)")
+    }
+    
+    private func debugPrint(for str: String) {
+        #if DEBUG
+        print(self)
+        #endif
     }
 }

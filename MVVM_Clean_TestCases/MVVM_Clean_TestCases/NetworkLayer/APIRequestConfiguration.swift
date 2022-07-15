@@ -43,23 +43,27 @@ public struct APIRequestConfigImplementation: APIRequestConfiguration {
 
 extension APIRequestConfiguration {
     public func getUrlRequest(with config: APIRequestConfiguration) throws -> URLRequest {
-        let url = try self.url(with: config)
-        var urlRequest = URLRequest(url: url)
-        urlRequest.httpMethod = config.methodType.rawValue
-        urlRequest.allHTTPHeaderFields = config.headers
-        if !config.bodyParameters.isEmpty {
-            urlRequest.httpBody = encodeBody(bodyParameters: config.bodyParameters, bodyEncoding: config.bodyEncoding)
+        do {
+            let url = try self.url(with: config)
+            var urlRequest = URLRequest(url: url)
+            urlRequest.httpMethod = config.methodType.rawValue
+            urlRequest.allHTTPHeaderFields = config.headers
+            if !config.bodyParameters.isEmpty {
+                urlRequest.httpBody = encodeBody(bodyParameters: config.bodyParameters, bodyEncoding: config.bodyEncoding)
+            }
+            return urlRequest
+        } catch(let error) {
+            throw error
         }
-        return urlRequest
     }
     
     private func url(with config: APIRequestConfiguration) throws -> URL {
-        guard var urlComponents = URLComponents(string: config.url) else { throw NetworkError.invalidURL }
+        guard var urlComponents = URLComponents(string: config.url) else { throw NetworkError.urlComponentGenerationError }
         urlComponents.queryItems = config.queryParameters?.map({ (key, value) in
             let queryItem = URLQueryItem(name: key, value: value)
             return queryItem
         })
-        guard let url = urlComponents.url else { throw NetworkError.urlGeneration }
+        guard let url = urlComponents.url else { throw NetworkError.urlGenerationError }
         return url
     }
     

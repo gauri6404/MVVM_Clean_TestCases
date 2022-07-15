@@ -1,33 +1,30 @@
 import Foundation
 
 public protocol NetworkManager {
-    func executeAPI<T: Codable>(returningClass: T.Type, completoin: @escaping(Result<T, Error>) -> Void)
+    func getAPIResponse<T: Decodable>(for apiConfig: APIRequestConfiguration, returnType: T.Type, completoin: @escaping(Result<T?, NetworkError>) -> Void)
 }
 
-public final class NetworkManagerimplementation: NetworkManager {
-    private let sessionManager: URLSession
+public final class NetworkManagerImplementation: NetworkManager {
+    private let service: NetworkService
     private let logger: NetworkLogger
-    private let request: APIRequestConfiguration
     
-    public init(sessionManager: URLSession = .shared, logger: NetworkLogger = NetworkLoggerImplementation(), request: APIRequestConfiguration) {
-        self.sessionManager = sessionManager
+    init(service: NetworkService, logger: NetworkLogger = NetworkLoggerImplementation()) {
+        self.service = service
         self.logger = logger
-        self.request = request
     }
     
-    public func executeAPI<T>(returningClass: T.Type, completoin: @escaping (Result<T, Error>) -> Void) where T : Decodable, T : Encodable {
-        let dataTask = DataTaskManagerImplementation(sessionManager: sessionManager, logger: logger)
-        dataTask.getSessionDataTask(config: request) { result in
+    public func getAPIResponse<T: Decodable>(for apiConfig: APIRequestConfiguration, returnType: T.Type, completoin: @escaping(Result<T?, NetworkError>) -> Void) {
+        self.service.executeAPI(apiConfig: apiConfig) { result in
             switch result {
             case .success(let data):
                 do {
                     let parsingResult: T = try self.decode(data)
                     completoin(.success(parsingResult))
                 } catch(let error) {
-                    completoin(.failure(error))
+                    completoin(.failure(error as! NetworkError))
                 }
             case .failure(let error) :
-                completoin(.failure(error))
+                completoin(.failure(error as! NetworkError))
             }
         }
     }
@@ -43,3 +40,6 @@ public final class NetworkManagerimplementation: NetworkManager {
         }
     }
 }
+
+
+
