@@ -1,10 +1,3 @@
-//
-//  MVVM_Clean_TestCasesTests.swift
-//  MVVM_Clean_TestCasesTests
-//
-//  Created by Gauri Sharma on 14/07/22.
-//
-
 import XCTest
 @testable import MVVM_Clean_TestCases
 
