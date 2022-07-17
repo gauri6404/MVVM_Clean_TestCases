@@ -7,6 +7,7 @@ public enum NetworkError: Error {
     case error(statusCode: Int, data: Data?)
     case apiResponseError
     case parsingError
+    case noDataError
 }
 
 struct APIError: Decodable {

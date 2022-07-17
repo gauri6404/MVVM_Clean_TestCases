@@ -13,7 +13,7 @@
 		95561CB6288089C8000B07B8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 95561CB4288089C8000B07B8 /* Main.storyboard */; };
 		95561CB8288089C9000B07B8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 95561CB7288089C9000B07B8 /* Assets.xcassets */; };
 		95561CBB288089C9000B07B8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 95561CB9288089C9000B07B8 /* LaunchScreen.storyboard */; };
-		95561CC6288089C9000B07B8 /* APILoaderServiceTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95561CC5288089C9000B07B8 /* APILoaderServiceTest.swift */; };
+		95561CC6288089C9000B07B8 /* TestNetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95561CC5288089C9000B07B8 /* TestNetworkService.swift */; };
 		95561CD0288089C9000B07B8 /* MVVM_Clean_TestCasesUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95561CCF288089C9000B07B8 /* MVVM_Clean_TestCasesUITests.swift */; };
 		95561CD2288089C9000B07B8 /* MVVM_Clean_TestCasesUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95561CD1288089C9000B07B8 /* MVVM_Clean_TestCasesUITestsLaunchTests.swift */; };
 		95561CE128808AAB000B07B8 /* APIRequestConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95561CE028808AAB000B07B8 /* APIRequestConfiguration.swift */; };
@@ -31,6 +31,7 @@
 		95561CFA28814B88000B07B8 /* MockNetworkSessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95561CF928814B88000B07B8 /* MockNetworkSessionManager.swift */; };
 		95561CFF2881CB87000B07B8 /* NetworkSessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95561CFE2881CB87000B07B8 /* NetworkSessionManager.swift */; };
 		95561D002881D070000B07B8 /* NetworkSessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95561CFE2881CB87000B07B8 /* NetworkSessionManager.swift */; };
+		95725AAF2883FC420046FF6F /* TestNetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95725AAE2883FC420046FF6F /* TestNetworkManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,7 +61,7 @@
 		95561CBA288089C9000B07B8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		95561CBC288089C9000B07B8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		95561CC1288089C9000B07B8 /* MVVM_Clean_TestCasesTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MVVM_Clean_TestCasesTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		95561CC5288089C9000B07B8 /* APILoaderServiceTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APILoaderServiceTest.swift; sourceTree = "<group>"; };
+		95561CC5288089C9000B07B8 /* TestNetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestNetworkService.swift; sourceTree = "<group>"; };
 		95561CCB288089C9000B07B8 /* MVVM_Clean_TestCasesUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MVVM_Clean_TestCasesUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		95561CCF288089C9000B07B8 /* MVVM_Clean_TestCasesUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MVVM_Clean_TestCasesUITests.swift; sourceTree = "<group>"; };
 		95561CD1288089C9000B07B8 /* MVVM_Clean_TestCasesUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MVVM_Clean_TestCasesUITestsLaunchTests.swift; sourceTree = "<group>"; };
@@ -73,6 +74,7 @@
 		95561CF728814ADD000B07B8 /* MockAPIRequestConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockAPIRequestConfig.swift; sourceTree = "<group>"; };
 		95561CF928814B88000B07B8 /* MockNetworkSessionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockNetworkSessionManager.swift; sourceTree = "<group>"; };
 		95561CFE2881CB87000B07B8 /* NetworkSessionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkSessionManager.swift; sourceTree = "<group>"; };
+		95725AAE2883FC420046FF6F /* TestNetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestNetworkManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -140,7 +142,8 @@
 			isa = PBXGroup;
 			children = (
 				95561CEB288145E2000B07B8 /* MockObjects */,
-				95561CC5288089C9000B07B8 /* APILoaderServiceTest.swift */,
+				95561CC5288089C9000B07B8 /* TestNetworkService.swift */,
+				95725AAE2883FC420046FF6F /* TestNetworkManager.swift */,
 			);
 			path = MVVM_Clean_TestCasesTests;
 			sourceTree = "<group>";
@@ -335,10 +338,11 @@
 				95561D002881D070000B07B8 /* NetworkSessionManager.swift in Sources */,
 				95561CF628814A3A000B07B8 /* NetworkLogger.swift in Sources */,
 				95561CF428814A30000B07B8 /* NetworkManager.swift in Sources */,
-				95561CC6288089C9000B07B8 /* APILoaderServiceTest.swift in Sources */,
+				95561CC6288089C9000B07B8 /* TestNetworkService.swift in Sources */,
 				95561CF328814A2C000B07B8 /* NetworkService.swift in Sources */,
 				95561CF228814A24000B07B8 /* APIRequestConfiguration.swift in Sources */,
 				95561CF528814A36000B07B8 /* NetworkError.swift in Sources */,
+				95725AAF2883FC420046FF6F /* TestNetworkManager.swift in Sources */,
 				95561CFA28814B88000B07B8 /* MockNetworkSessionManager.swift in Sources */,
 				95561CF828814ADD000B07B8 /* MockAPIRequestConfig.swift in Sources */,
 			);

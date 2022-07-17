@@ -5,8 +5,7 @@ struct MockNetworkSessionManager: NetworkSessionManager {
     let data: Data?
     let error: Error?
     
-    func getDataTask(urlReq: URLRequest, completion: @escaping (Data?, URLResponse?, Error?) -> Void) throws -> URLSessionDataTask {
+    func getDataTask(urlReq: URLRequest, completion: @escaping (Data?, URLResponse?, Error?) -> Void) {
         completion(data, response, error)
-        return URLSessionDataTask().response
     }
 }

@@ -1,16 +1,15 @@
 import XCTest
 
-class APILoaderServiceTest: XCTestCase {
+class NetworkErrorLoggerMock: NetworkLogger {
+    func log(type: LoggerType) {
+    }
+}
 
-    
-    class NetworkErrorLoggerMock: NetworkLogger {
-        func log(type: LoggerType) {
-        }
-    }
-    
-    private enum NetworkErrorMock: Error {
-        case someError
-    }
+private enum NetworkErrorMock: Error {
+    case someError
+}
+
+class APILoaderServiceTest: XCTestCase {
 
     func test_whenMockDataPassed_shouldReturnProperResponse() {
         //given
@@ -78,7 +77,7 @@ class APILoaderServiceTest: XCTestCase {
                 _ = try result.get()
                 XCTFail("Should not happen")
             } catch let error {
-                guard case NetworkError.apiResponseError = error else {
+                guard case NetworkError.noDataError = error else {
                     XCTFail("Should return api response error")
                     return
                 }

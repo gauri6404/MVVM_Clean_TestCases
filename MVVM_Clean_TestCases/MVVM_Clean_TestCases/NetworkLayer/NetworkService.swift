@@ -18,7 +18,7 @@ public final class NetworkServiceImplementation: NetworkService {
     
     private func request(request: URLRequest, completion: @escaping(Result<Data?, Error>) -> Void) {
         do {
-            let task = try self.sessionManager.getDataTask(urlReq: request) { data, response, error in
+            try self.sessionManager.getDataTask(urlReq: request) { data, response, error in
                 if let _ = error {
                     var error: NetworkError = .apiResponseError
                     if let response = response as? HTTPURLResponse {
@@ -36,10 +36,9 @@ public final class NetworkServiceImplementation: NetworkService {
                         completion(.success(data))
                     }
                 } else {
-                    completion(.failure(NetworkError.apiResponseError))
+                    completion(.failure(NetworkError.noDataError))
                 }
             }
-            task.resume()
         }
         catch(let error) {
             completion(.failure(error))
