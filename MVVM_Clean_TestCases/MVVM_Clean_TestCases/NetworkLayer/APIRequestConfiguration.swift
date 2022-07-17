@@ -58,7 +58,10 @@ extension APIRequestConfiguration {
     }
     
     private func url(with config: APIRequestConfiguration) throws -> URL {
-        guard var urlComponents = URLComponents(string: config.url) else { throw NetworkError.urlComponentGenerationError }
+        guard let apiBaseURL = PListUtility.getValue(forKey: "API_BASE_URL") as? String else {
+            throw NetworkError.urlComponentGenerationError
+        }
+        guard var urlComponents = URLComponents(string: apiBaseURL + config.url) else { throw NetworkError.urlComponentGenerationError }
         urlComponents.queryItems = config.queryParameters?.map({ (key, value) in
             let queryItem = URLQueryItem(name: key, value: value)
             return queryItem
