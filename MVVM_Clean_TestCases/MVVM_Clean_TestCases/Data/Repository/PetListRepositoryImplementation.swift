@@ -15,7 +15,9 @@ extension PetListRepositoryImplementation: PetListRepository {
         self.networkManager.getAPIResponse(for: endPointConfig, returnType: [PetListResponseModel].self) { result in
             switch result {
             case .success(let response):
-                completion(.success(response))
+                DispatchQueue.main.async {
+                    completion(.success(response))
+                }
             case .failure(let error):
                 completion(.failure(error))
             }

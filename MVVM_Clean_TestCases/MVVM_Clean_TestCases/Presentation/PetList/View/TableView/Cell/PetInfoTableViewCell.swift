@@ -36,7 +36,9 @@ class PetInfoTableViewCell: UITableViewCell {
             guard let self = self else { return }
             guard self.viewModel.imageURL == petImagePath else { return }
             if case let .success(data) = result, let imageData = data {
-                self.petimageview.image = UIImage(data: imageData)
+                DispatchQueue.main.async { [weak self] in
+                    self?.petimageview.image = UIImage(data: imageData)
+                }
             }
         }
     }

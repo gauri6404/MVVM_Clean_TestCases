@@ -19,7 +19,7 @@ final class PetModuleDIContainer {
     }
 
     func getPetImagesRepository() -> PetImageRepository {
-        return PetImageRepositoryImplementation(networkManager: dependencies.networkManager)
+        return PetImageRepositoryImplementation(networkManager: dependencies.imageNetworkManager)
     }
     
     // MARK: - Use Cases

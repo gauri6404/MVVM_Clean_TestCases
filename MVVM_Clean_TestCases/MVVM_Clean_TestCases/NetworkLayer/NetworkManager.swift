@@ -2,6 +2,7 @@ import Foundation
 
 public protocol NetworkManager {
     func getAPIResponse<T: Decodable>(for apiConfig: APIRequestConfiguration, returnType: T.Type, completoin: @escaping(Result<T?, NetworkError>) -> Void)
+    func getAPIData(or apiConfig: APIRequestConfiguration, completoin: @escaping(Result<Data?, NetworkError>) -> Void)
 }
 
 public final class NetworkManagerImplementation: NetworkManager {
@@ -23,6 +24,17 @@ public final class NetworkManagerImplementation: NetworkManager {
                 } catch(let error) {
                     completoin(.failure(error as! NetworkError))
                 }
+            case .failure(let error) :
+                completoin(.failure(error as! NetworkError))
+            }
+        }
+    }
+    
+    public func getAPIData(or apiConfig: APIRequestConfiguration, completoin: @escaping (Result<Data?, NetworkError>) -> Void) {
+        self.service.executeAPI(apiConfig: apiConfig) { result in
+            switch result {
+            case .success(let data):
+                completoin(.success(data))
             case .failure(let error) :
                 completoin(.failure(error as! NetworkError))
             }
