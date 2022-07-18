@@ -8,8 +8,11 @@ extension Dictionary {
     }
     
     var mapIntoString: [String: String] {
-        return self.map {
-            ["\($0.key)": "\($0.value)"]
-        }.first!
+        let result = self.reduce([String: String]()) { (partialResult, dict) -> [String: String] in
+            var result = partialResult
+            result["\(dict.key)"] = "\(dict.value)"
+            return result
+        }
+        return result
     }
 }

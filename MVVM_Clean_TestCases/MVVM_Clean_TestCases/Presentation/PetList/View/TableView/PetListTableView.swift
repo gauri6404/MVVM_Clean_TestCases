@@ -55,13 +55,9 @@ extension PetListTableView: UITableViewDataSource, UITableViewDelegate {
             return UITableViewCell()
         }
         cell.show(with: viewModel.items.value[indexPath.row], petImagesRepository: petImagesRepository)
-        if indexPath.row == viewModel.items.value.count - 1 {
-            viewModel.didLoadNextPage()
-        }
+//        if indexPath.row == viewModel.items.value.count - 1 {
+//            viewModel.didLoadNextPage()
+//        }
         return cell
-    }
-    
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return UITableView.automaticDimension
     }
 }

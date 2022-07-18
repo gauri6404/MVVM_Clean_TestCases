@@ -6,11 +6,11 @@ public protocol NetworkService {
 }
 
 public final class NetworkServiceImplementation: NetworkService {
-    private let apiConfig: APIRequestConfiguration
+    private let apiConfig: NetworkBaseConfiguration
     private let sessionManager: NetworkSessionManager
     private let logger: NetworkLogger
     
-    init(apiConfig: APIRequestConfiguration, sessionManager: NetworkSessionManager = NetworkSessionManagerImplementation(), logger: NetworkLogger = NetworkLoggerImplementation()) {
+    init(apiConfig: NetworkBaseConfiguration, sessionManager: NetworkSessionManager = NetworkSessionManagerImplementation(), logger: NetworkLogger = NetworkLoggerImplementation()) {
         self.sessionManager = sessionManager
         self.logger = logger
         self.apiConfig = apiConfig
@@ -47,7 +47,7 @@ public final class NetworkServiceImplementation: NetworkService {
     
     public func executeAPI(apiConfig: APIRequestConfiguration, completion: @escaping(Result<Data?, Error>) -> Void) {
         do {
-            let urlRequest = try apiConfig.getUrlRequest(with: apiConfig)
+            let urlRequest = try apiConfig.getUrlRequest(with: self.apiConfig)
             self.request(request: urlRequest, completion: completion)
         } catch(let error) {
             completion(.failure(error))

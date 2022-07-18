@@ -65,14 +65,10 @@ final class PetListViewModelImplementation: PetListViewModel {
 
     private func load(loading: LoadingType) {
         self.loading.value = loading
-
         petListUseCase.execute(requestValue: PetListUseCaseRequestValue(currentPageIndex: self.currentPage, limit: 10), completion: { result in
             switch result {
             case .success(let model):
-                var petPage = PetPage(page: self.currentPage, totalPetCount: 264, petList: [])
-                if let petList = model {
-                    petPage.petList = [petList]
-                }
+                let petPage = PetPage(page: self.currentPage, totalPetCount: 264, petList: model ?? [])
                 self.appendPage(petPage: petPage)
             case .failure(let error):
                 self.handle(error: error)

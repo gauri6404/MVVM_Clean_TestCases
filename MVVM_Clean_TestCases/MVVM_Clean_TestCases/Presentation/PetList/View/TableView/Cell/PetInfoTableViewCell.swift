@@ -21,11 +21,12 @@ class PetInfoTableViewCell: UITableViewCell {
     
     func show(with viewModel: PetListItemViewModel, petImagesRepository: PetImageRepository?) {
         self.viewModel = viewModel
+        self.petImagesRepository = petImagesRepository
         petName.text = self.viewModel.name
         petBreed.text = self.viewModel.breed
-        petOrigin.text = self.viewModel.origin
+        petOrigin.text = self.viewModel.origin ?? "Not available"
         petLifeSpan.text = self.viewModel.lifeSpan
-        petimageview.image = UIImage()
+        setPetImage()
     }
     
     private func setPetImage() {

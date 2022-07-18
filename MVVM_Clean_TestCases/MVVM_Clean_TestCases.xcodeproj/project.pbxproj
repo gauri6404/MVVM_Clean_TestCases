@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		95561CAF288089C8000B07B8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95561CAE288089C8000B07B8 /* AppDelegate.swift */; };
-		95561CB1288089C8000B07B8 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95561CB0288089C8000B07B8 /* SceneDelegate.swift */; };
 		95561CB6288089C8000B07B8 /* PetListStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 95561CB4288089C8000B07B8 /* PetListStoryboard.storyboard */; };
 		95561CB8288089C9000B07B8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 95561CB7288089C9000B07B8 /* Assets.xcassets */; };
 		95561CBB288089C9000B07B8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 95561CB9288089C9000B07B8 /* LaunchScreen.storyboard */; };
@@ -57,6 +56,7 @@
 		95F45278288557DB00581B6E /* PetModuleFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95F45277288557DB00581B6E /* PetModuleFlow.swift */; };
 		95F4527B2885589900581B6E /* PetModuleDIContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95F4527A2885589900581B6E /* PetModuleDIContainer.swift */; };
 		95F4527D28855BA900581B6E /* AppDIContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95F4527C28855BA900581B6E /* AppDIContainer.swift */; };
+		95F4527F2885696000581B6E /* AppFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95F4527E2885696000581B6E /* AppFlow.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -79,7 +79,6 @@
 /* Begin PBXFileReference section */
 		95561CAB288089C8000B07B8 /* MVVM_Clean_TestCases.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MVVM_Clean_TestCases.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		95561CAE288089C8000B07B8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		95561CB0288089C8000B07B8 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		95561CB5288089C8000B07B8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/PetListStoryboard.storyboard; sourceTree = "<group>"; };
 		95561CB7288089C9000B07B8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		95561CBA288089C9000B07B8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -125,6 +124,7 @@
 		95F45277288557DB00581B6E /* PetModuleFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetModuleFlow.swift; sourceTree = "<group>"; };
 		95F4527A2885589900581B6E /* PetModuleDIContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetModuleDIContainer.swift; sourceTree = "<group>"; };
 		95F4527C28855BA900581B6E /* AppDIContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDIContainer.swift; sourceTree = "<group>"; };
+		95F4527E2885696000581B6E /* AppFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppFlow.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -175,13 +175,12 @@
 		95561CAD288089C8000B07B8 /* MVVM_Clean_TestCases */ = {
 			isa = PBXGroup;
 			children = (
-				95F452792885588200581B6E /* DependencyInjection */,
+				95725AB0288465C20046FF6F /* AppConfiguration */,
 				95D4CC3A28852E6F0091B16D /* Presentation */,
 				95D4CC1E28846C990091B16D /* Extension */,
 				95561CE2288095C0000B07B8 /* Utility */,
 				95D4CC1A28846C110091B16D /* Domain */,
 				95D4CC26288476840091B16D /* Data */,
-				95725AB0288465C20046FF6F /* AppConfiguration */,
 				95561CDE28808A3F000B07B8 /* NetworkLayer */,
 				95561CB7288089C9000B07B8 /* Assets.xcassets */,
 				95561CB9288089C9000B07B8 /* LaunchScreen.storyboard */,
@@ -245,9 +244,10 @@
 			isa = PBXGroup;
 			children = (
 				95561CAE288089C8000B07B8 /* AppDelegate.swift */,
-				95561CB0288089C8000B07B8 /* SceneDelegate.swift */,
+				95F452792885588200581B6E /* DependencyInjection */,
 				95561CBC288089C9000B07B8 /* Info.plist */,
 				95725AB1288465DE0046FF6F /* Development.xcconfig */,
+				95F4527E2885696000581B6E /* AppFlow.swift */,
 			);
 			path = AppConfiguration;
 			sourceTree = "<group>";
@@ -547,6 +547,7 @@
 				95D4CC2028846CA80091B16D /* EncodableExtension.swift in Sources */,
 				95D4CC4128852F550091B16D /* PetListViewModel.swift in Sources */,
 				95D4CC3F28852EDC0091B16D /* PetListItemViewmodel.swift in Sources */,
+				95F4527F2885696000581B6E /* AppFlow.swift in Sources */,
 				95F452712885508400581B6E /* PetImageRepositoryImplementation.swift in Sources */,
 				95F4526A288545DE00581B6E /* PetListTableView.swift in Sources */,
 				95D4CC29288476A90091B16D /* PetListRepositoryImplementation.swift in Sources */,
@@ -569,7 +570,6 @@
 				95D4CC2528846EA00091B16D /* PetListRepository.swift in Sources */,
 				95F452672885454900581B6E /* PetInfoTableViewCell.swift in Sources */,
 				95561CEF28814763000B07B8 /* NetworkService.swift in Sources */,
-				95561CB1288089C8000B07B8 /* SceneDelegate.swift in Sources */,
 				95D4CC44288531220091B16D /* Observable.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

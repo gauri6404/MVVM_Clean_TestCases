@@ -19,10 +19,13 @@ class PetListViewController: UIViewController, AlertUtility {
         setupViews()
         bind(to: viewModel)
         viewModel.viewDidLoad()
+        viewModel.getPetList()
     }
     
     private func setupViews() {
         title = viewModel.screenTitle
+        petListTableView.viewModel = viewModel
+        petListTableView.petImagesRepository = petImagesRepository
     }
     
     private func bind(to viewModel: PetListViewModel) {

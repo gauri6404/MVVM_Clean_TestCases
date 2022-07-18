@@ -12,29 +12,42 @@ public enum BodyEncoding {
     case stringEncodingAscii
 }
 
+public protocol NetworkBaseConfiguration {
+    var baseURL: String { get }
+    var headers: [String: String] { get }
+}
+
+public struct NetworkBaseConfigurationImpl: NetworkBaseConfiguration {
+    public let baseURL: String
+    public let headers: [String: String]
+    
+     public init(baseURL: String, headers: [String: String] = [:]) {
+        self.baseURL = baseURL
+        self.headers = headers
+    }
+}
+
 public protocol APIRequestConfiguration {
     var url: String { get }
     var methodType: HTTPMethodType { get }
-    var headers: [String: String] { get }
     var queryParameters: [String: String]? { get }
     var bodyParameters: [String: String] { get }
     var bodyEncoding: BodyEncoding { get }
     
-    func getUrlRequest(with config: APIRequestConfiguration) throws -> URLRequest
+    func getUrlRequest(with baseConfig: NetworkBaseConfiguration) throws -> URLRequest
 }
 
 public struct APIRequestConfigImplementation: APIRequestConfiguration {
+    
     public let url: String
     public let methodType: HTTPMethodType
-    public let headers: [String: String]
     public let queryParameters: [String: String]?
     public let bodyParameters: [String: String]
     public let bodyEncoding: BodyEncoding
     
-    public init(url: String, methodType: HTTPMethodType, headers: [String: String] = [:], queryParameters: [String: String]? = nil, bodyParameters: [String: String] = [:], bodyEncoding: BodyEncoding = .jsonSerializationData) {
+    public init(url: String, methodType: HTTPMethodType, queryParameters: [String: String]? = nil, bodyParameters: [String: String] = [:], bodyEncoding: BodyEncoding = .jsonSerializationData) {
         self.url = url
         self.methodType = methodType
-        self.headers = headers
         self.queryParameters = queryParameters
         self.bodyParameters = bodyParameters
         self.bodyEncoding = bodyEncoding
@@ -42,14 +55,14 @@ public struct APIRequestConfigImplementation: APIRequestConfiguration {
 }
 
 extension APIRequestConfiguration {
-    public func getUrlRequest(with config: APIRequestConfiguration) throws -> URLRequest {
+    public func getUrlRequest(with config: NetworkBaseConfiguration) throws -> URLRequest {
         do {
             let url = try self.url(with: config)
             var urlRequest = URLRequest(url: url)
-            urlRequest.httpMethod = config.methodType.rawValue
+            urlRequest.httpMethod = methodType.rawValue
             urlRequest.allHTTPHeaderFields = config.headers
-            if !config.bodyParameters.isEmpty {
-                urlRequest.httpBody = encodeBody(bodyParameters: config.bodyParameters, bodyEncoding: config.bodyEncoding)
+            if !bodyParameters.isEmpty {
+                urlRequest.httpBody = encodeBody(bodyParameters: bodyParameters, bodyEncoding: bodyEncoding)
             }
             return urlRequest
         } catch(let error) {
@@ -57,12 +70,9 @@ extension APIRequestConfiguration {
         }
     }
     
-    private func url(with config: APIRequestConfiguration) throws -> URL {
-        guard let apiBaseURL = PListUtility.getValue(forKey: "API_BASE_URL") as? String else {
-            throw NetworkError.urlComponentGenerationError
-        }
-        guard var urlComponents = URLComponents(string: apiBaseURL + config.url) else { throw NetworkError.urlComponentGenerationError }
-        urlComponents.queryItems = config.queryParameters?.map({ (key, value) in
+    private func url(with baseConfig: NetworkBaseConfiguration) throws -> URL {
+        guard var urlComponents = URLComponents(string: baseConfig.baseURL + url) else { throw NetworkError.urlComponentGenerationError }
+        urlComponents.queryItems = queryParameters?.map({ (key, value) in
             let queryItem = URLQueryItem(name: key, value: value)
             return queryItem
         })
