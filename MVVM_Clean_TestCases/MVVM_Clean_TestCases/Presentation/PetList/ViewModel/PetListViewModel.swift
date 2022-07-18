@@ -21,7 +21,8 @@ protocol PetListViewModelOutput {
 }
 
 protocol PetListViewModel: PetListViewModelInput, PetListViewModelOutput {
-    
+    /// Since API is not giving total count so we are taking it as constant
+    var totalPetCount: Int { get }
 }
 
 final class PetListViewModelImplementation: PetListViewModel {
@@ -81,10 +82,7 @@ final class PetListViewModelImplementation: PetListViewModel {
     }
 
     private func handle(error: Error) {
-//        self.error.value = error.isInternetConnectionError ?
-//            NSLocalizedString("No internet connection", comment: "") :
-//            NSLocalizedString("Failed loading movies", comment: "")
-        self.error.value = "Failed loading pet details"
+        self.error.value = (error as! NetworkError) == NetworkError.notConnected ? "No Internet Connection" : "Failed loading movies"
     }
 
     private func update() {

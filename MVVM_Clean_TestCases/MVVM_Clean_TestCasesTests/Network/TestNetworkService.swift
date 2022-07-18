@@ -23,7 +23,7 @@ class APILoaderServiceTest: XCTestCase {
 
         let expectedResponse = "Response data"
         let expectedResponseData = expectedResponse.data(using: .utf8)!
-        let sut = NetworkServiceImplementation(apiConfig: config, sessionManager: MockNetworkSessionManager(response: nil, data: expectedResponseData, error: nil), logger: NetworkErrorLoggerMock())
+        let sut = NetworkServiceImplementation(apiConfig: config, sessionManager: MockNetworkSessionManager(response: nil, data: expectedResponseData, error: nil), logger: NetworkLoggerImplementation())
 
         //when
         sut.executeAPI(apiConfig: MockAPIRequestConfiguration()) { result in
@@ -47,7 +47,7 @@ class APILoaderServiceTest: XCTestCase {
         
         let expectedResponse = "Response data"
         let expectedResponseData = expectedResponse.data(using: .utf8)!
-        let sut = NetworkServiceImplementation(apiConfig: config, sessionManager: MockNetworkSessionManager(response: nil, data: expectedResponseData, error: nil), logger: NetworkErrorLoggerMock())
+        let sut = NetworkServiceImplementation(apiConfig: config, sessionManager: MockNetworkSessionManager(response: nil, data: expectedResponseData, error: nil), logger: NetworkLoggerImplementation())
         //when
         sut.executeAPI(apiConfig: MockAPIRequestConfiguration(url: "-;@,?:ą", methodType: .get, queryParameters: [:], bodyParameters: [:], bodyEncoding: .jsonSerializationData)) { result in
             do {
@@ -75,7 +75,7 @@ class APILoaderServiceTest: XCTestCase {
                                        statusCode: 500,
                                        httpVersion: "1.1",
                                        headerFields: [:])
-        let sut = NetworkServiceImplementation(apiConfig: config, sessionManager: MockNetworkSessionManager(response: response, data: nil, error: nil), logger: NetworkErrorLoggerMock())
+        let sut = NetworkServiceImplementation(apiConfig: config, sessionManager: MockNetworkSessionManager(response: response, data: nil, error: nil), logger: NetworkLoggerImplementation())
         //when
         sut.executeAPI(apiConfig: MockAPIRequestConfiguration()) { result in
             do {
@@ -99,7 +99,7 @@ class APILoaderServiceTest: XCTestCase {
         let expectation = self.expectation(description: "Should return status code error")
         let response = HTTPURLResponse(url: URL(string: "test_url")!, statusCode: 301, httpVersion: "1.1", headerFields: [:])
         let responseData = "Response data".data(using: .utf8)!
-        let sut = NetworkServiceImplementation(apiConfig: config, sessionManager: MockNetworkSessionManager(response: response, data: responseData, error: nil), logger: NetworkErrorLoggerMock())
+        let sut = NetworkServiceImplementation(apiConfig: config, sessionManager: MockNetworkSessionManager(response: response, data: responseData, error: nil), logger: NetworkLoggerImplementation())
         //when
         sut.executeAPI(apiConfig: MockAPIRequestConfiguration()) { result in
             do {

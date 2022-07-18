@@ -55,6 +55,6 @@ class PetListViewController: UIViewController, AlertUtility {
     
     private func showError(_ error: String) {
         guard !error.isEmpty else { return }
-        showAlert(message: error)
+        showAlert(title: "Error", message: error)
     }
 }

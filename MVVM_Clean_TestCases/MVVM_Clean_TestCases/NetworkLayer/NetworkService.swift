@@ -17,6 +17,10 @@ public final class NetworkServiceImplementation: NetworkService {
     }
     
     private func request(request: URLRequest, completion: @escaping(Result<Data?, Error>) -> Void) {
+        guard Reachability.isConnectedToNetwork() else {
+            completion(.failure(NetworkError.notConnected))
+            return
+        }
         do {
             try self.sessionManager.getDataTask(urlReq: request) { data, response, error in
                 if let _ = error {

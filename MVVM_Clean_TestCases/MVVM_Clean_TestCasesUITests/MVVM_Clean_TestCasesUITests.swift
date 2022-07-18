@@ -1,32 +1,19 @@
-//
-//  MVVM_Clean_TestCasesUITests.swift
-//  MVVM_Clean_TestCasesUITests
-//
-//  Created by Gauri Sharma on 14/07/22.
-//
-
 import XCTest
 
 class MVVM_Clean_TestCasesUITests: XCTestCase {
 
-    override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
-
-        // In UI tests it is usually best to stop immediately when a failure occurs.
-        continueAfterFailure = false
-
-        // In UI tests it’s important to set the initial state - such as interface orientation - required for your tests before they run. The setUp method is a good place to do this.
-    }
-
-    override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-    }
-
-    func testExample() throws {
-        // UI tests must launch the application that they test.
+    func testTableExistence() throws {
         let app = XCUIApplication()
         app.launch()
-
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+        
+        if Reachability.isConnectedToNetwork() {
+            if !app.tables[AccessibilityIdentifier.tableView].waitForExistence(timeout: 5) {
+                XCTFail("Failed to load table")
+            } else {
+                XCTAssertTrue(app.tables[AccessibilityIdentifier.tableView].exists)
+            }
+        } else {
+            XCTAssertTrue(app.alerts["Error"].waitForExistence(timeout: 10))
+        }
     }
 }

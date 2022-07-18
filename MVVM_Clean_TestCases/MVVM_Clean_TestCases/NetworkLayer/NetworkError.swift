@@ -1,6 +1,6 @@
 import Foundation
 
-public enum NetworkError: Error {
+public enum NetworkError: Error, Equatable {
     case notConnected
     case urlComponentGenerationError
     case urlGenerationError
