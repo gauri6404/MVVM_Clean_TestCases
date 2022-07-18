@@ -32,6 +32,16 @@
 		95561CFF2881CB87000B07B8 /* NetworkSessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95561CFE2881CB87000B07B8 /* NetworkSessionManager.swift */; };
 		95561D002881D070000B07B8 /* NetworkSessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95561CFE2881CB87000B07B8 /* NetworkSessionManager.swift */; };
 		95725AAF2883FC420046FF6F /* TestNetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95725AAE2883FC420046FF6F /* TestNetworkManager.swift */; };
+		95D4CC1D28846C360091B16D /* PetRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95D4CC1C28846C360091B16D /* PetRequestModel.swift */; };
+		95D4CC2028846CA80091B16D /* EncodableExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95D4CC1F28846CA80091B16D /* EncodableExtension.swift */; };
+		95D4CC2228846D190091B16D /* PetListResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95D4CC2128846D190091B16D /* PetListResponseModel.swift */; };
+		95D4CC2528846EA00091B16D /* PetListRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95D4CC2428846EA00091B16D /* PetListRepository.swift */; };
+		95D4CC29288476A90091B16D /* PetListRepositoryImplementation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95D4CC28288476A90091B16D /* PetListRepositoryImplementation.swift */; };
+		95D4CC3028847B700091B16D /* APIV1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95D4CC2F28847B700091B16D /* APIV1.swift */; };
+		95D4CC3228847CC60091B16D /* DictionaryExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95D4CC3128847CC60091B16D /* DictionaryExtension.swift */; };
+		95D4CC342885118B0091B16D /* APIEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95D4CC332885118B0091B16D /* APIEndPoint.swift */; };
+		95D4CC3728851FDE0091B16D /* PetListUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95D4CC3628851FDE0091B16D /* PetListUseCase.swift */; };
+		95D4CC39288520080091B16D /* PetListUseCaseImplementation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95D4CC38288520080091B16D /* PetListUseCaseImplementation.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -76,6 +86,16 @@
 		95561CFE2881CB87000B07B8 /* NetworkSessionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkSessionManager.swift; sourceTree = "<group>"; };
 		95725AAE2883FC420046FF6F /* TestNetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestNetworkManager.swift; sourceTree = "<group>"; };
 		95725AB1288465DE0046FF6F /* Development.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Development.xcconfig; sourceTree = "<group>"; };
+		95D4CC1C28846C360091B16D /* PetRequestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetRequestModel.swift; sourceTree = "<group>"; };
+		95D4CC1F28846CA80091B16D /* EncodableExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EncodableExtension.swift; sourceTree = "<group>"; };
+		95D4CC2128846D190091B16D /* PetListResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetListResponseModel.swift; sourceTree = "<group>"; };
+		95D4CC2428846EA00091B16D /* PetListRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetListRepository.swift; sourceTree = "<group>"; };
+		95D4CC28288476A90091B16D /* PetListRepositoryImplementation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetListRepositoryImplementation.swift; sourceTree = "<group>"; };
+		95D4CC2F28847B700091B16D /* APIV1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIV1.swift; sourceTree = "<group>"; };
+		95D4CC3128847CC60091B16D /* DictionaryExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DictionaryExtension.swift; sourceTree = "<group>"; };
+		95D4CC332885118B0091B16D /* APIEndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIEndPoint.swift; sourceTree = "<group>"; };
+		95D4CC3628851FDE0091B16D /* PetListUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetListUseCase.swift; sourceTree = "<group>"; };
+		95D4CC38288520080091B16D /* PetListUseCaseImplementation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetListUseCaseImplementation.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -126,10 +146,13 @@
 		95561CAD288089C8000B07B8 /* MVVM_Clean_TestCases */ = {
 			isa = PBXGroup;
 			children = (
-				95725AB0288465C20046FF6F /* AppConfiguration */,
+				95D4CC2A28847A7C0091B16D /* APIEndPoint */,
+				95D4CC1E28846C990091B16D /* Extension */,
 				95561CE2288095C0000B07B8 /* Utility */,
+				95D4CC1A28846C110091B16D /* Domain */,
+				95D4CC26288476840091B16D /* Data */,
+				95725AB0288465C20046FF6F /* AppConfiguration */,
 				95561CDE28808A3F000B07B8 /* NetworkLayer */,
-				95561CB0288089C8000B07B8 /* SceneDelegate.swift */,
 				95561CB2288089C8000B07B8 /* ViewController.swift */,
 				95561CB4288089C8000B07B8 /* Main.storyboard */,
 				95561CB7288089C9000B07B8 /* Assets.xcassets */,
@@ -191,10 +214,81 @@
 			isa = PBXGroup;
 			children = (
 				95561CAE288089C8000B07B8 /* AppDelegate.swift */,
+				95561CB0288089C8000B07B8 /* SceneDelegate.swift */,
 				95561CBC288089C9000B07B8 /* Info.plist */,
 				95725AB1288465DE0046FF6F /* Development.xcconfig */,
 			);
 			path = AppConfiguration;
+			sourceTree = "<group>";
+		};
+		95D4CC1A28846C110091B16D /* Domain */ = {
+			isa = PBXGroup;
+			children = (
+				95D4CC3528851FC00091B16D /* UseCase */,
+				95D4CC2328846E890091B16D /* RepositoryInterface */,
+				95D4CC1B28846C180091B16D /* Entity */,
+			);
+			path = Domain;
+			sourceTree = "<group>";
+		};
+		95D4CC1B28846C180091B16D /* Entity */ = {
+			isa = PBXGroup;
+			children = (
+				95D4CC1C28846C360091B16D /* PetRequestModel.swift */,
+				95D4CC2128846D190091B16D /* PetListResponseModel.swift */,
+			);
+			path = Entity;
+			sourceTree = "<group>";
+		};
+		95D4CC1E28846C990091B16D /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				95D4CC1F28846CA80091B16D /* EncodableExtension.swift */,
+				95D4CC3128847CC60091B16D /* DictionaryExtension.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		95D4CC2328846E890091B16D /* RepositoryInterface */ = {
+			isa = PBXGroup;
+			children = (
+				95D4CC2428846EA00091B16D /* PetListRepository.swift */,
+			);
+			path = RepositoryInterface;
+			sourceTree = "<group>";
+		};
+		95D4CC26288476840091B16D /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				95D4CC272884768F0091B16D /* Repository */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		95D4CC272884768F0091B16D /* Repository */ = {
+			isa = PBXGroup;
+			children = (
+				95D4CC28288476A90091B16D /* PetListRepositoryImplementation.swift */,
+			);
+			path = Repository;
+			sourceTree = "<group>";
+		};
+		95D4CC2A28847A7C0091B16D /* APIEndPoint */ = {
+			isa = PBXGroup;
+			children = (
+				95D4CC2F28847B700091B16D /* APIV1.swift */,
+				95D4CC332885118B0091B16D /* APIEndPoint.swift */,
+			);
+			path = APIEndPoint;
+			sourceTree = "<group>";
+		};
+		95D4CC3528851FC00091B16D /* UseCase */ = {
+			isa = PBXGroup;
+			children = (
+				95D4CC3628851FDE0091B16D /* PetListUseCase.swift */,
+				95D4CC38288520080091B16D /* PetListUseCaseImplementation.swift */,
+			);
+			path = UseCase;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -329,13 +423,23 @@
 			buildActionMask = 2147483647;
 			files = (
 				95561CFF2881CB87000B07B8 /* NetworkSessionManager.swift in Sources */,
+				95D4CC39288520080091B16D /* PetListUseCaseImplementation.swift in Sources */,
+				95D4CC2228846D190091B16D /* PetListResponseModel.swift in Sources */,
+				95D4CC2028846CA80091B16D /* EncodableExtension.swift in Sources */,
+				95D4CC29288476A90091B16D /* PetListRepositoryImplementation.swift in Sources */,
 				95561CEA28813B6E000B07B8 /* NetworkLogger.swift in Sources */,
+				95D4CC342885118B0091B16D /* APIEndPoint.swift in Sources */,
+				95D4CC3728851FDE0091B16D /* PetListUseCase.swift in Sources */,
 				95561CED28814610000B07B8 /* NetworkError.swift in Sources */,
+				95D4CC3028847B700091B16D /* APIV1.swift in Sources */,
 				95561CF1288147B8000B07B8 /* NetworkManager.swift in Sources */,
 				95561CE128808AAB000B07B8 /* APIRequestConfiguration.swift in Sources */,
 				95561CE4288095E6000B07B8 /* PListUtility.swift in Sources */,
 				95561CB3288089C8000B07B8 /* ViewController.swift in Sources */,
 				95561CAF288089C8000B07B8 /* AppDelegate.swift in Sources */,
+				95D4CC1D28846C360091B16D /* PetRequestModel.swift in Sources */,
+				95D4CC3228847CC60091B16D /* DictionaryExtension.swift in Sources */,
+				95D4CC2528846EA00091B16D /* PetListRepository.swift in Sources */,
 				95561CEF28814763000B07B8 /* NetworkService.swift in Sources */,
 				95561CB1288089C8000B07B8 /* SceneDelegate.swift in Sources */,
 			);
