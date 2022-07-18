@@ -55,9 +55,9 @@ extension PetListTableView: UITableViewDataSource, UITableViewDelegate {
             return UITableViewCell()
         }
         cell.show(with: viewModel.items.value[indexPath.row], petImagesRepository: petImagesRepository)
-//        if indexPath.row == viewModel.items.value.count - 1 {
-//            viewModel.didLoadNextPage()
-//        }
+        if indexPath.row == viewModel.items.value.count - 1 && viewModel.hasMorePages {
+            viewModel.didLoadNextPage()
+        }
         return cell
     }
 }

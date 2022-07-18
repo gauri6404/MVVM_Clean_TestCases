@@ -1,10 +1,6 @@
 import Foundation
 
-struct MockAPIRequestConfig: APIRequestConfiguration {
-    var url: String = "https://mock.com"
-    var methodType: HTTPMethodType = .get
+struct MockBaseNetworkConfig: NetworkBaseConfiguration {
+    var baseURL: String = "https://mock.com"
     var headers: [String : String] = [:]
-    var queryParameters: [String : String]? = nil
-    var bodyParameters: [String : String] = [:]
-    var bodyEncoding: BodyEncoding = .jsonSerializationData
 }

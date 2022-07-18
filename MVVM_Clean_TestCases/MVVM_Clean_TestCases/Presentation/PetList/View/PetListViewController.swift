@@ -43,8 +43,11 @@ class PetListViewController: UIViewController, AlertUtility {
         LoaderUtility.shared.hideOverlayView()
 
         switch loading {
-        case .fullScreen: LoaderUtility.shared.showOverlay(view: self.petListTableView)
-        case .nextPage: petListTableView.isHidden = false
+        case .fullScreen:
+            LoaderUtility.shared.showOverlay(view: self.view)
+        case .nextPage:
+            petListTableView.isHidden = false
+            LoaderUtility.shared.showOverlay(view: self.view)
         case .none: petListTableView.isHidden = viewModel.isEmpty
         }
         petListTableView.updateLoading(loading)

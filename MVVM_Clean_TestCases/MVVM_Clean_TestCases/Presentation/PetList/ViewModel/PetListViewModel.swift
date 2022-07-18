@@ -17,9 +17,12 @@ protocol PetListViewModelOutput {
     var error: Observable<String> { get }
     var isEmpty: Bool { get }
     var screenTitle: String { get }
+    var hasMorePages: Bool { get }
 }
 
-protocol PetListViewModel: PetListViewModelInput, PetListViewModelOutput {}
+protocol PetListViewModel: PetListViewModelInput, PetListViewModelOutput {
+    
+}
 
 final class PetListViewModelImplementation: PetListViewModel {
 
@@ -29,7 +32,8 @@ final class PetListViewModelImplementation: PetListViewModel {
     var totalPetCount: Int = 264
     var hasMorePages: Bool { items.value.count < totalPetCount }
     var nextPage: Int { hasMorePages ? currentPage + 1 : currentPage }
-    private var pages: [PetPage] = []
+    private var petListLimit: Int = 10
+    private var petList: [PetListResponseModel] = []
 
     // MARK: - OUTPUT
 
@@ -47,10 +51,10 @@ final class PetListViewModelImplementation: PetListViewModel {
 
     // MARK: - Private
 
-    private func appendPage(petPage: PetPage) {
+    private func appendPet(list: [PetListResponseModel]) {
         currentPage = nextPage
-        pages = pages + [petPage]
-        items.value = petPage.petList.map(PetListItemViewModel.init)
+        petList.append(contentsOf: list)
+        items.value = petList.map(PetListItemViewModel.init)
         if items.value.isEmpty {
             self.handle(error: NetworkError.noDataError)
         }
@@ -59,17 +63,16 @@ final class PetListViewModelImplementation: PetListViewModel {
     private func resetPages() {
         currentPage = 0
         totalPetCount = 264
-        pages.removeAll()
+        petList.removeAll()
         items.value.removeAll()
     }
 
     private func load(loading: LoadingType) {
         self.loading.value = loading
-        petListUseCase.execute(requestValue: PetListUseCaseRequestValue(currentPageIndex: self.currentPage, limit: 10), completion: { result in
+        petListUseCase.execute(requestValue: PetListUseCaseRequestValue(currentPageIndex: self.currentPage, limit: petListLimit), completion: { result in
             switch result {
             case .success(let model):
-                let petPage = PetPage(page: self.currentPage, totalPetCount: 264, petList: model ?? [])
-                self.appendPage(petPage: petPage)
+                self.appendPet(list: model ?? [])
             case .failure(let error):
                 self.handle(error: error)
             }

@@ -21,6 +21,7 @@ class var shared: LoaderUtility {
         overlayView.layer.cornerRadius = 10
         activityIndicator.frame = CGRect(x: 0, y: 0, width: 40, height: 40)
         activityIndicator.style = .large
+        activityIndicator.color = .red
         activityIndicator.center =  CGPoint(x: overlayView.bounds.width / 2, y: overlayView.bounds.height / 2)
         overlayView.addSubview(activityIndicator)
         view.addSubview(overlayView)
