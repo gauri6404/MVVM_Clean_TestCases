@@ -42,6 +42,9 @@
 		95D4CC342885118B0091B16D /* APIEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95D4CC332885118B0091B16D /* APIEndPoint.swift */; };
 		95D4CC3728851FDE0091B16D /* PetListUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95D4CC3628851FDE0091B16D /* PetListUseCase.swift */; };
 		95D4CC39288520080091B16D /* PetListUseCaseImplementation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95D4CC38288520080091B16D /* PetListUseCaseImplementation.swift */; };
+		95D4CC3F28852EDC0091B16D /* PetListItemViewmodel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95D4CC3E28852EDC0091B16D /* PetListItemViewmodel.swift */; };
+		95D4CC4128852F550091B16D /* PetListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95D4CC4028852F550091B16D /* PetListViewModel.swift */; };
+		95D4CC44288531220091B16D /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95D4CC43288531220091B16D /* Observable.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -96,6 +99,9 @@
 		95D4CC332885118B0091B16D /* APIEndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIEndPoint.swift; sourceTree = "<group>"; };
 		95D4CC3628851FDE0091B16D /* PetListUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetListUseCase.swift; sourceTree = "<group>"; };
 		95D4CC38288520080091B16D /* PetListUseCaseImplementation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetListUseCaseImplementation.swift; sourceTree = "<group>"; };
+		95D4CC3E28852EDC0091B16D /* PetListItemViewmodel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetListItemViewmodel.swift; sourceTree = "<group>"; };
+		95D4CC4028852F550091B16D /* PetListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetListViewModel.swift; sourceTree = "<group>"; };
+		95D4CC43288531220091B16D /* Observable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -146,7 +152,7 @@
 		95561CAD288089C8000B07B8 /* MVVM_Clean_TestCases */ = {
 			isa = PBXGroup;
 			children = (
-				95D4CC2A28847A7C0091B16D /* APIEndPoint */,
+				95D4CC3A28852E6F0091B16D /* Presentation */,
 				95D4CC1E28846C990091B16D /* Extension */,
 				95561CE2288095C0000B07B8 /* Utility */,
 				95D4CC1A28846C110091B16D /* Domain */,
@@ -260,6 +266,7 @@
 		95D4CC26288476840091B16D /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				95D4CC2A28847A7C0091B16D /* APIEndPoint */,
 				95D4CC272884768F0091B16D /* Repository */,
 			);
 			path = Data;
@@ -289,6 +296,48 @@
 				95D4CC38288520080091B16D /* PetListUseCaseImplementation.swift */,
 			);
 			path = UseCase;
+			sourceTree = "<group>";
+		};
+		95D4CC3A28852E6F0091B16D /* Presentation */ = {
+			isa = PBXGroup;
+			children = (
+				95D4CC42288531100091B16D /* Observer */,
+				95D4CC3B28852E7D0091B16D /* PetList */,
+			);
+			path = Presentation;
+			sourceTree = "<group>";
+		};
+		95D4CC3B28852E7D0091B16D /* PetList */ = {
+			isa = PBXGroup;
+			children = (
+				95D4CC3D28852E9C0091B16D /* ViewModel */,
+				95D4CC3C28852E960091B16D /* View */,
+			);
+			path = PetList;
+			sourceTree = "<group>";
+		};
+		95D4CC3C28852E960091B16D /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		95D4CC3D28852E9C0091B16D /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				95D4CC3E28852EDC0091B16D /* PetListItemViewmodel.swift */,
+				95D4CC4028852F550091B16D /* PetListViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		95D4CC42288531100091B16D /* Observer */ = {
+			isa = PBXGroup;
+			children = (
+				95D4CC43288531220091B16D /* Observable.swift */,
+			);
+			path = Observer;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -426,6 +475,8 @@
 				95D4CC39288520080091B16D /* PetListUseCaseImplementation.swift in Sources */,
 				95D4CC2228846D190091B16D /* PetListResponseModel.swift in Sources */,
 				95D4CC2028846CA80091B16D /* EncodableExtension.swift in Sources */,
+				95D4CC4128852F550091B16D /* PetListViewModel.swift in Sources */,
+				95D4CC3F28852EDC0091B16D /* PetListItemViewmodel.swift in Sources */,
 				95D4CC29288476A90091B16D /* PetListRepositoryImplementation.swift in Sources */,
 				95561CEA28813B6E000B07B8 /* NetworkLogger.swift in Sources */,
 				95D4CC342885118B0091B16D /* APIEndPoint.swift in Sources */,
@@ -442,6 +493,7 @@
 				95D4CC2528846EA00091B16D /* PetListRepository.swift in Sources */,
 				95561CEF28814763000B07B8 /* NetworkService.swift in Sources */,
 				95561CB1288089C8000B07B8 /* SceneDelegate.swift in Sources */,
+				95D4CC44288531220091B16D /* Observable.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

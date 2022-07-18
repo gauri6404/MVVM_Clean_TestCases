@@ -20,3 +20,9 @@ struct PetImageDataModel: Decodable {
     var id: String?
     var url: String?
 }
+
+struct PetPage {
+    var page: Int
+    var totalPetCount: Int
+    var petList: [PetListResponseModel]
+}
