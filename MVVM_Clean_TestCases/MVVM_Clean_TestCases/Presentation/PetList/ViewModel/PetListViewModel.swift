@@ -8,6 +8,7 @@ enum LoadingType {
 protocol PetListViewModelInput {
     func didLoadNextPage()
     func getPetList()
+    func viewDidLoad()
 }
 
 protocol PetListViewModelOutput {
@@ -100,5 +101,8 @@ final class PetListViewModelImplementation: PetListViewModel {
     func getPetList() {
         resetPages()
         load(loading: .fullScreen)
+    }
+    
+    func viewDidLoad() {
     }
 }

@@ -9,8 +9,7 @@
 /* Begin PBXBuildFile section */
 		95561CAF288089C8000B07B8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95561CAE288089C8000B07B8 /* AppDelegate.swift */; };
 		95561CB1288089C8000B07B8 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95561CB0288089C8000B07B8 /* SceneDelegate.swift */; };
-		95561CB3288089C8000B07B8 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95561CB2288089C8000B07B8 /* ViewController.swift */; };
-		95561CB6288089C8000B07B8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 95561CB4288089C8000B07B8 /* Main.storyboard */; };
+		95561CB6288089C8000B07B8 /* PetListStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 95561CB4288089C8000B07B8 /* PetListStoryboard.storyboard */; };
 		95561CB8288089C9000B07B8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 95561CB7288089C9000B07B8 /* Assets.xcassets */; };
 		95561CBB288089C9000B07B8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 95561CB9288089C9000B07B8 /* LaunchScreen.storyboard */; };
 		95561CC6288089C9000B07B8 /* TestNetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95561CC5288089C9000B07B8 /* TestNetworkService.swift */; };
@@ -45,6 +44,19 @@
 		95D4CC3F28852EDC0091B16D /* PetListItemViewmodel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95D4CC3E28852EDC0091B16D /* PetListItemViewmodel.swift */; };
 		95D4CC4128852F550091B16D /* PetListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95D4CC4028852F550091B16D /* PetListViewModel.swift */; };
 		95D4CC44288531220091B16D /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95D4CC43288531220091B16D /* Observable.swift */; };
+		95D4CC4728853EAC0091B16D /* PListUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95561CE3288095E6000B07B8 /* PListUtility.swift */; };
+		95D4CC4928853FDA0091B16D /* PetListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95D4CC4828853FDA0091B16D /* PetListViewController.swift */; };
+		95F452672885454900581B6E /* PetInfoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95F452652885454900581B6E /* PetInfoTableViewCell.swift */; };
+		95F452682885454900581B6E /* PetInfoTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 95F452662885454900581B6E /* PetInfoTableViewCell.xib */; };
+		95F4526A288545DE00581B6E /* PetListTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95F45269288545DE00581B6E /* PetListTableView.swift */; };
+		95F4526D2885496900581B6E /* AccessibilityIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95F4526C2885496900581B6E /* AccessibilityIdentifier.swift */; };
+		95F4526F2885505700581B6E /* PetImageRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95F4526E2885505700581B6E /* PetImageRepository.swift */; };
+		95F452712885508400581B6E /* PetImageRepositoryImplementation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95F452702885508400581B6E /* PetImageRepositoryImplementation.swift */; };
+		95F452732885547F00581B6E /* LoaderUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95F452722885547F00581B6E /* LoaderUtility.swift */; };
+		95F452752885564100581B6E /* AlertUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95F452742885564100581B6E /* AlertUtility.swift */; };
+		95F45278288557DB00581B6E /* PetModuleFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95F45277288557DB00581B6E /* PetModuleFlow.swift */; };
+		95F4527B2885589900581B6E /* PetModuleDIContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95F4527A2885589900581B6E /* PetModuleDIContainer.swift */; };
+		95F4527D28855BA900581B6E /* AppDIContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95F4527C28855BA900581B6E /* AppDIContainer.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -68,8 +80,7 @@
 		95561CAB288089C8000B07B8 /* MVVM_Clean_TestCases.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MVVM_Clean_TestCases.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		95561CAE288089C8000B07B8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		95561CB0288089C8000B07B8 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		95561CB2288089C8000B07B8 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		95561CB5288089C8000B07B8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		95561CB5288089C8000B07B8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/PetListStoryboard.storyboard; sourceTree = "<group>"; };
 		95561CB7288089C9000B07B8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		95561CBA288089C9000B07B8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		95561CBC288089C9000B07B8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -102,6 +113,18 @@
 		95D4CC3E28852EDC0091B16D /* PetListItemViewmodel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetListItemViewmodel.swift; sourceTree = "<group>"; };
 		95D4CC4028852F550091B16D /* PetListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetListViewModel.swift; sourceTree = "<group>"; };
 		95D4CC43288531220091B16D /* Observable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
+		95D4CC4828853FDA0091B16D /* PetListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetListViewController.swift; sourceTree = "<group>"; };
+		95F452652885454900581B6E /* PetInfoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetInfoTableViewCell.swift; sourceTree = "<group>"; };
+		95F452662885454900581B6E /* PetInfoTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PetInfoTableViewCell.xib; sourceTree = "<group>"; };
+		95F45269288545DE00581B6E /* PetListTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetListTableView.swift; sourceTree = "<group>"; };
+		95F4526C2885496900581B6E /* AccessibilityIdentifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessibilityIdentifier.swift; sourceTree = "<group>"; };
+		95F4526E2885505700581B6E /* PetImageRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetImageRepository.swift; sourceTree = "<group>"; };
+		95F452702885508400581B6E /* PetImageRepositoryImplementation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetImageRepositoryImplementation.swift; sourceTree = "<group>"; };
+		95F452722885547F00581B6E /* LoaderUtility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoaderUtility.swift; sourceTree = "<group>"; };
+		95F452742885564100581B6E /* AlertUtility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertUtility.swift; sourceTree = "<group>"; };
+		95F45277288557DB00581B6E /* PetModuleFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetModuleFlow.swift; sourceTree = "<group>"; };
+		95F4527A2885589900581B6E /* PetModuleDIContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetModuleDIContainer.swift; sourceTree = "<group>"; };
+		95F4527C28855BA900581B6E /* AppDIContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDIContainer.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -152,6 +175,7 @@
 		95561CAD288089C8000B07B8 /* MVVM_Clean_TestCases */ = {
 			isa = PBXGroup;
 			children = (
+				95F452792885588200581B6E /* DependencyInjection */,
 				95D4CC3A28852E6F0091B16D /* Presentation */,
 				95D4CC1E28846C990091B16D /* Extension */,
 				95561CE2288095C0000B07B8 /* Utility */,
@@ -159,8 +183,6 @@
 				95D4CC26288476840091B16D /* Data */,
 				95725AB0288465C20046FF6F /* AppConfiguration */,
 				95561CDE28808A3F000B07B8 /* NetworkLayer */,
-				95561CB2288089C8000B07B8 /* ViewController.swift */,
-				95561CB4288089C8000B07B8 /* Main.storyboard */,
 				95561CB7288089C9000B07B8 /* Assets.xcassets */,
 				95561CB9288089C9000B07B8 /* LaunchScreen.storyboard */,
 			);
@@ -203,6 +225,9 @@
 			isa = PBXGroup;
 			children = (
 				95561CE3288095E6000B07B8 /* PListUtility.swift */,
+				95F4526C2885496900581B6E /* AccessibilityIdentifier.swift */,
+				95F452722885547F00581B6E /* LoaderUtility.swift */,
+				95F452742885564100581B6E /* AlertUtility.swift */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
@@ -259,6 +284,7 @@
 			isa = PBXGroup;
 			children = (
 				95D4CC2428846EA00091B16D /* PetListRepository.swift */,
+				95F4526E2885505700581B6E /* PetImageRepository.swift */,
 			);
 			path = RepositoryInterface;
 			sourceTree = "<group>";
@@ -276,6 +302,7 @@
 			isa = PBXGroup;
 			children = (
 				95D4CC28288476A90091B16D /* PetListRepositoryImplementation.swift */,
+				95F452702885508400581B6E /* PetImageRepositoryImplementation.swift */,
 			);
 			path = Repository;
 			sourceTree = "<group>";
@@ -310,6 +337,7 @@
 		95D4CC3B28852E7D0091B16D /* PetList */ = {
 			isa = PBXGroup;
 			children = (
+				95F45276288557B100581B6E /* Flow */,
 				95D4CC3D28852E9C0091B16D /* ViewModel */,
 				95D4CC3C28852E960091B16D /* View */,
 			);
@@ -319,6 +347,9 @@
 		95D4CC3C28852E960091B16D /* View */ = {
 			isa = PBXGroup;
 			children = (
+				95F4526B288548E400581B6E /* TableView */,
+				95561CB4288089C8000B07B8 /* PetListStoryboard.storyboard */,
+				95D4CC4828853FDA0091B16D /* PetListViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -338,6 +369,41 @@
 				95D4CC43288531220091B16D /* Observable.swift */,
 			);
 			path = Observer;
+			sourceTree = "<group>";
+		};
+		95F452642885453200581B6E /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				95F452652885454900581B6E /* PetInfoTableViewCell.swift */,
+				95F452662885454900581B6E /* PetInfoTableViewCell.xib */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		95F4526B288548E400581B6E /* TableView */ = {
+			isa = PBXGroup;
+			children = (
+				95F45269288545DE00581B6E /* PetListTableView.swift */,
+				95F452642885453200581B6E /* Cell */,
+			);
+			path = TableView;
+			sourceTree = "<group>";
+		};
+		95F45276288557B100581B6E /* Flow */ = {
+			isa = PBXGroup;
+			children = (
+				95F45277288557DB00581B6E /* PetModuleFlow.swift */,
+			);
+			path = Flow;
+			sourceTree = "<group>";
+		};
+		95F452792885588200581B6E /* DependencyInjection */ = {
+			isa = PBXGroup;
+			children = (
+				95F4527A2885589900581B6E /* PetModuleDIContainer.swift */,
+				95F4527C28855BA900581B6E /* AppDIContainer.swift */,
+			);
+			path = DependencyInjection;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -445,8 +511,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				95561CBB288089C9000B07B8 /* LaunchScreen.storyboard in Resources */,
+				95F452682885454900581B6E /* PetInfoTableViewCell.xib in Resources */,
 				95561CB8288089C9000B07B8 /* Assets.xcassets in Resources */,
-				95561CB6288089C8000B07B8 /* Main.storyboard in Resources */,
+				95561CB6288089C8000B07B8 /* PetListStoryboard.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -473,24 +540,34 @@
 			files = (
 				95561CFF2881CB87000B07B8 /* NetworkSessionManager.swift in Sources */,
 				95D4CC39288520080091B16D /* PetListUseCaseImplementation.swift in Sources */,
+				95D4CC4928853FDA0091B16D /* PetListViewController.swift in Sources */,
 				95D4CC2228846D190091B16D /* PetListResponseModel.swift in Sources */,
+				95F4526D2885496900581B6E /* AccessibilityIdentifier.swift in Sources */,
+				95F452752885564100581B6E /* AlertUtility.swift in Sources */,
 				95D4CC2028846CA80091B16D /* EncodableExtension.swift in Sources */,
 				95D4CC4128852F550091B16D /* PetListViewModel.swift in Sources */,
 				95D4CC3F28852EDC0091B16D /* PetListItemViewmodel.swift in Sources */,
+				95F452712885508400581B6E /* PetImageRepositoryImplementation.swift in Sources */,
+				95F4526A288545DE00581B6E /* PetListTableView.swift in Sources */,
 				95D4CC29288476A90091B16D /* PetListRepositoryImplementation.swift in Sources */,
 				95561CEA28813B6E000B07B8 /* NetworkLogger.swift in Sources */,
 				95D4CC342885118B0091B16D /* APIEndPoint.swift in Sources */,
+				95F452732885547F00581B6E /* LoaderUtility.swift in Sources */,
 				95D4CC3728851FDE0091B16D /* PetListUseCase.swift in Sources */,
 				95561CED28814610000B07B8 /* NetworkError.swift in Sources */,
 				95D4CC3028847B700091B16D /* APIV1.swift in Sources */,
+				95F4526F2885505700581B6E /* PetImageRepository.swift in Sources */,
+				95F4527D28855BA900581B6E /* AppDIContainer.swift in Sources */,
 				95561CF1288147B8000B07B8 /* NetworkManager.swift in Sources */,
+				95F4527B2885589900581B6E /* PetModuleDIContainer.swift in Sources */,
 				95561CE128808AAB000B07B8 /* APIRequestConfiguration.swift in Sources */,
 				95561CE4288095E6000B07B8 /* PListUtility.swift in Sources */,
-				95561CB3288089C8000B07B8 /* ViewController.swift in Sources */,
 				95561CAF288089C8000B07B8 /* AppDelegate.swift in Sources */,
+				95F45278288557DB00581B6E /* PetModuleFlow.swift in Sources */,
 				95D4CC1D28846C360091B16D /* PetRequestModel.swift in Sources */,
 				95D4CC3228847CC60091B16D /* DictionaryExtension.swift in Sources */,
 				95D4CC2528846EA00091B16D /* PetListRepository.swift in Sources */,
+				95F452672885454900581B6E /* PetInfoTableViewCell.swift in Sources */,
 				95561CEF28814763000B07B8 /* NetworkService.swift in Sources */,
 				95561CB1288089C8000B07B8 /* SceneDelegate.swift in Sources */,
 				95D4CC44288531220091B16D /* Observable.swift in Sources */,
@@ -508,6 +585,7 @@
 				95561CF328814A2C000B07B8 /* NetworkService.swift in Sources */,
 				95561CF228814A24000B07B8 /* APIRequestConfiguration.swift in Sources */,
 				95561CF528814A36000B07B8 /* NetworkError.swift in Sources */,
+				95D4CC4728853EAC0091B16D /* PListUtility.swift in Sources */,
 				95725AAF2883FC420046FF6F /* TestNetworkManager.swift in Sources */,
 				95561CFA28814B88000B07B8 /* MockNetworkSessionManager.swift in Sources */,
 				95561CF828814ADD000B07B8 /* MockAPIRequestConfig.swift in Sources */,
@@ -539,12 +617,12 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		95561CB4288089C8000B07B8 /* Main.storyboard */ = {
+		95561CB4288089C8000B07B8 /* PetListStoryboard.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				95561CB5288089C8000B07B8 /* Base */,
 			);
-			name = Main.storyboard;
+			name = PetListStoryboard.storyboard;
 			sourceTree = "<group>";
 		};
 		95561CB9288089C9000B07B8 /* LaunchScreen.storyboard */ = {
@@ -683,7 +761,7 @@
 				INFOPLIST_FILE = "$(SRCROOT)/MVVM_Clean_TestCases/AppConfiguration/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UIMainStoryboardFile = PetListStoryboard;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -711,7 +789,7 @@
 				INFOPLIST_FILE = "$(SRCROOT)/MVVM_Clean_TestCases/AppConfiguration/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UIMainStoryboardFile = PetListStoryboard;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -873,7 +951,7 @@
 				INFOPLIST_FILE = "$(SRCROOT)/MVVM_Clean_TestCases/AppConfiguration/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UIMainStoryboardFile = PetListStoryboard;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
