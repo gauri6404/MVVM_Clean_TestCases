@@ -1,12 +1,4 @@
-//
-//  AppDelegate.swift
-//  MVVM_Clean_TestCases
-//
-//  Created by Gauri Sharma on 14/07/22.
-//
-
 import UIKit
-
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -20,7 +12,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window = UIWindow(frame: UIScreen.main.bounds)
         let navigationController = UINavigationController()
         window?.rootViewController = navigationController
-        
         appFlow = AppFlow(navigationController: navigationController, appDIContainer: appDIContainer)
         appFlow?.start()
         window?.makeKeyAndVisible()

@@ -13,21 +13,6 @@ final class PetModuleDIContainer {
         self.dependencies = dependencies
     }
     
-    // MARK: - Repositories
-    func getPetListRepository() -> PetListRepository {
-        return PetListRepositoryImplementation(networkManager: dependencies.networkManager)
-    }
-
-    func getPetImagesRepository() -> PetImageRepository {
-        return PetImageRepositoryImplementation(networkManager: dependencies.imageNetworkManager)
-    }
-    
-    // MARK: - Use Cases
-    func getPetListUseCase() -> PetListUseCase {
-        return PetListUseCaseImplementation(petListRepository: getPetListRepository())
-    }
-    
-    // MARK: - Flow Coordinators
     func getPetmoduleFlow(navigationController: UINavigationController) -> PetModuleFlow {
         return PetModuleFlow(navigationController: navigationController, dependencies: self)
     }
@@ -35,10 +20,13 @@ final class PetModuleDIContainer {
 
 extension PetModuleDIContainer: PetModuleFlowDependencies {
     func getPetListViewController() -> PetListViewController {
-        return PetListViewController.create(with: getPetListViewModel(), petImagesRepository: getPetImagesRepository())
+        let petImgRepo = PetImageRepositoryImplementation(networkManager: dependencies.imageNetworkManager)
+        return PetListViewController.create(with: getPetListViewModel(), petImagesRepository: petImgRepo)
     }
     
     func getPetListViewModel() -> PetListViewModel {
-        return PetListViewModelImplementation(petListUseCase: getPetListUseCase())
+        let petListRepo = PetListRepositoryImplementation(networkManager: dependencies.networkManager)
+        let petListUsecase =  PetListUseCaseImplementation(petListRepository: petListRepo)
+        return PetListViewModelImplementation(petListUseCase: petListUsecase)
     }
 }

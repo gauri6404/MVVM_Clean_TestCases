@@ -58,7 +58,6 @@
 		95F4527B2885589900581B6E /* PetModuleDIContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95F4527A2885589900581B6E /* PetModuleDIContainer.swift */; };
 		95F4527D28855BA900581B6E /* AppDIContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95F4527C28855BA900581B6E /* AppDIContainer.swift */; };
 		95F4527F2885696000581B6E /* AppFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95F4527E2885696000581B6E /* AppFlow.swift */; };
-		95F452812885800F00581B6E /* ArrayExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95F452802885800F00581B6E /* ArrayExtension.swift */; };
 		95F452832885842100581B6E /* MockAPIRequestConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95F452822885842100581B6E /* MockAPIRequestConfiguration.swift */; };
 		95F452872885884200581B6E /* TestPetListUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95F452862885884200581B6E /* TestPetListUseCase.swift */; };
 		95F452892885893B00581B6E /* PetListUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95D4CC3628851FDE0091B16D /* PetListUseCase.swift */; };
@@ -81,6 +80,8 @@
 		95F4529F28859CB500581B6E /* ConnectionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95F4529E28859CB500581B6E /* ConnectionManager.swift */; };
 		95F452A028859CEB00581B6E /* ConnectionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95F4529E28859CB500581B6E /* ConnectionManager.swift */; };
 		95F452A128859CEC00581B6E /* ConnectionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95F4529E28859CB500581B6E /* ConnectionManager.swift */; };
+		95F452A32886832E00581B6E /* NetworkBaseConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95F452A22886832E00581B6E /* NetworkBaseConfiguration.swift */; };
+		95F452A4288683F500581B6E /* NetworkBaseConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95F452A22886832E00581B6E /* NetworkBaseConfiguration.swift */; };
 		F6FC5254F14F19B4E6E4C38A /* Pods_MVVM_Clean_TestCases.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 79535EE2D03CC63A426A81EA /* Pods_MVVM_Clean_TestCases.framework */; };
 /* End PBXBuildFile section */
 
@@ -158,12 +159,12 @@
 		95F4527A2885589900581B6E /* PetModuleDIContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetModuleDIContainer.swift; sourceTree = "<group>"; };
 		95F4527C28855BA900581B6E /* AppDIContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDIContainer.swift; sourceTree = "<group>"; };
 		95F4527E2885696000581B6E /* AppFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppFlow.swift; sourceTree = "<group>"; };
-		95F452802885800F00581B6E /* ArrayExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrayExtension.swift; sourceTree = "<group>"; };
 		95F452822885842100581B6E /* MockAPIRequestConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockAPIRequestConfiguration.swift; sourceTree = "<group>"; };
 		95F452862885884200581B6E /* TestPetListUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestPetListUseCase.swift; sourceTree = "<group>"; };
 		95F452942885905500581B6E /* TestPetListviewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestPetListviewModel.swift; sourceTree = "<group>"; };
 		95F45297288590A900581B6E /* MockPetList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockPetList.swift; sourceTree = "<group>"; };
 		95F4529E28859CB500581B6E /* ConnectionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectionManager.swift; sourceTree = "<group>"; };
+		95F452A22886832E00581B6E /* NetworkBaseConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkBaseConfiguration.swift; sourceTree = "<group>"; };
 		CDD5964A13C0C755DDEBA014 /* Pods-MVVM_Clean_TestCases-MVVM_Clean_TestCasesUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MVVM_Clean_TestCases-MVVM_Clean_TestCasesUITests.release.xcconfig"; path = "Target Support Files/Pods-MVVM_Clean_TestCases-MVVM_Clean_TestCasesUITests/Pods-MVVM_Clean_TestCases-MVVM_Clean_TestCasesUITests.release.xcconfig"; sourceTree = "<group>"; };
 		E2DE6A94A961FE742DF0FD0D /* Pods_MVVM_Clean_TestCasesTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MVVM_Clean_TestCasesTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E7FC09474D35B29EFD009BA3 /* Pods-MVVM_Clean_TestCases.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MVVM_Clean_TestCases.release.xcconfig"; path = "Target Support Files/Pods-MVVM_Clean_TestCases/Pods-MVVM_Clean_TestCases.release.xcconfig"; sourceTree = "<group>"; };
@@ -267,6 +268,7 @@
 		95561CDE28808A3F000B07B8 /* NetworkLayer */ = {
 			isa = PBXGroup;
 			children = (
+				95F452A22886832E00581B6E /* NetworkBaseConfiguration.swift */,
 				95561CE028808AAB000B07B8 /* APIRequestConfiguration.swift */,
 				95561CFE2881CB87000B07B8 /* NetworkSessionManager.swift */,
 				95561CEE28814763000B07B8 /* NetworkService.swift */,
@@ -335,7 +337,6 @@
 			children = (
 				95D4CC1F28846CA80091B16D /* EncodableExtension.swift */,
 				95D4CC3128847CC60091B16D /* DictionaryExtension.swift */,
-				95F452802885800F00581B6E /* ArrayExtension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -775,7 +776,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				95561CFF2881CB87000B07B8 /* NetworkSessionManager.swift in Sources */,
-				95F452812885800F00581B6E /* ArrayExtension.swift in Sources */,
 				95D4CC39288520080091B16D /* PetListUseCaseImplementation.swift in Sources */,
 				95D4CC4928853FDA0091B16D /* PetListViewController.swift in Sources */,
 				95D4CC2228846D190091B16D /* PetListResponseModel.swift in Sources */,
@@ -797,6 +797,7 @@
 				95D4CC3028847B700091B16D /* APIV1.swift in Sources */,
 				95F4526F2885505700581B6E /* PetImageRepository.swift in Sources */,
 				95F4527D28855BA900581B6E /* AppDIContainer.swift in Sources */,
+				95F452A32886832E00581B6E /* NetworkBaseConfiguration.swift in Sources */,
 				95561CF1288147B8000B07B8 /* NetworkManager.swift in Sources */,
 				95F4527B2885589900581B6E /* PetModuleDIContainer.swift in Sources */,
 				95561CE128808AAB000B07B8 /* APIRequestConfiguration.swift in Sources */,
@@ -846,6 +847,7 @@
 				95561CFA28814B88000B07B8 /* MockNetworkSessionManager.swift in Sources */,
 				95561CF828814ADD000B07B8 /* MockAPIRequestConfig.swift in Sources */,
 				95F4529128858E0300581B6E /* EncodableExtension.swift in Sources */,
+				95F452A4288683F500581B6E /* NetworkBaseConfiguration.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

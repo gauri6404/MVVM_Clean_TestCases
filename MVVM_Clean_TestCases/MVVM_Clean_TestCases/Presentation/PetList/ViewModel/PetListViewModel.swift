@@ -36,21 +36,15 @@ final class PetListViewModelImplementation: PetListViewModel {
     private var petListLimit: Int = 10
     private var petList: [PetListResponseModel] = []
 
-    // MARK: - OUTPUT
-
     var items: Observable<[PetListItemViewModel]> = Observable([])
     var loading: Observable<LoadingType?> = Observable(.none)
     var error: Observable<String> = Observable("")
     var isEmpty: Bool { return items.value.isEmpty }
     var screenTitle: String = "Pet List"
 
-    // MARK: - Init
-
     init(petListUseCase: PetListUseCase) {
         self.petListUseCase = petListUseCase
     }
-
-    // MARK: - Private
 
     private func appendPet(list: [PetListResponseModel]) {
         currentPage = nextPage
@@ -82,7 +76,7 @@ final class PetListViewModelImplementation: PetListViewModel {
     }
 
     private func handle(error: Error) {
-        self.error.value = (error as! NetworkError) == NetworkError.notConnected ? "No Internet Connection" : "Failed loading movies"
+        self.error.value = (error as! NetworkError) == NetworkError.notConnected ? "No Internet Connection" : "Failed loading pet list"
     }
 
     private func update() {

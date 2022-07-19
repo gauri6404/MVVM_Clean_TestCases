@@ -5,7 +5,7 @@ final class AppDIContainer {
     // MARK: - Network
     lazy var networkManager: NetworkManager = {
         
-        let apiBaseConfig = NetworkBaseConfigurationImpl(baseURL: PListUtility.getValue(forKey: "API_BASE_URL") as! String, headers: ["Content-Type": "application/json", "x-api-key": "267adccb-d489-46cf-86a3-f9a42a2dfb90"])
+        let apiBaseConfig = NetworkBaseConfigurationImpl(baseURL: PListUtility.getValue(forKey: "API_BASE_URL") as! String, headers: ["Content-Type": "application/json", "x-api-key": PListUtility.getValue(forKey: "API_KEY") as! String])
         return NetworkManagerImplementation(service: NetworkServiceImplementation(apiConfig: apiBaseConfig))
     }()
     

@@ -1,5 +1,5 @@
 import Foundation
 
 public struct AccessibilityIdentifier {
-    static let tableView = "AccessibilityIdentifierMovieList"
+    static let tableView = "AccessibilityIdentifierPetList"
 }
