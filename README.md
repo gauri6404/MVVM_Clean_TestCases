@@ -24,7 +24,7 @@
 
 * Domain Layer = Entities + Use Cases + Repositories Interfaces
 
-* Data Repositories Layer = Repositories Implementations + API(Network) + Persistence DB
+* Data Repositories Layer = Repositories Implementations + API EndPoint
 
 * Network Layer: URLSession based layer
 
