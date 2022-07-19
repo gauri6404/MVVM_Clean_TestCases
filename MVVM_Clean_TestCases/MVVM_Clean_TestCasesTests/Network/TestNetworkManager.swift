@@ -11,27 +11,30 @@ private enum DataTransferErrorMock: Error {
 class TestNetworkManager: XCTestCase {
     
     func test_ResponseDecodingSuccess() {
-        //given
-        let config = MockBaseNetworkConfig()
-        let expectation = self.expectation(description: "Should decode mock object")
-        
-        let responseData = #"{"name": "Hello"}"#.data(using: .utf8)
-        let networkService = NetworkServiceImplementation(apiConfig: config, sessionManager: MockNetworkSessionManager(response: nil, data: responseData, error: nil), logger: NetworkLoggerImplementation())
-        
-        let sut = NetworkManagerImplementation(service: networkService)
-        //when
-        
-        sut.getAPIResponse(for: MockAPIRequestConfiguration(), returnType: MockModel.self) { result in
-            do {
-                let object = try result.get()
-                XCTAssertEqual(object?.name, "Hello")
-                expectation.fulfill()
-            } catch {
-                XCTFail("Failed decoding MockObject")
+        do {
+            try XCTSkipUnless(ReachabilityManager.sharedInstance.reachability.connection != .unavailable, "Network is not connected")
+            //given
+            let config = MockBaseNetworkConfig()
+            let expectation = self.expectation(description: "Should decode mock object")
+            
+            let responseData = #"{"name": "Hello"}"#.data(using: .utf8)
+            let networkService = NetworkServiceImplementation(apiConfig: config, sessionManager: MockNetworkSessionManager(response: nil, data: responseData, error: nil), logger: NetworkLoggerImplementation())
+            
+            let sut = NetworkManagerImplementation(service: networkService)
+            //when
+            
+            sut.getAPIResponse(for: MockAPIRequestConfiguration(), returnType: MockModel.self) { result in
+                do {
+                    let object = try result.get()
+                    XCTAssertEqual(object?.name, "Hello")
+                    expectation.fulfill()
+                } catch {
+                    XCTFail("Failed decoding MockObject")
+                }
             }
-        }
-        //then
-        wait(for: [expectation], timeout: 0.1)
+            //then
+            wait(for: [expectation], timeout: 0.1)
+        } catch {}
     }
     
     func test_ResponseDecodingFailure() {
@@ -57,61 +60,67 @@ class TestNetworkManager: XCTestCase {
     }
     
     func test_whenBadRequestReceived_shouldRethrowNetworkError() {
-        //given
-        let config = MockBaseNetworkConfig()
-        let expectation = self.expectation(description: "Should decode mock object")
-        let responseData = #"{"invalidStructure": "Nothing"}"#.data(using: .utf8)!
-        let response = HTTPURLResponse(url: URL(string: "test_url")!,
-                                       statusCode: 500,
-                                       httpVersion: "1.1",
-                                       headerFields: nil)
-        let networkService = NetworkServiceImplementation(apiConfig: config, sessionManager: MockNetworkSessionManager(response: response, data: responseData, error: nil), logger: NetworkLoggerImplementation())
+        do {
+            try XCTSkipUnless(ReachabilityManager.sharedInstance.reachability.connection != .unavailable, "Network is not connected")
+            //given
+            let config = MockBaseNetworkConfig()
+            let expectation = self.expectation(description: "Should decode mock object")
+            let responseData = #"{"invalidStructure": "Nothing"}"#.data(using: .utf8)!
+            let response = HTTPURLResponse(url: URL(string: "test_url")!,
+                                           statusCode: 500,
+                                           httpVersion: "1.1",
+                                           headerFields: nil)
+            let networkService = NetworkServiceImplementation(apiConfig: config, sessionManager: MockNetworkSessionManager(response: response, data: responseData, error: nil), logger: NetworkLoggerImplementation())
 
-        let sut = NetworkManagerImplementation(service: networkService)
-        //when
-        sut.getAPIResponse(for: MockAPIRequestConfiguration(), returnType: MockModel.self) { result in
-            do {
-                _ = try result.get()
-                XCTFail("Should not happen")
-            } catch let error {
+            let sut = NetworkManagerImplementation(service: networkService)
+            //when
+            sut.getAPIResponse(for: MockAPIRequestConfiguration(), returnType: MockModel.self) { result in
+                do {
+                    _ = try result.get()
+                    XCTFail("Should not happen")
+                } catch let error {
 
-                if case NetworkError.error(statusCode: 500, _) = error {
-                    expectation.fulfill()
-                } else {
-                    XCTFail("Wrong error")
+                    if case NetworkError.error(statusCode: 500, _) = error {
+                        expectation.fulfill()
+                    } else {
+                        XCTFail("Wrong error")
+                    }
                 }
             }
-        }
-        //then
-        wait(for: [expectation], timeout: 0.1)
+            //then
+            wait(for: [expectation], timeout: 0.1)
+        } catch {}
     }
     
     func test_EmptyDataAPIResponse() {
-        //given
-        let config = MockBaseNetworkConfig()
-        let expectation = self.expectation(description: "Should throw no data error")
-        
-        let response = HTTPURLResponse(url: URL(string: "test_url")!,
-                                       statusCode: 200,
-                                       httpVersion: "1.1",
-                                       headerFields: [:])
-        let networkService = NetworkServiceImplementation(apiConfig: config, sessionManager: MockNetworkSessionManager(response: response, data: nil, error: nil), logger: NetworkLoggerImplementation())
-        
-        let sut = NetworkManagerImplementation(service: networkService)
-        //when
-        sut.getAPIResponse(for: MockAPIRequestConfiguration(), returnType: MockModel.self) { result in
-            do {
-                _ = try result.get()
-                XCTFail("Should not happen")
-            } catch let error {
-                if case NetworkError.noDataError = error {
-                    expectation.fulfill()
-                } else {
-                    XCTFail("Wrong error")
+        do {
+            try XCTSkipUnless(ReachabilityManager.sharedInstance.reachability.connection != .unavailable, "Network is not connected")
+            //given
+            let config = MockBaseNetworkConfig()
+            let expectation = self.expectation(description: "Should throw no data error")
+            
+            let response = HTTPURLResponse(url: URL(string: "test_url")!,
+                                           statusCode: 200,
+                                           httpVersion: "1.1",
+                                           headerFields: [:])
+            let networkService = NetworkServiceImplementation(apiConfig: config, sessionManager: MockNetworkSessionManager(response: response, data: nil, error: nil), logger: NetworkLoggerImplementation())
+            
+            let sut = NetworkManagerImplementation(service: networkService)
+            //when
+            sut.getAPIResponse(for: MockAPIRequestConfiguration(), returnType: MockModel.self) { result in
+                do {
+                    _ = try result.get()
+                    XCTFail("Should not happen")
+                } catch let error {
+                    if case NetworkError.noDataError = error {
+                        expectation.fulfill()
+                    } else {
+                        XCTFail("Wrong error")
+                    }
                 }
             }
-        }
-        //then
-        wait(for: [expectation], timeout: 0.1)
+            //then
+            wait(for: [expectation], timeout: 0.1)
+        } catch {}
     }
 }

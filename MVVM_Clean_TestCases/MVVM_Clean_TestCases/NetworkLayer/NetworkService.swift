@@ -17,7 +17,7 @@ public final class NetworkServiceImplementation: NetworkService {
     }
     
     private func request(request: URLRequest, completion: @escaping(Result<Data?, Error>) -> Void) {
-        guard Reachability.isConnectedToNetwork() else {
+        guard ReachabilityManager.sharedInstance.reachability.connection != .unavailable else {
             completion(.failure(NetworkError.notConnected))
             return
         }

@@ -1,30 +1,75 @@
-import SystemConfiguration
+import Foundation
+import Reachability
 
-public class Reachability {
+class ReachabilityManager: NSObject {
 
-    class func isConnectedToNetwork() -> Bool {
+    var reachability: Reachability!
+    
+    static let sharedInstance: ReachabilityManager = { return ReachabilityManager() }()
+    
+    
+    override init() {
+        super.init()
+        do {
+            reachability = try Reachability()
+        } catch {}
 
-        var zeroAddress = sockaddr_in(sin_len: 0, sin_family: 0, sin_port: 0, sin_addr: in_addr(s_addr: 0), sin_zero: (0, 0, 0, 0, 0, 0, 0, 0))
-        zeroAddress.sin_len = UInt8(MemoryLayout.size(ofValue: zeroAddress))
-        zeroAddress.sin_family = sa_family_t(AF_INET)
-
-        let defaultRouteReachability = withUnsafePointer(to: &zeroAddress) {
-            $0.withMemoryRebound(to: sockaddr.self, capacity: 1) {zeroSockAddress in
-                SCNetworkReachabilityCreateWithAddress(nil, zeroSockAddress)
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(networkStatusChanged(_:)),
+            name: .reachabilityChanged,
+            object: reachability
+        )
+        
+        do {
+            try reachability.startNotifier()
+        } catch {
+            print("Unable to start notifier")
+        }
+    }
+    
+    @objc func networkStatusChanged(_ notification: Notification) {
+        let str = (notification.object as! Reachability).connection.description
+        if str == "No Connection" {
+            DispatchQueue.main.async {
+                print("Network not connected")
+            }
+        } else {
+            DispatchQueue.main.async {
+                print("Network connected")
             }
         }
-
-        var flags: SCNetworkReachabilityFlags = SCNetworkReachabilityFlags(rawValue: 0)
-        if SCNetworkReachabilityGetFlags(defaultRouteReachability!, &flags) == false {
-            return false
+    }
+    
+    static func stopNotifier() -> Void {
+        do {
+            try (ReachabilityManager.sharedInstance.reachability).startNotifier()
+        } catch {
+            print("Error stopping notifier")
         }
+    }
 
-        // Working for Cellular and WIFI
-        let isReachable = (flags.rawValue & UInt32(kSCNetworkFlagsReachable)) != 0
-        let needsConnection = (flags.rawValue & UInt32(kSCNetworkFlagsConnectionRequired)) != 0
-        let ret = (isReachable && !needsConnection)
+    static func isReachable(completed: @escaping (ReachabilityManager) -> Void) {
+        if (ReachabilityManager.sharedInstance.reachability).connection != .unavailable {
+            completed(ReachabilityManager.sharedInstance)
+        }
+    }
+    
+    static func isUnreachable(completed: @escaping (ReachabilityManager) -> Void) {
+        if (ReachabilityManager.sharedInstance.reachability).connection == .unavailable {
+            completed(ReachabilityManager.sharedInstance)
+        }
+    }
+    
+    static func isReachableViaWWAN(completed: @escaping (ReachabilityManager) -> Void) {
+        if (ReachabilityManager.sharedInstance.reachability).connection == .cellular {
+            completed(ReachabilityManager.sharedInstance)
+        }
+    }
 
-        return ret
-
+    static func isReachableViaWiFi(completed: @escaping (ReachabilityManager) -> Void) {
+        if (ReachabilityManager.sharedInstance.reachability).connection == .wifi {
+            completed(ReachabilityManager.sharedInstance)
+        }
     }
 }

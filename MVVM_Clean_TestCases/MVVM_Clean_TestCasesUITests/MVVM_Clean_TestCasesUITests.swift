@@ -6,7 +6,7 @@ class MVVM_Clean_TestCasesUITests: XCTestCase {
         let app = XCUIApplication()
         app.launch()
         
-        if Reachability.isConnectedToNetwork() {
+        if ReachabilityManager.sharedInstance.reachability.connection != .unavailable {
             if !app.tables[AccessibilityIdentifier.tableView].waitForExistence(timeout: 5) {
                 XCTFail("Failed to load table")
             } else {
