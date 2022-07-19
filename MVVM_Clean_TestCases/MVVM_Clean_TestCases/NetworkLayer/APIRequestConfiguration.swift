@@ -42,42 +42,21 @@ public struct APIRequestConfigImplementation: APIRequestConfiguration {
 extension APIRequestConfiguration {
     public func getUrlRequest(with config: NetworkBaseConfiguration) throws -> URLRequest {
         do {
-            let url = try self.url(with: config)
+            guard var urlComponents = URLComponents(string: config.baseURL + url) else { throw NetworkError.urlComponentGenerationError }
+            urlComponents.queryItems = queryParameters?.map({ (key, value) in
+                let queryItem = URLQueryItem(name: key, value: value)
+                return queryItem
+            })
+            guard let url = urlComponents.url else { throw NetworkError.urlGenerationError }
             var urlRequest = URLRequest(url: url)
             urlRequest.httpMethod = methodType.rawValue
             urlRequest.allHTTPHeaderFields = config.headers
             if !bodyParameters.isEmpty {
-                urlRequest.httpBody = encodeBody(bodyParameters: bodyParameters, bodyEncoding: bodyEncoding)
+                urlRequest.httpBody = try? JSONSerialization.data(withJSONObject: bodyParameters)
             }
             return urlRequest
         } catch(let error) {
             throw error
         }
-    }
-    
-    private func url(with baseConfig: NetworkBaseConfiguration) throws -> URL {
-        guard var urlComponents = URLComponents(string: baseConfig.baseURL + url) else { throw NetworkError.urlComponentGenerationError }
-        urlComponents.queryItems = queryParameters?.map({ (key, value) in
-            let queryItem = URLQueryItem(name: key, value: value)
-            return queryItem
-        })
-        guard let url = urlComponents.url else { throw NetworkError.urlGenerationError }
-        return url
-    }
-    
-    private func encodeBody(bodyParameters: [String: Any], bodyEncoding: BodyEncoding) -> Data? {
-        switch bodyEncoding {
-        case .jsonSerializationData:
-            return try? JSONSerialization.data(withJSONObject: bodyParameters)
-        case .stringEncodingAscii:
-            return getQueryString(for : bodyParameters).data(using: String.Encoding.ascii, allowLossyConversion: true)
-        }
-    }
-    
-    private func getQueryString(for parameter: [String: Any]) -> String {
-        let paramString = (parameter.compactMap({ (key, value) -> String in
-            return "\(key)=\(value)"
-        }) as Array).joined(separator: "&").addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlQueryAllowed) ?? ""
-        return paramString
     }
 }
