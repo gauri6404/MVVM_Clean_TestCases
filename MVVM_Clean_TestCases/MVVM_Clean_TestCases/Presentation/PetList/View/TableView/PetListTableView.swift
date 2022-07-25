@@ -3,9 +3,6 @@ import UIKit
 class PetListTableView: UITableView {
         
     var viewModel: PetListViewModel!
-    var petImagesRepository: PetImageRepository?
-    
-    var posterImagesRepository: PetListRepository?
     var nextPageLoadingSpinner: UIActivityIndicatorView = UIActivityIndicatorView(style: .medium)
     
     // MARK: - Life cycle methods
@@ -20,7 +17,7 @@ class PetListTableView: UITableView {
     }
     
     private func setupViews() {
-        self.accessibilityIdentifier = AccessibilityIdentifier.tableView
+        self.accessibilityIdentifier = PetListAccessibilityIdentifier.tableView
         self.separatorStyle = .none
     }
     
@@ -54,10 +51,7 @@ extension PetListTableView: UITableViewDataSource, UITableViewDelegate {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: PetInfoTableViewCell.self), for: indexPath) as? PetInfoTableViewCell else {
             return UITableViewCell()
         }
-        cell.show(with: viewModel.items.value[indexPath.row], petImagesRepository: petImagesRepository)
-        if indexPath.row == viewModel.items.value.count - 1 && viewModel.hasMorePages {
-            viewModel.didLoadNextPage()
-        }
+        cell.show(with: viewModel.items.value[indexPath.row])
         return cell
     }
 }

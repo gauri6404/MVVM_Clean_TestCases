@@ -1,13 +1,41 @@
 import XCTest
 
+class MockPetListRepository: PetListRepository {
+    var petList: [PetListResponseModel] = []
+    var error: Error?
+    
+    func fetchPetList(limit: Int, completion: @escaping (Result<[PetListResponseModel]?, Error>) -> Void) {
+        if let error = error {
+            completion(.failure(error))
+        } else {
+            completion(.success(petList))
+        }
+    }
+}
+
 class TestPetListUsecase: XCTestCase {
     
-    func test_usecaseReturnsSuccessIfRepoReturnSuccess() {
+    var repository: MockPetListRepository!
+    
+    override func setUp() {
+        super.setUp()
+        repository = MockPetListRepository()
+    }
+    
+    override func tearDown() {
+        repository = nil
+        super.tearDown()
+    }
+    
+    func testUseCaseReturnsSuccessIfRepoReturnSuccess() {
+        // Given
         let expectation = self.expectation(description: "Usecase return success block")
-        let repository = MockPetListRepositorySuccess()
-        let usecase = MockPetListUseCase(repository: repository)
-        let reqValue = PetListUseCaseRequestValue(currentPageIndex: 0, limit: 10)
-        usecase.execute(requestValue: reqValue) { result in
+        repository.petList = [PetListResponseModel()]
+        let usecase = PetListUseCaseImplementation(petListRepository: repository)
+        
+        // When
+        let req = PetListUseCaseRequestValue(limit: 10)
+        usecase.execute(requestValue: req) { result in
             do {
                 _ = try result.get()
                 expectation.fulfill()
@@ -15,19 +43,19 @@ class TestPetListUsecase: XCTestCase {
                 XCTFail("Usecase return success block")
             }
         }
+        
+        // Then
         waitForExpectations(timeout: 5, handler: nil)
     }
     
     func test_usecaseReturnsFailureIfRepoReturnFailure() {
-        // given
+        // Given
         let expectation = self.expectation(description: "Usecase return failure block")
+        repository.error = NetworkError.apiResponseError
+        let usecase = PetListUseCaseImplementation(petListRepository: repository)
         
-        // when
-        let repository = MockPetListRepositoryFailure()
-        let usecase = MockPetListUseCase(repository: repository)
-        let reqValue = PetListUseCaseRequestValue(currentPageIndex: 0, limit: 10)
-        
-        // then
+        // When
+        let reqValue = PetListUseCaseRequestValue(limit: 10)
         usecase.execute(requestValue: reqValue) { result in
             do {
                 _ = try result.get()
@@ -36,33 +64,9 @@ class TestPetListUsecase: XCTestCase {
                 expectation.fulfill()
             }
         }
+        
+        // Then
         waitForExpectations(timeout: 5, handler: nil)
-    }
-}
-
-
-struct MockPetListRepositorySuccess: PetListRepository {
-    func fetchPetList(page: Int, limit: Int, completion: @escaping (Result<[PetListResponseModel]?, Error>) -> Void) {
-        completion(.success(mockPetList))
-    }
-}
-
-struct MockPetListRepositoryFailure: PetListRepository {
-    func fetchPetList(page: Int, limit: Int, completion: @escaping (Result<[PetListResponseModel]?, Error>) -> Void) {
-        completion(.failure(NetworkError.apiResponseError))
-    }
-}
-
-class MockPetListUseCase: PetListUseCase {
-    private var repository: PetListRepository
-    
-    init(repository: PetListRepository) {
-        self.repository = repository
-    }
-    func execute(requestValue: PetListUseCaseRequestValue, completion: @escaping (Result<[PetListResponseModel]?, Error>) -> Void) {
-        return repository.fetchPetList(page: requestValue.currentPageIndex, limit: requestValue.limit) { result in
-            completion(result)
-        }
     }
 }
 

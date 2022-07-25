@@ -4,28 +4,19 @@ class PetListViewController: UIViewController, AlertUtility {
 
     @IBOutlet weak var petListTableView: PetListTableView!
     
-    private var viewModel: PetListViewModel!
-    private var petImagesRepository: PetImageRepository?
-    
-    static func create(with viewModel: PetListViewModel, petImagesRepository: PetImageRepository?) -> PetListViewController {
-        let view = UIStoryboard(name: "PetListStoryboard", bundle: nil).instantiateViewController(withIdentifier: String(describing: PetListViewController.self)) as! PetListViewController
-        view.viewModel = viewModel
-        view.petImagesRepository = petImagesRepository
-        return view
-    }
+    var viewModel: PetListViewModel!
 
     override func viewDidLoad() {
         super.viewDidLoad()
         setupViews()
         bind(to: viewModel)
-        viewModel.viewDidLoad()
         viewModel.getPetList()
+        petListTableView.isHidden = false
     }
     
     private func setupViews() {
         title = viewModel.screenTitle
         petListTableView.viewModel = viewModel
-        petListTableView.petImagesRepository = petImagesRepository
     }
     
     private func bind(to viewModel: PetListViewModel) {
@@ -39,16 +30,18 @@ class PetListViewController: UIViewController, AlertUtility {
     }
     
     private func updateLoading(_ loading: LoadingType?) {
-        petListTableView.isHidden = true
+//        petListTableView.isHidden = true
         LoaderUtility.shared.hideOverlayView()
 
         switch loading {
         case .fullScreen:
             LoaderUtility.shared.showOverlay(view: self.view)
         case .nextPage:
-            petListTableView.isHidden = false
+//            petListTableView.isHidden = false
             LoaderUtility.shared.showOverlay(view: self.view)
-        case .none: petListTableView.isHidden = viewModel.isEmpty
+        case .none:
+            break
+//            petListTableView.isHidden = viewModel.isEmpty
         }
         petListTableView.updateLoading(loading)
     }

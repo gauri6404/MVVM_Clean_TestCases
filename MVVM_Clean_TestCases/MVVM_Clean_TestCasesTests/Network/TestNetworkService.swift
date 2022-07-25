@@ -14,51 +14,56 @@ class NetworkErrorLoggerMock: NetworkLogger {
     }
 }
 
-class APILoaderServiceTest: XCTestCase {
 
+class TestNetworkService: XCTestCase {
+    
+    var config: MockBaseNetworkConfig!
+    
+    override func setUp() {
+        super.setUp()
+        config = MockBaseNetworkConfig()
+    }
+    
+    override func tearDown() {
+        config = nil
+        super.tearDown()
+    }
+    
     func testMockDataPassed() {
-        //given
-        do {
-            try XCTSkipUnless(ReachabilityManager.sharedInstance.reachability.connection != .unavailable, "Network is not connected")
-            
-            let config = MockBaseNetworkConfig()
-            let expectation = self.expectation(description: "Should return correct data")
-
-            let expectedResponse = "Response data"
-            let expectedResponseData = expectedResponse.data(using: .utf8)!
-            let sut = NetworkServiceImplementation(apiConfig: config, sessionManager: MockNetworkSessionManager(response: nil, data: expectedResponseData, error: nil), logger: NetworkLoggerImplementation())
-
-            //when
-            sut.executeAPI(apiConfig: MockAPIRequestConfiguration()) { result in
-                guard let responseData = try? result.get(), let responseStr = String(data: responseData, encoding: String.Encoding.utf8) else {
-                    XCTFail("Should return proper response")
-                    return
-                }
-                XCTAssertEqual(responseStr, expectedResponse)
-                expectation.fulfill()
+        // Given
+        let expectation = self.expectation(description: "Should return correct data")
+        let expectedResponse = "Response data"
+        let expectedResponseData = expectedResponse.data(using: .utf8)!
+        let sut = NetworkServiceImplementation(apiConfig: config, sessionManager: MockNetworkSessionManager(response: nil, data: expectedResponseData, error: nil), logger: NetworkErrorLoggerMock(), reachability: MockReachabilityManager())
+        
+        // When
+        sut.executeAPI(apiConfig: MockAPIRequestConfiguration()) { result in
+            guard let responseData = try? result.get(), let responseStr = String(data: responseData, encoding: String.Encoding.utf8) else {
+                XCTFail("Should return proper response")
+                return
             }
-
-            //then
-            wait(for: [expectation], timeout: 0.1)
-        } catch {
+            XCTAssertEqual(responseStr, expectedResponse)
+            expectation.fulfill()
         }
+
+        // Then
+        wait(for: [expectation], timeout: 0.1)
     }
     
     
     func testURLComponentGenerationError() {
-        //given
-        let config = MockBaseNetworkConfig()
+        // Given
         let expectation = self.expectation(description: "Should return url component generation error")
-        
         let expectedResponse = "Response data"
         let expectedResponseData = expectedResponse.data(using: .utf8)!
-        let sut = NetworkServiceImplementation(apiConfig: config, sessionManager: MockNetworkSessionManager(response: nil, data: expectedResponseData, error: nil), logger: NetworkLoggerImplementation())
-        //when
+        let sut = NetworkServiceImplementation(apiConfig: config, sessionManager: MockNetworkSessionManager(response: nil, data: expectedResponseData, error: nil), logger: NetworkErrorLoggerMock(), reachability: MockReachabilityManager())
+        
+        // When
         sut.executeAPI(apiConfig: MockAPIRequestConfiguration(url: "-;@,?:ą", methodType: .get, queryParameters: [:], bodyParameters: [:], bodyEncoding: .jsonSerializationData)) { result in
             do {
                 _ = try result.get()
-                   XCTFail("Should throw url component generation error")
-                   return
+                XCTFail("Should throw url component generation error")
+                return
             } catch let error {
                 guard case NetworkError.urlComponentGenerationError = error else {
                     XCTFail("Should throw url component generation error")
@@ -67,63 +72,57 @@ class APILoaderServiceTest: XCTestCase {
                 expectation.fulfill()
             }
         }
-        //then
+        
+        // Then
         wait(for: [expectation], timeout: 0.1)
     }
-
+    
     func testAPIResponseError() {
-        do {
-            try XCTSkipUnless(ReachabilityManager.sharedInstance.reachability.connection != .unavailable, "Network is not connected")
-            //given
-            let config = MockBaseNetworkConfig()
-            let expectation = self.expectation(description: "Should return api response error")
-            
-            let response = HTTPURLResponse(url: URL(string: "test_url")!,
-                                           statusCode: 500,
-                                           httpVersion: "1.1",
-                                           headerFields: [:])
-            let sut = NetworkServiceImplementation(apiConfig: config, sessionManager: MockNetworkSessionManager(response: response, data: nil, error: nil), logger: NetworkLoggerImplementation())
-            //when
-            sut.executeAPI(apiConfig: MockAPIRequestConfiguration()) { result in
-                do {
-                    _ = try result.get()
-                    XCTFail("Should not happen")
-                } catch let error {
-                    guard case NetworkError.noDataError = error else {
-                        XCTFail("Should return api response error")
-                        return
-                    }
-                    expectation.fulfill()
+        // Given
+        let expectation = self.expectation(description: "Should return api response error")
+        
+        let response = HTTPURLResponse(url: URL(string: "test_url")!, statusCode: 500, httpVersion: "1.1", headerFields: [:])
+        let sut = NetworkServiceImplementation(apiConfig: config, sessionManager: MockNetworkSessionManager(response: response, data: nil, error: nil), logger: NetworkErrorLoggerMock(), reachability: MockReachabilityManager())
+        
+        //when
+        sut.executeAPI(apiConfig: MockAPIRequestConfiguration()) { result in
+            do {
+                _ = try result.get()
+                XCTFail("Should not happen")
+            } catch let error {
+                guard case NetworkError.noDataError = error else {
+                    XCTFail("Should return api response error")
+                    return
                 }
+                expectation.fulfill()
             }
-            //then
-            wait(for: [expectation], timeout: 0.1)
-        } catch {}
+        }
+        
+        // Then
+        wait(for: [expectation], timeout: 0.1)
     }
     
     func testInvalidStatusCodeError() {
-        do {
-            try XCTSkipUnless(ReachabilityManager.sharedInstance.reachability.connection != .unavailable, "Network is not connected")
-            //given
-            let config = MockBaseNetworkConfig()
-            let expectation = self.expectation(description: "Should return status code error")
-            let response = HTTPURLResponse(url: URL(string: "test_url")!, statusCode: 301, httpVersion: "1.1", headerFields: [:])
-            let responseData = "Response data".data(using: .utf8)!
-            let sut = NetworkServiceImplementation(apiConfig: config, sessionManager: MockNetworkSessionManager(response: response, data: responseData, error: nil), logger: NetworkLoggerImplementation())
-            //when
-            sut.executeAPI(apiConfig: MockAPIRequestConfiguration()) { result in
-                do {
-                    _ = try result.get()
-                    XCTFail("Should not happen")
-                } catch let error {
-                    if case NetworkError.error(let statusCode, _) = error {
-                        XCTAssertEqual(statusCode, 301)
-                        expectation.fulfill()
-                    }
+        // Given
+        let expectation = self.expectation(description: "Should return status code error")
+        let response = HTTPURLResponse(url: URL(string: "test_url")!, statusCode: 301, httpVersion: "1.1", headerFields: [:])
+        let responseData = "Response data".data(using: .utf8)!
+        let sut = NetworkServiceImplementation(apiConfig: config, sessionManager: MockNetworkSessionManager(response: response, data: responseData, error: nil), logger: NetworkErrorLoggerMock(), reachability: MockReachabilityManager())
+        
+        //when
+        sut.executeAPI(apiConfig: MockAPIRequestConfiguration()) { result in
+            do {
+                _ = try result.get()
+                XCTFail("Should not happen")
+            } catch let error {
+                if case NetworkError.error(let statusCode, _) = error {
+                    XCTAssertEqual(statusCode, 301)
+                    expectation.fulfill()
                 }
             }
-            //then
-            wait(for: [expectation], timeout: 0.1)
-        } catch {}
+        }
+        
+        // Then
+        wait(for: [expectation], timeout: 0.1)
     }
 }

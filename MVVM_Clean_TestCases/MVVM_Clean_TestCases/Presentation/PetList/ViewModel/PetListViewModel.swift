@@ -6,35 +6,28 @@ enum LoadingType {
 }
 
 protocol PetListViewModelInput {
-    func didLoadNextPage()
     func getPetList()
-    func viewDidLoad()
 }
 
 protocol PetListViewModelOutput {
+    
     var items: Observable<[PetListItemViewModel]> { get }
     var loading: Observable<LoadingType?> { get }
     var error: Observable<String> { get }
     var isEmpty: Bool { get }
     var screenTitle: String { get }
-    var hasMorePages: Bool { get }
 }
 
 protocol PetListViewModel: PetListViewModelInput, PetListViewModelOutput {
-    /// Since API is not giving total count so we are taking it as constant
-    var totalPetCount: Int { get }
+    var petListLimit: Int { get }
 }
 
 final class PetListViewModelImplementation: PetListViewModel {
 
     private let petListUseCase: PetListUseCase
-
-    var currentPage: Int = 0
-    var totalPetCount: Int = 264
-    var hasMorePages: Bool { items.value.count < totalPetCount }
-    var nextPage: Int { hasMorePages ? currentPage + 1 : currentPage }
-    private var petListLimit: Int = 10
     private var petList: [PetListResponseModel] = []
+    
+    var petListLimit: Int = 10
 
     var items: Observable<[PetListItemViewModel]> = Observable([])
     var loading: Observable<LoadingType?> = Observable(.none)
@@ -47,7 +40,6 @@ final class PetListViewModelImplementation: PetListViewModel {
     }
 
     private func appendPet(list: [PetListResponseModel]) {
-        currentPage = nextPage
         petList.append(contentsOf: list)
         items.value = petList.map(PetListItemViewModel.init)
         if items.value.isEmpty {
@@ -56,15 +48,13 @@ final class PetListViewModelImplementation: PetListViewModel {
     }
 
     private func resetPages() {
-        currentPage = 0
-        totalPetCount = 264
         petList.removeAll()
         items.value.removeAll()
     }
 
     private func load(loading: LoadingType) {
         self.loading.value = loading
-        petListUseCase.execute(requestValue: PetListUseCaseRequestValue(currentPageIndex: self.currentPage, limit: petListLimit), completion: { result in
+        petListUseCase.execute(requestValue: PetListUseCaseRequestValue(limit: petListLimit), completion: { result in
             switch result {
             case .success(let model):
                 self.appendPet(list: model ?? [])
@@ -84,16 +74,8 @@ final class PetListViewModelImplementation: PetListViewModel {
         load(loading: .fullScreen)
     }
     
-    func didLoadNextPage() {
-        guard hasMorePages, loading.value == .none else { return }
-        load(loading: .nextPage)
-    }
-    
     func getPetList() {
         resetPages()
         load(loading: .fullScreen)
-    }
-    
-    func viewDidLoad() {
     }
 }

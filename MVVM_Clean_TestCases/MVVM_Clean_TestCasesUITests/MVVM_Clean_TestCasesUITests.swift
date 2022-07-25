@@ -2,17 +2,12 @@ import XCTest
 
 class MVVM_Clean_TestCasesUITests: XCTestCase {
 
-    func testTableExistence() throws {
+    func testTableOrErrorExistence() throws {
         let app = XCUIApplication()
         app.launch()
-        
-        if ReachabilityManager.sharedInstance.reachability.connection != .unavailable {
-            if !app.tables[AccessibilityIdentifier.tableView].waitForExistence(timeout: 5) {
-                XCTFail("Failed to load table")
-            } else {
-                XCTAssertTrue(app.tables[AccessibilityIdentifier.tableView].exists)
-            }
-        } else {
+        let tableExistance = app.tables[PetListAccessibilityIdentifier.tableView].waitForExistence(timeout: 5)
+        XCTAssertTrue(tableExistance)
+        if !tableExistance {
             XCTAssertTrue(app.alerts["Error"].waitForExistence(timeout: 10))
         }
     }

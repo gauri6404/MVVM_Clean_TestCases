@@ -1,15 +1,15 @@
 import XCTest
 
-class MockPetListUseCase1: PetListUseCase {
+class MockPetListUseCase: PetListUseCase {
     var expectation: XCTestExpectation?
     var error: Error?
-    var petlist = mockPetList
+    var petlist: [PetListResponseModel] = []
     
     func execute(requestValue: PetListUseCaseRequestValue, completion: @escaping (Result<[PetListResponseModel]?, Error>) -> Void) {
         if let error = error {
             completion(.failure(error))
         } else {
-            completion(.success(petlist))
+            completion(.success([PetListResponseModel()]))
         }
         expectation?.fulfill()
     }
@@ -17,58 +17,43 @@ class MockPetListUseCase1: PetListUseCase {
 
 class TestPetListViewModel: XCTestCase {
     
-    func testViewModelItemCountIsTenOnFirstcall() {
-        // given
-        let mockPetListUseCase = MockPetListUseCase1()
-        mockPetListUseCase.expectation = self.expectation(description: "contains only 10 items")
-        for _ in 1...264 {
-            mockPetListUseCase.petlist.append(PetListResponseModel())
-        }
-        mockPetListUseCase.petlist = mockPetList
-        let viewModel = PetListViewModelImplementation(petListUseCase: mockPetListUseCase)
-        // when
-        viewModel.getPetList()
-        
-        // then
-        waitForExpectations(timeout: 5, handler: nil)
-        XCTAssertEqual(viewModel.currentPage, 1)
-        XCTAssertEqual(viewModel.items.value.count, 10)
-        XCTAssertTrue(viewModel.hasMorePages)
-    }
-    
-    func testViewModelItemCountIsTwentyOnSecondcall() {
-        // given
-        let mockPetListUseCase = MockPetListUseCase1()
-        mockPetListUseCase.expectation = self.expectation(description: "contains only 10 items")
-        for _ in 1...264 {
-            mockPetListUseCase.petlist.append(PetListResponseModel())
-        }
-        mockPetListUseCase.petlist = mockPetList
-        let viewModel = PetListViewModelImplementation(petListUseCase: mockPetListUseCase)
-        // when
-        viewModel.getPetList()
-        waitForExpectations(timeout: 5, handler: nil)
-        
-        mockPetListUseCase.expectation = self.expectation(description: "contains only 20 items")
-        viewModel.didLoadNextPage()
-        
-        // then
-        waitForExpectations(timeout: 5, handler: nil)
-        XCTAssertEqual(viewModel.currentPage, 2)
-        XCTAssertEqual(viewModel.items.value.count, 20)
-        XCTAssertTrue(viewModel.hasMorePages)
-    }
-    
-    func testViewmodelReturnErrorIfUseCaseReturnError() {
-        // given
-        let mockPetListUseCase = MockPetListUseCase1()
-        mockPetListUseCase.expectation = self.expectation(description: "contain errors")
-        mockPetListUseCase.error = NetworkError.apiResponseError
-        let viewModel = PetListViewModelImplementation(petListUseCase: mockPetListUseCase)
-        // when
-        viewModel.getPetList()
+    var useCase: MockPetListUseCase!
 
-        // then
+    override func setUp() {
+        super.setUp()
+        useCase = MockPetListUseCase()
+    }
+    
+    override func tearDown() {
+        useCase = nil
+        super.tearDown()
+    }
+    
+    
+    func testViewModelItemCountIfUseCaseReturnSuccess() {
+        // Given
+        useCase.expectation = self.expectation(description: "contains only 10 items")
+        useCase.petlist = [PetListResponseModel()]
+        
+        // When
+        let viewModel = PetListViewModelImplementation(petListUseCase: useCase)
+        viewModel.getPetList()
+        
+        // Then
+        waitForExpectations(timeout: 5, handler: nil)
+        XCTAssertEqual(viewModel.items.value.count, useCase.petlist.count)
+    }
+    
+    func testViewModelReturnErrorIfUseCaseReturnError() {
+        // Given
+        useCase.expectation = self.expectation(description: "contain errors")
+        useCase.error = NetworkError.apiResponseError
+        
+        // When
+        let viewModel = PetListViewModelImplementation(petListUseCase: useCase)
+        viewModel.getPetList()
+        
+        // Then
         waitForExpectations(timeout: 5, handler: nil)
         XCTAssertNotNil(viewModel.error)
     }

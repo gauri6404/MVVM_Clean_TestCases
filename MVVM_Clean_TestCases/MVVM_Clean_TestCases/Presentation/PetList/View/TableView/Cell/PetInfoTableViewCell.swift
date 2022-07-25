@@ -9,7 +9,6 @@ class PetInfoTableViewCell: UITableViewCell {
     @IBOutlet weak var petimageview: UIImageView!
     
     private var viewModel: PetListItemViewModel!
-    private var petImagesRepository: PetImageRepository?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -19,27 +18,26 @@ class PetInfoTableViewCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
     }
     
-    func show(with viewModel: PetListItemViewModel, petImagesRepository: PetImageRepository?) {
+    func show(with viewModel: PetListItemViewModel) {
         self.viewModel = viewModel
-        self.petImagesRepository = petImagesRepository
         petName.text = self.viewModel.name
         petBreed.text = self.viewModel.breed
         petOrigin.text = self.viewModel.origin ?? "Not available"
         petLifeSpan.text = self.viewModel.lifeSpan
-        setPetImage()
+//        setPetImage()
     }
     
-    private func setPetImage() {
-        petimageview.image = nil
-        guard let petImagePath = viewModel.imageURL else { return }
-        petImagesRepository?.fetchImage(with: petImagePath) { [weak self] result in
-            guard let self = self else { return }
-            guard self.viewModel.imageURL == petImagePath else { return }
-            if case let .success(data) = result, let imageData = data {
-                DispatchQueue.main.async { [weak self] in
-                    self?.petimageview.image = UIImage(data: imageData)
-                }
-            }
-        }
-    }
+//    private func setPetImage() {
+//        petimageview.image = nil
+//        guard let petImagePath = viewModel.imageURL else { return }
+//        petImagesRepository?.fetchImage(with: petImagePath) { [weak self] result in
+//            guard let self = self else { return }
+//            guard self.viewModel.imageURL == petImagePath else { return }
+//            if case let .success(data) = result, let imageData = data {
+//                DispatchQueue.main.async { [weak self] in
+//                    self?.petimageview.image = UIImage(data: imageData)
+//                }
+//            }
+//        }
+//    }
 }

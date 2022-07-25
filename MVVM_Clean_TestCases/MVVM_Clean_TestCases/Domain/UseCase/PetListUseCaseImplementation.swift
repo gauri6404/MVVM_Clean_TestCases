@@ -8,13 +8,8 @@ final class PetListUseCaseImplementation: PetListUseCase {
     }
 
     func execute(requestValue: PetListUseCaseRequestValue, completion: @escaping (Result<[PetListResponseModel]?, Error>) -> Void) {
-        return petListRepository.fetchPetList(page: requestValue.currentPageIndex, limit: requestValue.limit) { result in
+        return petListRepository.fetchPetList(limit: requestValue.limit) { result in
             completion(result)
         }
     }
-}
-
-struct PetListUseCaseRequestValue {
-    let currentPageIndex: Int
-    let limit: Int
 }

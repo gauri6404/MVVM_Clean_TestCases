@@ -20,8 +20,9 @@ final class PetModuleDIContainer {
 
 extension PetModuleDIContainer: PetModuleFlowDependencies {
     func getPetListViewController() -> PetListViewController {
-        let petImgRepo = PetImageRepositoryImplementation(networkManager: dependencies.imageNetworkManager)
-        return PetListViewController.create(with: getPetListViewModel(), petImagesRepository: petImgRepo)
+        let petListVC = UIStoryboard(name: "PetListStoryboard", bundle: nil).instantiateViewController(withIdentifier: String(describing: PetListViewController.self)) as! PetListViewController
+        petListVC.viewModel = getPetListViewModel()
+        return petListVC
     }
     
     func getPetListViewModel() -> PetListViewModel {

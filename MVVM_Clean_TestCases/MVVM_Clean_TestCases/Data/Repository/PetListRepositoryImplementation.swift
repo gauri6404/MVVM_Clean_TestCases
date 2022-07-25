@@ -10,8 +10,8 @@ final class PetListRepositoryImplementation {
 }
 
 extension PetListRepositoryImplementation: PetListRepository {
-    func fetchPetList(page: Int, limit: Int, completion: @escaping (Result<[PetListResponseModel]?, Error>) -> Void) {
-        let endPointConfig = APIEndpoints.getPetList(with: PetRequestModel(currentPageIndex: page, limit: limit))
+    func fetchPetList(limit: Int, completion: @escaping (Result<[PetListResponseModel]?, Error>) -> Void) {
+        let endPointConfig = APIEndpoints.getPetList(with: PetRequestModel(limit: limit))
         self.networkManager.getAPIResponse(for: endPointConfig, returnType: [PetListResponseModel].self) { result in
             switch result {
             case .success(let response):
