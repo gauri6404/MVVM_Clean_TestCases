@@ -8,12 +8,10 @@ public protocol NetworkManager {
 public final class NetworkManagerImplementation: NetworkManager {
     private let service: NetworkService
     private let logger: NetworkLogger
-    private let reachability: ReachabilityManager
     
-    init(service: NetworkService, logger: NetworkLogger = NetworkLoggerImplementation(), reachability: ReachabilityManager = ReachabilityManagerImpl()) {
+    init(service: NetworkService, logger: NetworkLogger = NetworkLoggerImplementation()) {
         self.service = service
         self.logger = logger
-        self.reachability = reachability
     }
     
     public func getAPIResponse<T: Decodable>(for apiConfig: APIRequestConfiguration, returnType: T.Type, completoin: @escaping(Result<T?, NetworkError>) -> Void) {

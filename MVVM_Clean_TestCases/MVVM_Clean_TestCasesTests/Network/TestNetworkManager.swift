@@ -23,7 +23,7 @@ class TestNetworkManager: XCTestCase {
         let expectation = self.expectation(description: "Should decode mock object")
         let responseData = #"{"name": "Hello"}"#.data(using: .utf8)
         
-        let networkService = NetworkServiceImplementation(apiConfig: config, sessionManager: MockNetworkSessionManager(response: nil, data: responseData, error: nil), logger: NetworkErrorLoggerMock(), reachability: MockReachabilityManager())
+        let networkService = NetworkServiceImplementation(apiConfig: config, sessionManager: MockNetworkSessionManager(response: nil, data: responseData, error: nil), logger: NetworkErrorLoggerMock())
         let sut = NetworkManagerImplementation(service: networkService)
         
         // When
@@ -46,7 +46,7 @@ class TestNetworkManager: XCTestCase {
         let expectation = self.expectation(description: "Should decode mock object")
         let responseData = #"{"address": "Delhi"}"#.data(using: .utf8)
         
-        let networkService = NetworkServiceImplementation(apiConfig: config, sessionManager: MockNetworkSessionManager(response: nil, data: responseData, error: nil), logger: NetworkErrorLoggerMock(), reachability: MockReachabilityManager())
+        let networkService = NetworkServiceImplementation(apiConfig: config, sessionManager: MockNetworkSessionManager(response: nil, data: responseData, error: nil), logger: NetworkErrorLoggerMock())
         let sut = NetworkManagerImplementation(service: networkService)
         
         // When
@@ -68,7 +68,7 @@ class TestNetworkManager: XCTestCase {
         let responseData = #"{"invalidStructure": "Nothing"}"#.data(using: .utf8)!
         let response = HTTPURLResponse(url: URL(string: "test_url")!, statusCode: 500, httpVersion: "1.1", headerFields: nil)
         
-        let networkService = NetworkServiceImplementation(apiConfig: config, sessionManager: MockNetworkSessionManager(response: response, data: responseData, error: nil), logger: NetworkErrorLoggerMock(), reachability: MockReachabilityManager())
+        let networkService = NetworkServiceImplementation(apiConfig: config, sessionManager: MockNetworkSessionManager(response: response, data: responseData, error: nil), logger: NetworkErrorLoggerMock())
         let sut = NetworkManagerImplementation(service: networkService)
         
         // When
@@ -94,7 +94,7 @@ class TestNetworkManager: XCTestCase {
         let expectation = self.expectation(description: "Should throw no data error")
         let response = HTTPURLResponse(url: URL(string: "test_url")!, statusCode: 200, httpVersion: "1.1", headerFields: [:])
         
-        let networkService = NetworkServiceImplementation(apiConfig: config, sessionManager: MockNetworkSessionManager(response: response, data: nil, error: nil), logger: NetworkErrorLoggerMock(), reachability: MockReachabilityManager())
+        let networkService = NetworkServiceImplementation(apiConfig: config, sessionManager: MockNetworkSessionManager(response: response, data: nil, error: nil), logger: NetworkErrorLoggerMock())
         let sut = NetworkManagerImplementation(service: networkService)
         
         // When
