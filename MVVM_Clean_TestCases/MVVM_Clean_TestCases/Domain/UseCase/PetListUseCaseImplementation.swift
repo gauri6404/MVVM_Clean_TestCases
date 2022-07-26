@@ -7,8 +7,8 @@ final class PetListUseCaseImplementation: PetListUseCase {
         self.petListRepository = petListRepository
     }
 
-    func execute(requestValue: PetListUseCaseRequestValue, completion: @escaping (Result<[PetInfoModel]?, Error>) -> Void) {
-        return petListRepository.fetchPetList(limit: requestValue.limit) { result in
+    func execute(completion: @escaping (Result<[PetInfoModel]?, Error>) -> Void) {
+        return petListRepository.fetchPetList() { result in
             completion(result)
         }
     }

@@ -5,7 +5,7 @@ class MockPetListUseCase: PetListUseCase {
     var error: Error?
     var petlist: [PetInfoModel] = []
     
-    func execute(requestValue: PetListUseCaseRequestValue, completion: @escaping (Result<[PetInfoModel]?, Error>) -> Void) {
+    func execute(completion: @escaping (Result<[PetInfoModel]?, Error>) -> Void) {
         if let error = error {
             completion(.failure(error))
         } else {

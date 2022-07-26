@@ -11,7 +11,7 @@ enum APIv1: APIEndPoint {
     var endpoint: String {
         switch self {
         case .getPetList:
-            return "v1/breeds/"
+            return "v1/breeds/?limit=10"
         }
     }
 }

@@ -43,10 +43,12 @@ extension APIRequestConfiguration {
     public func getUrlRequest(with config: NetworkBaseConfiguration) throws -> URLRequest {
         do {
             guard var urlComponents = URLComponents(string: config.baseURL + url) else { throw NetworkError.urlComponentGenerationError }
-            urlComponents.queryItems = queryParameters?.map({ (key, value) in
-                let queryItem = URLQueryItem(name: key, value: value)
-                return queryItem
-            })
+            if let qParam = queryParameters, !qParam.isEmpty {
+                urlComponents.queryItems = qParam.map({ (key, value) in
+                    let queryItem = URLQueryItem(name: key, value: value)
+                    return queryItem
+                })
+            }
             guard let url = urlComponents.url else { throw NetworkError.urlGenerationError }
             var urlRequest = URLRequest(url: url)
             urlRequest.httpMethod = methodType.rawValue

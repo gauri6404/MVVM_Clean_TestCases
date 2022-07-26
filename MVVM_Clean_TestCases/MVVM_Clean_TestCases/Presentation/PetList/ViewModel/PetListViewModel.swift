@@ -14,16 +14,12 @@ protocol PetListViewModelOutput {
 }
 
 protocol PetListViewModel: PetListViewModelInput, PetListViewModelOutput {
-    var petListLimit: Int { get }
 }
 
 final class PetListViewModelImplementation: PetListViewModel {
 
     private let petListUseCase: PetListUseCase
     private var petList: [PetInfoModel] = []
-    
-    var petListLimit: Int = 10
-
     var items: Observable<[PetListItemViewModel]> = Observable([])
     var loading: Observable<Bool> = Observable(false)
     var error: Observable<String> = Observable("")
@@ -49,7 +45,7 @@ final class PetListViewModelImplementation: PetListViewModel {
 
     private func load() {
         self.loading.value = true
-        petListUseCase.execute(requestValue: PetListUseCaseRequestValue(limit: petListLimit), completion: { result in
+        petListUseCase.execute(completion: { result in
             switch result {
             case .success(let model):
                 self.appendPet(list: model ?? [])

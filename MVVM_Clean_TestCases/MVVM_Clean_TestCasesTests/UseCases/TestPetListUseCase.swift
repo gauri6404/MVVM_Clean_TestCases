@@ -4,7 +4,7 @@ class MockPetListRepository: PetListRepository {
     var petList: [PetInfoModel] = []
     var error: Error?
     
-    func fetchPetList(limit: Int, completion: @escaping (Result<[PetInfoModel]?, Error>) -> Void) {
+    func fetchPetList(completion: @escaping (Result<[PetInfoModel]?, Error>) -> Void) {
         if let error = error {
             completion(.failure(error))
         } else {
@@ -34,8 +34,7 @@ class TestPetListUsecase: XCTestCase {
         let usecase = PetListUseCaseImplementation(petListRepository: repository)
         
         // When
-        let req = PetListUseCaseRequestValue(limit: 10)
-        usecase.execute(requestValue: req) { result in
+        usecase.execute() { result in
             do {
                 _ = try result.get()
                 expectation.fulfill()
@@ -55,8 +54,7 @@ class TestPetListUsecase: XCTestCase {
         let usecase = PetListUseCaseImplementation(petListRepository: repository)
         
         // When
-        let reqValue = PetListUseCaseRequestValue(limit: 10)
-        usecase.execute(requestValue: reqValue) { result in
+        usecase.execute() { result in
             do {
                 _ = try result.get()
                 XCTFail("Usecase return failure block")
