@@ -1,10 +1,5 @@
 import Foundation
 
-enum LoadingType {
-    case fullScreen
-    case nextPage
-}
-
 protocol PetListViewModelInput {
     func getPetList()
 }
@@ -12,7 +7,7 @@ protocol PetListViewModelInput {
 protocol PetListViewModelOutput {
     
     var items: Observable<[PetListItemViewModel]> { get }
-    var loading: Observable<LoadingType?> { get }
+    var loading: Observable<Bool> { get }
     var error: Observable<String> { get }
     var isEmpty: Bool { get }
     var screenTitle: String { get }
@@ -25,12 +20,12 @@ protocol PetListViewModel: PetListViewModelInput, PetListViewModelOutput {
 final class PetListViewModelImplementation: PetListViewModel {
 
     private let petListUseCase: PetListUseCase
-    private var petList: [PetListResponseModel] = []
+    private var petList: [PetInfoModel] = []
     
     var petListLimit: Int = 10
 
     var items: Observable<[PetListItemViewModel]> = Observable([])
-    var loading: Observable<LoadingType?> = Observable(.none)
+    var loading: Observable<Bool> = Observable(false)
     var error: Observable<String> = Observable("")
     var isEmpty: Bool { return items.value.isEmpty }
     var screenTitle: String = "Pet List"
@@ -39,7 +34,7 @@ final class PetListViewModelImplementation: PetListViewModel {
         self.petListUseCase = petListUseCase
     }
 
-    private func appendPet(list: [PetListResponseModel]) {
+    private func appendPet(list: [PetInfoModel]) {
         petList.append(contentsOf: list)
         items.value = petList.map(PetListItemViewModel.init)
         if items.value.isEmpty {
@@ -52,8 +47,8 @@ final class PetListViewModelImplementation: PetListViewModel {
         items.value.removeAll()
     }
 
-    private func load(loading: LoadingType) {
-        self.loading.value = loading
+    private func load() {
+        self.loading.value = true
         petListUseCase.execute(requestValue: PetListUseCaseRequestValue(limit: petListLimit), completion: { result in
             switch result {
             case .success(let model):
@@ -61,21 +56,16 @@ final class PetListViewModelImplementation: PetListViewModel {
             case .failure(let error):
                 self.handle(error: error)
             }
-            self.loading.value = .none
+            self.loading.value = false
         })
     }
 
     private func handle(error: Error) {
         self.error.value = (error as! NetworkError) == NetworkError.notConnected ? "No Internet Connection" : "Failed loading pet list"
     }
-
-    private func update() {
-        resetPages()
-        load(loading: .fullScreen)
-    }
     
     func getPetList() {
         resetPages()
-        load(loading: .fullScreen)
+        load()
     }
 }

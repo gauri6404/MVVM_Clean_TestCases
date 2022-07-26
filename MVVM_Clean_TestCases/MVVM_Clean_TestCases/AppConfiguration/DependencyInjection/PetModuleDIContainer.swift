@@ -4,7 +4,6 @@ final class PetModuleDIContainer {
     
     struct Dependencies {
         let networkManager: NetworkManager
-        let imageNetworkManager: NetworkManager
     }
     
     private let dependencies: Dependencies
@@ -26,7 +25,8 @@ extension PetModuleDIContainer: PetModuleFlowDependencies {
     }
     
     func getPetListViewModel() -> PetListViewModel {
-        let petListRepo = PetListRepositoryImplementation(networkManager: dependencies.networkManager)
+        let petService = PetListNetworkServiceImpl(networkManager: dependencies.networkManager)
+        let petListRepo = PetListRepositoryImplementation(networkService: petService)
         let petListUsecase =  PetListUseCaseImplementation(petListRepository: petListRepo)
         return PetListViewModelImplementation(petListUseCase: petListUsecase)
     }

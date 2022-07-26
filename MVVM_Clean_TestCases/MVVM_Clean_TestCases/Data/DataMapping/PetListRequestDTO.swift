@@ -1,6 +1,6 @@
 import Foundation
 
-struct PetRequestModel: Encodable {
+struct PetListRequestDTO: Encodable {
     var limit: Int
     
     enum CodingKeys: String, CodingKey {

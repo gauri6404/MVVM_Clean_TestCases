@@ -21,7 +21,7 @@ class PetListViewController: UIViewController, AlertUtility {
     
     private func bind(to viewModel: PetListViewModel) {
         viewModel.items.observe(on: self) { [weak self] _ in self?.updateItems() }
-        viewModel.loading.observe(on: self) { [weak self] in self?.updateLoading($0) }
+        viewModel.loading.observe(on: self) { [weak self] in self?.updateLoading(loading: $0) }
         viewModel.error.observe(on: self) { [weak self] in self?.showError($0) }
     }
     
@@ -29,21 +29,11 @@ class PetListViewController: UIViewController, AlertUtility {
         petListTableView.reload()
     }
     
-    private func updateLoading(_ loading: LoadingType?) {
-//        petListTableView.isHidden = true
+    private func updateLoading(loading: Bool) {
         LoaderUtility.shared.hideOverlayView()
-
-        switch loading {
-        case .fullScreen:
+        if loading {
             LoaderUtility.shared.showOverlay(view: self.view)
-        case .nextPage:
-//            petListTableView.isHidden = false
-            LoaderUtility.shared.showOverlay(view: self.view)
-        case .none:
-            break
-//            petListTableView.isHidden = viewModel.isEmpty
         }
-        petListTableView.updateLoading(loading)
     }
     
     private func showError(_ error: String) {

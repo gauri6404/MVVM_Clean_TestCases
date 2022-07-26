@@ -12,25 +12,9 @@ class ReachabilityManagerImpl: NSObject, ReachabilityManager {
         super.init()
         do {
             reachability = try Reachability()
-        } catch {}
-        NotificationCenter.default.addObserver(self, selector: #selector(networkStatusChanged(_:)), name: .reachabilityChanged, object: reachability)
-        do {
             try reachability.startNotifier()
         } catch {
             print("Unable to start notifier")
-        }
-    }
-    
-    @objc private func networkStatusChanged(_ notification: Notification) {
-        let str = (notification.object as! Reachability).connection.description
-        if str == "No Connection" {
-            DispatchQueue.main.async {
-                print("Network not connected")
-            }
-        } else {
-            DispatchQueue.main.async {
-                print("Network connected")
-            }
         }
     }
     

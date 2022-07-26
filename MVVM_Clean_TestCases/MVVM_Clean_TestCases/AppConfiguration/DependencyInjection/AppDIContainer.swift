@@ -9,14 +9,9 @@ final class AppDIContainer {
         return NetworkManagerImplementation(service: NetworkServiceImplementation(apiConfig: apiBaseConfig))
     }()
     
-    lazy var imageNetworkManager: NetworkManager = {
-        let apiBaseConfig = NetworkBaseConfigurationImpl(baseURL: "")
-        return NetworkManagerImplementation(service: NetworkServiceImplementation(apiConfig: apiBaseConfig))
-    }()
-    
     // MARK: - DIContainers of scenes
     func getPetModuleDIContainer() -> PetModuleDIContainer {
-        let dependencies = PetModuleDIContainer.Dependencies(networkManager: networkManager, imageNetworkManager: imageNetworkManager)
+        let dependencies = PetModuleDIContainer.Dependencies(networkManager: networkManager)
         return PetModuleDIContainer(dependencies: dependencies)
     }
 }

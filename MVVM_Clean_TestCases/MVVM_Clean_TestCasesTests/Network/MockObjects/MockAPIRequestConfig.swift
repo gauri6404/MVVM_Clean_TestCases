@@ -1,6 +1,6 @@
 import Foundation
 
 struct MockBaseNetworkConfig: NetworkBaseConfiguration {
-    var baseURL: String = "https://mock.com"
+    var baseURL: String = ""
     var headers: [String : String] = [:]
 }

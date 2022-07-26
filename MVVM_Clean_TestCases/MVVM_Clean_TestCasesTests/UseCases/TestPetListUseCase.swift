@@ -1,10 +1,10 @@
 import XCTest
 
 class MockPetListRepository: PetListRepository {
-    var petList: [PetListResponseModel] = []
+    var petList: [PetInfoModel] = []
     var error: Error?
     
-    func fetchPetList(limit: Int, completion: @escaping (Result<[PetListResponseModel]?, Error>) -> Void) {
+    func fetchPetList(limit: Int, completion: @escaping (Result<[PetInfoModel]?, Error>) -> Void) {
         if let error = error {
             completion(.failure(error))
         } else {
@@ -30,7 +30,7 @@ class TestPetListUsecase: XCTestCase {
     func testUseCaseReturnsSuccessIfRepoReturnSuccess() {
         // Given
         let expectation = self.expectation(description: "Usecase return success block")
-        repository.petList = [PetListResponseModel()]
+        repository.petList = [PetInfoModel()]
         let usecase = PetListUseCaseImplementation(petListRepository: repository)
         
         // When

@@ -29,17 +29,6 @@ class PetListTableView: UITableView {
         self.delegate = self
         self.dataSource = self
     }
-    
-    func updateLoading(_ loading: LoadingType?) {
-        switch loading {
-        case .nextPage:
-            nextPageLoadingSpinner.removeFromSuperview()
-            nextPageLoadingSpinner = UIActivityIndicatorView(style: .medium)
-            self.tableFooterView = nextPageLoadingSpinner
-        case .fullScreen, .none:
-            self.tableFooterView = nil
-        }
-    }
 }
 
 extension PetListTableView: UITableViewDataSource, UITableViewDelegate {

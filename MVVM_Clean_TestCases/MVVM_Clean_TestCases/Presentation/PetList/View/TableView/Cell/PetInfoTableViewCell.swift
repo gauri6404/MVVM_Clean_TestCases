@@ -6,7 +6,6 @@ class PetInfoTableViewCell: UITableViewCell {
     @IBOutlet weak var petBreed: UILabel!
     @IBOutlet weak var petOrigin: UILabel!
     @IBOutlet weak var petLifeSpan: UILabel!
-    @IBOutlet weak var petimageview: UIImageView!
     
     private var viewModel: PetListItemViewModel!
     
@@ -21,23 +20,8 @@ class PetInfoTableViewCell: UITableViewCell {
     func show(with viewModel: PetListItemViewModel) {
         self.viewModel = viewModel
         petName.text = self.viewModel.name
-        petBreed.text = self.viewModel.breed
-        petOrigin.text = self.viewModel.origin ?? "Not available"
+        petBreed.text = (self.viewModel.breed ?? "").isEmpty ? "----" : self.viewModel.breed
+        petOrigin.text = (self.viewModel.origin ?? "").isEmpty ? "----" : self.viewModel.origin
         petLifeSpan.text = self.viewModel.lifeSpan
-//        setPetImage()
     }
-    
-//    private func setPetImage() {
-//        petimageview.image = nil
-//        guard let petImagePath = viewModel.imageURL else { return }
-//        petImagesRepository?.fetchImage(with: petImagePath) { [weak self] result in
-//            guard let self = self else { return }
-//            guard self.viewModel.imageURL == petImagePath else { return }
-//            if case let .success(data) = result, let imageData = data {
-//                DispatchQueue.main.async { [weak self] in
-//                    self?.petimageview.image = UIImage(data: imageData)
-//                }
-//            }
-//        }
-//    }
 }
