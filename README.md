@@ -3,7 +3,7 @@
 ## Quick Summary ##
 
 * This app is a sample demo application for MVVM and clean architecture implementation.
-* This app shows the pet list based on pagination.
+* This app shows the pet list and their details.
 
 
 ## Project Configuration ##
@@ -35,11 +35,6 @@
 * Scheme Configuration - Development
 * Dependency Injection using constructor dependencies
 * Protocol oriented programming
-* Cocoa pods integration
-
-
-## Application's Dependency ##
-* ReachabilitySwift
 
 
 ## Who do I talk to? ##
