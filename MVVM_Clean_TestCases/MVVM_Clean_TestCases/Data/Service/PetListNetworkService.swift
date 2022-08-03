@@ -12,7 +12,7 @@ final class PetListNetworkServiceImpl: PetListNetworkService {
     }
     
     func getPetListFromServer(completion: @escaping (Result<[PetInfoModel]?, Error>) -> Void) {
-        let endPointConfig = APIEndpoints.getPetList()
+        let endPointConfig = APIEndPoints.getPetList()
         self.networkManager.getAPIResponse(for: endPointConfig, returnType: [PetListResponseDTO].self) { result in
             switch result {
             case .success(let responseDTO):

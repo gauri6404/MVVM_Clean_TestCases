@@ -17,7 +17,7 @@ class PetListTableView: UITableView {
     }
     
     private func setupViews() {
-        self.accessibilityIdentifier = PetListAccessibilityIdentifier.tableView
+        self.accessibilityIdentifier = PetModuleAccessibilityIdentifier.listTableView
         self.separatorStyle = .none
     }
     
@@ -42,5 +42,9 @@ extension PetListTableView: UITableViewDataSource, UITableViewDelegate {
         }
         cell.show(with: viewModel.items.value[indexPath.row])
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        viewModel.showPetDetail(for: indexPath.row)
     }
 }

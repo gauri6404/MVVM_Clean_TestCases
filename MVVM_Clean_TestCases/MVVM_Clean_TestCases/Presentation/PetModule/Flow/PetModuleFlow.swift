@@ -1,7 +1,8 @@
 import UIKit
 
 protocol PetModuleFlowDependencies  {
-    func getPetListViewController() -> PetListViewController
+    func getPetListViewController(action: ((PetInfoModel) -> Void)?) -> PetListViewController
+    func getPetDetailViewController(model: PetInfoModel) -> PetDetailViewController
 }
 
 final class PetModuleFlow {
@@ -14,7 +15,12 @@ final class PetModuleFlow {
     }
     
     func start() {
-        let vc = dependencies.getPetListViewController()
+        let vc = dependencies.getPetListViewController(action: showPetDetail(model:))
         navigationController?.pushViewController(vc, animated: false)
+    }
+    
+    private func showPetDetail(model: PetInfoModel) {
+        let vc = dependencies.getPetDetailViewController(model: model)
+        navigationController?.pushViewController(vc, animated: true)
     }
 }

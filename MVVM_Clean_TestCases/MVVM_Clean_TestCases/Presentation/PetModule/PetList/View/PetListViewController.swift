@@ -32,7 +32,7 @@ class PetListViewController: UIViewController, AlertUtility {
     private func updateLoading(loading: Bool) {
         LoaderUtility.shared.hideOverlayView()
         if loading {
-            LoaderUtility.shared.showOverlay(view: self.view)
+            LoaderUtility.shared.showOverlay(view: self.petListTableView)
         }
     }
     

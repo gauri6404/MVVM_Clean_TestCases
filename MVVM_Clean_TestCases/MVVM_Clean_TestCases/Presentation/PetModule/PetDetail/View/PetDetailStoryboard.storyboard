@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Pet Detail View Controller-->
+        <scene sceneID="s0d-6b-0kx">
+            <objects>
+                <viewController storyboardIdentifier="PetDetailViewController" id="Y6W-OH-hqX" customClass="PetDetailViewController" customModule="MVVM_Clean_TestCases" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Nu1-eH-sKZ">
+                                <rect key="frame" x="16" y="60" width="382" height="221"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pet Name: " lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VxU-vA-WWH">
+                                        <rect key="frame" x="16" y="13" width="75" height="18"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="75" id="AKC-Gs-FAf"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
+                                        <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pet Breed For: " lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ys1-X7-pde">
+                                        <rect key="frame" x="16" y="81" width="105" height="18"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="105" id="Zw0-bE-VeJ"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
+                                        <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pet Origin: " lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Huf-Od-hNy">
+                                        <rect key="frame" x="16" y="149" width="75" height="18"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="75" id="ima-Fx-gav"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
+                                        <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pet Life Span: " lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Sv6-WJ-Vgv">
+                                        <rect key="frame" x="16" y="183" width="100" height="18"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="100" id="NkZ-Wf-kux"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
+                                        <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="sdsdfewdew" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mwM-MM-4gb">
+                                        <rect key="frame" x="107" y="13" width="259" height="18"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                        <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="sdsdfewdew" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Acp-eN-YzZ">
+                                        <rect key="frame" x="137" y="81" width="229" height="18"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                        <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="sdsdfewdew" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PPs-R9-9bm">
+                                        <rect key="frame" x="107" y="149" width="259" height="18"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                        <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="sdsdfewdew" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pjy-vh-vA2">
+                                        <rect key="frame" x="132" y="183" width="234" height="18"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                        <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pet Breed Group: " lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pTR-Ah-RcY">
+                                        <rect key="frame" x="16" y="47" width="125" height="18"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="125" id="6pH-mh-aan"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
+                                        <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="sdsdfewdew" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KJ1-Pb-dOS">
+                                        <rect key="frame" x="157" y="47" width="209" height="18"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                        <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pet Temperment: " lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b1X-iF-E2L">
+                                        <rect key="frame" x="16" y="115" width="125" height="18"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="125" id="Sca-lJ-FlZ"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
+                                        <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="sdsdfewdew" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PwP-Zs-OKA">
+                                        <rect key="frame" x="157" y="115" width="209" height="18"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                        <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="PwP-Zs-OKA" firstAttribute="trailing" secondItem="mwM-MM-4gb" secondAttribute="trailing" id="0Mz-sF-nbX"/>
+                                    <constraint firstItem="KJ1-Pb-dOS" firstAttribute="leading" secondItem="pTR-Ah-RcY" secondAttribute="trailing" constant="16" id="1bt-F1-2s2"/>
+                                    <constraint firstAttribute="bottom" secondItem="pjy-vh-vA2" secondAttribute="bottom" constant="20" id="3vo-Za-srb"/>
+                                    <constraint firstItem="PwP-Zs-OKA" firstAttribute="top" secondItem="Acp-eN-YzZ" secondAttribute="bottom" constant="16" id="8YU-1W-pAB"/>
+                                    <constraint firstItem="Sv6-WJ-Vgv" firstAttribute="top" secondItem="pjy-vh-vA2" secondAttribute="top" id="Anb-bs-D69"/>
+                                    <constraint firstItem="Acp-eN-YzZ" firstAttribute="top" secondItem="KJ1-Pb-dOS" secondAttribute="bottom" constant="16" id="CSv-vA-Ncc"/>
+                                    <constraint firstItem="PwP-Zs-OKA" firstAttribute="leading" secondItem="b1X-iF-E2L" secondAttribute="trailing" constant="16" id="ECH-k9-Bfp"/>
+                                    <constraint firstItem="KJ1-Pb-dOS" firstAttribute="top" secondItem="mwM-MM-4gb" secondAttribute="bottom" constant="16" id="KUG-qL-2A7"/>
+                                    <constraint firstItem="PPs-R9-9bm" firstAttribute="top" secondItem="PwP-Zs-OKA" secondAttribute="bottom" constant="16" id="QK6-B8-0VW"/>
+                                    <constraint firstItem="pjy-vh-vA2" firstAttribute="leading" secondItem="Sv6-WJ-Vgv" secondAttribute="trailing" constant="16" id="SxN-rn-xnU"/>
+                                    <constraint firstItem="mwM-MM-4gb" firstAttribute="top" secondItem="VxU-vA-WWH" secondAttribute="top" id="TpV-yb-w5X"/>
+                                    <constraint firstItem="VxU-vA-WWH" firstAttribute="top" secondItem="Nu1-eH-sKZ" secondAttribute="top" constant="13" id="UBV-2Q-g1X"/>
+                                    <constraint firstItem="ys1-X7-pde" firstAttribute="top" secondItem="Acp-eN-YzZ" secondAttribute="top" id="UBw-kD-dct"/>
+                                    <constraint firstItem="b1X-iF-E2L" firstAttribute="leading" secondItem="VxU-vA-WWH" secondAttribute="leading" id="Vfq-Sp-uep"/>
+                                    <constraint firstItem="mwM-MM-4gb" firstAttribute="leading" secondItem="VxU-vA-WWH" secondAttribute="trailing" constant="16" id="WAC-Yp-gui"/>
+                                    <constraint firstItem="PPs-R9-9bm" firstAttribute="leading" secondItem="Huf-Od-hNy" secondAttribute="trailing" constant="16" id="Ycf-3Z-FGF"/>
+                                    <constraint firstItem="KJ1-Pb-dOS" firstAttribute="trailing" secondItem="mwM-MM-4gb" secondAttribute="trailing" id="Zph-B6-zyS"/>
+                                    <constraint firstItem="Acp-eN-YzZ" firstAttribute="leading" secondItem="ys1-X7-pde" secondAttribute="trailing" constant="16" id="bCt-iF-syc"/>
+                                    <constraint firstItem="PPs-R9-9bm" firstAttribute="trailing" secondItem="mwM-MM-4gb" secondAttribute="trailing" id="bz7-Dv-Jcl"/>
+                                    <constraint firstItem="Huf-Od-hNy" firstAttribute="top" secondItem="PPs-R9-9bm" secondAttribute="top" id="fua-TE-Ih5"/>
+                                    <constraint firstItem="VxU-vA-WWH" firstAttribute="leading" secondItem="Nu1-eH-sKZ" secondAttribute="leading" constant="16" id="hS9-pJ-QpC"/>
+                                    <constraint firstItem="ys1-X7-pde" firstAttribute="leading" secondItem="VxU-vA-WWH" secondAttribute="leading" id="kNg-fu-42B"/>
+                                    <constraint firstItem="Acp-eN-YzZ" firstAttribute="trailing" secondItem="mwM-MM-4gb" secondAttribute="trailing" id="mLS-Bi-A89"/>
+                                    <constraint firstItem="Huf-Od-hNy" firstAttribute="leading" secondItem="ys1-X7-pde" secondAttribute="leading" id="mRi-GH-rJi"/>
+                                    <constraint firstItem="Sv6-WJ-Vgv" firstAttribute="leading" secondItem="Huf-Od-hNy" secondAttribute="leading" id="nkJ-lS-KeW"/>
+                                    <constraint firstItem="pjy-vh-vA2" firstAttribute="trailing" secondItem="mwM-MM-4gb" secondAttribute="trailing" id="pIN-Kc-Paf"/>
+                                    <constraint firstAttribute="trailing" secondItem="mwM-MM-4gb" secondAttribute="trailing" constant="16" id="r5I-XQ-IJb"/>
+                                    <constraint firstItem="pTR-Ah-RcY" firstAttribute="leading" secondItem="VxU-vA-WWH" secondAttribute="leading" id="wfq-uR-PeK"/>
+                                    <constraint firstItem="pTR-Ah-RcY" firstAttribute="top" secondItem="KJ1-Pb-dOS" secondAttribute="top" id="wkt-At-U4D"/>
+                                    <constraint firstItem="pjy-vh-vA2" firstAttribute="top" secondItem="PPs-R9-9bm" secondAttribute="bottom" constant="16" id="xRX-17-LSb"/>
+                                    <constraint firstItem="b1X-iF-E2L" firstAttribute="top" secondItem="PwP-Zs-OKA" secondAttribute="top" id="yuX-9g-7Ie"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="Nu1-eH-sKZ" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="16" id="Sif-wD-ccy"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="Nu1-eH-sKZ" secondAttribute="trailing" constant="16" id="hBa-zd-QGE"/>
+                            <constraint firstItem="Nu1-eH-sKZ" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="16" id="l7r-11-F0e"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="PetOrigin" destination="PPs-R9-9bm" id="xLt-qW-W4n"/>
+                        <outlet property="petBreedFor" destination="Acp-eN-YzZ" id="0WJ-rP-cnj"/>
+                        <outlet property="petBreedGroup" destination="KJ1-Pb-dOS" id="pxC-jI-OQ7"/>
+                        <outlet property="petLifeSpan" destination="pjy-vh-vA2" id="PT7-Zx-aLh"/>
+                        <outlet property="petName" destination="mwM-MM-4gb" id="5Ej-dT-ayb"/>
+                        <outlet property="petTemperment" destination="PwP-Zs-OKA" id="Mws-Lu-Cwk"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="118.84057971014494" y="98.4375"/>
+        </scene>
+    </scenes>
+</document>

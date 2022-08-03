@@ -2,6 +2,7 @@ import Foundation
 
 protocol PetListViewModelInput {
     func getPetList()
+    func showPetDetail(for index: Int)
 }
 
 protocol PetListViewModelOutput {
@@ -20,14 +21,17 @@ final class PetListViewModelImplementation: PetListViewModel {
 
     private let petListUseCase: PetListUseCase
     private var petList: [PetInfoModel] = []
+    private let showPetDetail: ((PetInfoModel) -> Void)?
+    
     var items: Observable<[PetListItemViewModel]> = Observable([])
     var loading: Observable<Bool> = Observable(false)
     var error: Observable<String> = Observable("")
     var isEmpty: Bool { return items.value.isEmpty }
     var screenTitle: String = "Pet List"
 
-    init(petListUseCase: PetListUseCase) {
+    init(petListUseCase: PetListUseCase, showPetdetail: ((PetInfoModel) -> Void)? = nil) {
         self.petListUseCase = petListUseCase
+        self.showPetDetail = showPetdetail
     }
 
     private func appendPet(list: [PetInfoModel]) {
@@ -36,11 +40,6 @@ final class PetListViewModelImplementation: PetListViewModel {
         if items.value.isEmpty {
             self.handle(error: NetworkError.noDataError)
         }
-    }
-
-    private func resetPages() {
-        petList.removeAll()
-        items.value.removeAll()
     }
 
     private func load() {
@@ -61,7 +60,10 @@ final class PetListViewModelImplementation: PetListViewModel {
     }
     
     func getPetList() {
-        resetPages()
         load()
+    }
+    
+    func showPetDetail(for index: Int) {
+        self.showPetDetail?(petList[index])
     }
 }

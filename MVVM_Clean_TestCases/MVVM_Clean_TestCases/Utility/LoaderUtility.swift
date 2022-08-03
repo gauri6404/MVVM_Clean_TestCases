@@ -13,7 +13,6 @@ class var shared: LoaderUtility {
 }
 
     public func showOverlay(view: UIView) {
-
         overlayView.frame = CGRect(x: 0, y: 0, width: 80, height: 80)
         overlayView.center = view.center
         overlayView.backgroundColor = UIColor(red: 68, green: 68, blue: 68, alpha: 0.7)
@@ -25,7 +24,6 @@ class var shared: LoaderUtility {
         activityIndicator.center =  CGPoint(x: overlayView.bounds.width / 2, y: overlayView.bounds.height / 2)
         overlayView.addSubview(activityIndicator)
         view.addSubview(overlayView)
-
         activityIndicator.startAnimating()
     }
 

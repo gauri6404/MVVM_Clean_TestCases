@@ -16,8 +16,8 @@ public protocol APIRequestConfiguration {
     var url: String { get }
     var methodType: HTTPMethodType { get }
     var queryParameters: [String: String]? { get }
-    var bodyParameters: [String: String] { get }
-    var bodyEncoding: BodyEncoding { get }
+    var bodyParameters: [String: String]? { get }
+    var bodyEncoding: BodyEncoding? { get }
     
     func getUrlRequest(with baseConfig: NetworkBaseConfiguration) throws -> URLRequest
 }
@@ -27,10 +27,10 @@ public struct APIRequestConfigImplementation: APIRequestConfiguration {
     public let url: String
     public let methodType: HTTPMethodType
     public let queryParameters: [String: String]?
-    public let bodyParameters: [String: String]
-    public let bodyEncoding: BodyEncoding
+    public let bodyParameters: [String: String]?
+    public let bodyEncoding: BodyEncoding?
     
-    public init(url: String, methodType: HTTPMethodType, queryParameters: [String: String]? = nil, bodyParameters: [String: String] = [:], bodyEncoding: BodyEncoding = .jsonSerializationData) {
+    public init(url: String, methodType: HTTPMethodType, queryParameters: [String: String]? = nil, bodyParameters: [String: String]? = nil, bodyEncoding: BodyEncoding? = nil) {
         self.url = url
         self.methodType = methodType
         self.queryParameters = queryParameters
@@ -53,7 +53,7 @@ extension APIRequestConfiguration {
             var urlRequest = URLRequest(url: url)
             urlRequest.httpMethod = methodType.rawValue
             urlRequest.allHTTPHeaderFields = config.headers
-            if !bodyParameters.isEmpty {
+            if let bodyParameters = bodyParameters, !bodyParameters.isEmpty {
                 urlRequest.httpBody = try? JSONSerialization.data(withJSONObject: bodyParameters)
             }
             return urlRequest
