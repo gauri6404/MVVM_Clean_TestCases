@@ -10,7 +10,7 @@ struct PetListItemViewModel {
 
 extension PetListItemViewModel {
 
-    init(pet: PetInfoModel) {
+    init(pet: PetInfoPresentationModel) {
         self.identifier = pet.identifier
         self.name = pet.name
         self.breed = pet.breed

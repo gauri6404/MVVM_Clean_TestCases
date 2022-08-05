@@ -11,7 +11,7 @@ struct PetDetailItemViewModel {
 
 extension PetDetailItemViewModel {
 
-    init(pet: PetInfoModel) {
+    init(pet: PetInfoPresentationModel) {
         self.petName = pet.name
         self.petBreed = pet.breed
         self.petBreedGroup = pet.breedGroup

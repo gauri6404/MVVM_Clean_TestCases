@@ -1,7 +1,7 @@
 import Foundation
 
 protocol PetListNetworkService {
-    func getPetListFromServer(completion: @escaping (Result<[PetInfoModel]?, Error>) -> Void)
+    func getPetListFromServer(completion: @escaping (Result<[PetInfoDomainModel]?, Error>) -> Void)
 }
 
 final class PetListNetworkServiceImpl: PetListNetworkService {
@@ -11,7 +11,7 @@ final class PetListNetworkServiceImpl: PetListNetworkService {
         self.networkManager = networkManager
     }
     
-    func getPetListFromServer(completion: @escaping (Result<[PetInfoModel]?, Error>) -> Void) {
+    func getPetListFromServer(completion: @escaping (Result<[PetInfoDomainModel]?, Error>) -> Void) {
         let endPointConfig = APIEndPoints.getPetList()
         self.networkManager.getAPIResponse(for: endPointConfig, returnType: [PetListResponseDTO].self) { result in
             switch result {

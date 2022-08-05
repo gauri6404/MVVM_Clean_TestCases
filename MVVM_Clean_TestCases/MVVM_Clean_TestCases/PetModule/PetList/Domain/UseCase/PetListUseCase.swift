@@ -1,5 +1,5 @@
 import Foundation
 
 protocol PetListUseCase {
-    func execute(completion: @escaping (Result<[PetInfoModel]?, Error>) -> Void)
+    func execute(completion: @escaping (Result<[PetInfoPresentationModel]?, Error>) -> Void)
 }

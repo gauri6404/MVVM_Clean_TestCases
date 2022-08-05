@@ -10,6 +10,7 @@
 		954C2B5D289D07D400821766 /* Storyboardable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 954C2B5C289D07D400821766 /* Storyboardable.swift */; };
 		954C2B5F289D0A3800821766 /* TestStoryboardable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 954C2B5E289D0A3800821766 /* TestStoryboardable.swift */; };
 		954C2B60289D0AC500821766 /* Storyboardable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 954C2B5C289D07D400821766 /* Storyboardable.swift */; };
+		954C2B65289D18A100821766 /* PetInfoPresentationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 954C2B64289D18A100821766 /* PetInfoPresentationModel.swift */; };
 		95561CAF288089C8000B07B8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95561CAE288089C8000B07B8 /* AppDelegate.swift */; };
 		95561CB6288089C8000B07B8 /* PetListViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 95561CB4288089C8000B07B8 /* PetListViewController.storyboard */; };
 		95561CB8288089C9000B07B8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 95561CB7288089C9000B07B8 /* Assets.xcassets */; };
@@ -32,8 +33,8 @@
 		95561CFF2881CB87000B07B8 /* NetworkSessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95561CFE2881CB87000B07B8 /* NetworkSessionManager.swift */; };
 		95561D002881D070000B07B8 /* NetworkSessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95561CFE2881CB87000B07B8 /* NetworkSessionManager.swift */; };
 		95725AAF2883FC420046FF6F /* TestNetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95725AAE2883FC420046FF6F /* TestNetworkManager.swift */; };
-		958C9114288ECA8B0096D8F3 /* PetInfoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 958C9113288ECA8B0096D8F3 /* PetInfoModel.swift */; };
-		958C9116288ED1680096D8F3 /* PetInfoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 958C9113288ECA8B0096D8F3 /* PetInfoModel.swift */; };
+		958C9114288ECA8B0096D8F3 /* PetInfoDomainModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 958C9113288ECA8B0096D8F3 /* PetInfoDomainModel.swift */; };
+		958C9116288ED1680096D8F3 /* PetInfoDomainModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 958C9113288ECA8B0096D8F3 /* PetInfoDomainModel.swift */; };
 		958C9117288ED1770096D8F3 /* PetListResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95D4CC2128846D190091B16D /* PetListResponseDTO.swift */; };
 		958C9119288FAA710096D8F3 /* PetListNetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 958C9118288FAA710096D8F3 /* PetListNetworkService.swift */; };
 		958C911A288FAE3D0096D8F3 /* PetListNetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 958C9118288FAA710096D8F3 /* PetListNetworkService.swift */; };
@@ -46,7 +47,7 @@
 		95A31AD9289A7B42009F9AB1 /* PetdetailItemViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95A31AD8289A7B42009F9AB1 /* PetdetailItemViewModel.swift */; };
 		95A31ADA289A7D28009F9AB1 /* PetdetailItemViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95A31AD8289A7B42009F9AB1 /* PetdetailItemViewModel.swift */; };
 		95A31ADB289A7D28009F9AB1 /* PetdetailItemViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95A31AD8289A7B42009F9AB1 /* PetdetailItemViewModel.swift */; };
-		95A31ADC289A7D44009F9AB1 /* PetInfoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 958C9113288ECA8B0096D8F3 /* PetInfoModel.swift */; };
+		95A31ADC289A7D44009F9AB1 /* PetInfoDomainModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 958C9113288ECA8B0096D8F3 /* PetInfoDomainModel.swift */; };
 		95D4CC2228846D190091B16D /* PetListResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95D4CC2128846D190091B16D /* PetListResponseDTO.swift */; };
 		95D4CC2528846EA00091B16D /* PetListRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95D4CC2428846EA00091B16D /* PetListRepository.swift */; };
 		95D4CC29288476A90091B16D /* PetListRepositoryImplementation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95D4CC28288476A90091B16D /* PetListRepositoryImplementation.swift */; };
@@ -107,6 +108,7 @@
 /* Begin PBXFileReference section */
 		954C2B5C289D07D400821766 /* Storyboardable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storyboardable.swift; sourceTree = "<group>"; };
 		954C2B5E289D0A3800821766 /* TestStoryboardable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestStoryboardable.swift; sourceTree = "<group>"; };
+		954C2B64289D18A100821766 /* PetInfoPresentationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetInfoPresentationModel.swift; sourceTree = "<group>"; };
 		95561CAB288089C8000B07B8 /* MVVM_Clean_TestCases.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MVVM_Clean_TestCases.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		95561CAE288089C8000B07B8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		95561CB5288089C8000B07B8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/PetListViewController.storyboard; sourceTree = "<group>"; };
@@ -128,7 +130,7 @@
 		95561CFE2881CB87000B07B8 /* NetworkSessionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkSessionManager.swift; sourceTree = "<group>"; };
 		95725AAE2883FC420046FF6F /* TestNetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestNetworkManager.swift; sourceTree = "<group>"; };
 		95725AB1288465DE0046FF6F /* Development.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Development.xcconfig; sourceTree = "<group>"; };
-		958C9113288ECA8B0096D8F3 /* PetInfoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetInfoModel.swift; sourceTree = "<group>"; };
+		958C9113288ECA8B0096D8F3 /* PetInfoDomainModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetInfoDomainModel.swift; sourceTree = "<group>"; };
 		958C9118288FAA710096D8F3 /* PetListNetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetListNetworkService.swift; sourceTree = "<group>"; };
 		95A31ACB289A3C9C009F9AB1 /* PetDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetDetailViewController.swift; sourceTree = "<group>"; };
 		95A31ACD289A3CCD009F9AB1 /* PetDetailViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PetDetailViewController.storyboard; sourceTree = "<group>"; };
@@ -190,6 +192,7 @@
 		954C2B58289C145500821766 /* PetModule */ = {
 			isa = PBXGroup;
 			children = (
+				954C2B63289D188700821766 /* Common */,
 				958C910D288E6CA40096D8F3 /* AccessibilityIdentifier */,
 				954C2B62289D0E2500821766 /* PetModuleDI */,
 				95F45276288557B100581B6E /* PetModuleFlow */,
@@ -233,6 +236,14 @@
 				95F4527A2885589900581B6E /* PetModuleDIContainer.swift */,
 			);
 			path = PetModuleDI;
+			sourceTree = "<group>";
+		};
+		954C2B63289D188700821766 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				954C2B64289D18A100821766 /* PetInfoPresentationModel.swift */,
+			);
+			path = Common;
 			sourceTree = "<group>";
 		};
 		95561CA2288089C8000B07B8 = {
@@ -381,7 +392,7 @@
 		95D4CC1B28846C180091B16D /* Entity */ = {
 			isa = PBXGroup;
 			children = (
-				958C9113288ECA8B0096D8F3 /* PetInfoModel.swift */,
+				958C9113288ECA8B0096D8F3 /* PetInfoDomainModel.swift */,
 			);
 			path = Entity;
 			sourceTree = "<group>";
@@ -660,6 +671,7 @@
 				95D4CC29288476A90091B16D /* PetListRepositoryImplementation.swift in Sources */,
 				95561CEA28813B6E000B07B8 /* NetworkLogger.swift in Sources */,
 				95D4CC342885118B0091B16D /* APIEndPoint.swift in Sources */,
+				954C2B65289D18A100821766 /* PetInfoPresentationModel.swift in Sources */,
 				95F452732885547F00581B6E /* LoaderUtility.swift in Sources */,
 				95D4CC3728851FDE0091B16D /* PetListUseCase.swift in Sources */,
 				95561CED28814610000B07B8 /* NetworkError.swift in Sources */,
@@ -667,7 +679,7 @@
 				95F4527D28855BA900581B6E /* AppDIContainer.swift in Sources */,
 				95A31ACC289A3C9C009F9AB1 /* PetDetailViewController.swift in Sources */,
 				95F452A32886832E00581B6E /* NetworkBaseConfiguration.swift in Sources */,
-				958C9114288ECA8B0096D8F3 /* PetInfoModel.swift in Sources */,
+				958C9114288ECA8B0096D8F3 /* PetInfoDomainModel.swift in Sources */,
 				954C2B5D289D07D400821766 /* Storyboardable.swift in Sources */,
 				95561CF1288147B8000B07B8 /* NetworkManager.swift in Sources */,
 				95F4527B2885589900581B6E /* PetModuleDIContainer.swift in Sources */,
@@ -717,7 +729,7 @@
 				95F452872885884200581B6E /* TestPetListUseCase.swift in Sources */,
 				95561CFA28814B88000B07B8 /* MockNetworkSessionManager.swift in Sources */,
 				95561CF828814ADD000B07B8 /* MockAPIRequestConfig.swift in Sources */,
-				958C9116288ED1680096D8F3 /* PetInfoModel.swift in Sources */,
+				958C9116288ED1680096D8F3 /* PetInfoDomainModel.swift in Sources */,
 				958C911A288FAE3D0096D8F3 /* PetListNetworkService.swift in Sources */,
 				95F452A4288683F500581B6E /* NetworkBaseConfiguration.swift in Sources */,
 			);
@@ -729,7 +741,7 @@
 			files = (
 				95561CD0288089C9000B07B8 /* MVVM_Clean_TestCasesUITests.swift in Sources */,
 				95A31AD6289A79C3009F9AB1 /* PetDetailViewModel.swift in Sources */,
-				95A31ADC289A7D44009F9AB1 /* PetInfoModel.swift in Sources */,
+				95A31ADC289A7D44009F9AB1 /* PetInfoDomainModel.swift in Sources */,
 				95A31ADB289A7D28009F9AB1 /* PetdetailItemViewModel.swift in Sources */,
 				95F4529D28859A5E00581B6E /* PetModuleAccessibilityIdentifier.swift in Sources */,
 			);

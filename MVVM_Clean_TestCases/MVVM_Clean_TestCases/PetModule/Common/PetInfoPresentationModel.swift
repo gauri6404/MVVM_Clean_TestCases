@@ -1,6 +1,6 @@
 import Foundation
 
-struct PetInfoModel: Equatable {
+struct PetInfoPresentationModel: Equatable {
     var identifier: Int?
     var name: String?
     var breed: String?

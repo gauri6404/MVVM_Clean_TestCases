@@ -10,7 +10,7 @@ final class PetListRepositoryImplementation {
 }
 
 extension PetListRepositoryImplementation: PetListRepository {
-    func fetchPetList(completion: @escaping (Result<[PetInfoModel]?, Error>) -> Void) {
+    func fetchPetList(completion: @escaping (Result<[PetInfoDomainModel]?, Error>) -> Void) {
         // TODO: Check from cache storage
         self.networkService.getPetListFromServer(completion: completion)
     }

@@ -26,7 +26,7 @@ struct PetImageModel: Decodable {
 }
 
 extension PetListResponseDTO {
-    func toDomain() -> PetInfoModel {
+    func toDomain() -> PetInfoDomainModel {
         return .init(identifier: identifier, name: name, breed: breed, lifeSpan: lifeSpan, origin: origin, breedGroup: breedGroup, temperament: temperament, imgURL: image?.url)
     }
 }

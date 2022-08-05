@@ -18,7 +18,7 @@ final class PetDetailViewModelImplementation: PetDetailViewModel {
     
     let petDetail: PetDetailItemViewModel
         
-    init(petInfo: PetInfoModel) {
+    init(petInfo: PetInfoPresentationModel) {
         self.petDetail = .init(pet: petInfo)
     }
 }

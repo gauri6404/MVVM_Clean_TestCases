@@ -20,8 +20,8 @@ protocol PetListViewModel: PetListViewModelInput, PetListViewModelOutput {
 final class PetListViewModelImplementation: PetListViewModel {
 
     private let petListUseCase: PetListUseCase
-    private var petList: [PetInfoModel] = []
-    private let showPetDetail: ((PetInfoModel) -> Void)?
+    private var petList: [PetInfoPresentationModel] = []
+    private let showPetDetail: ((PetInfoPresentationModel) -> Void)?
     
     var items: Observable<[PetListItemViewModel]> = Observable([])
     var loading: Observable<Bool> = Observable(false)
@@ -29,12 +29,12 @@ final class PetListViewModelImplementation: PetListViewModel {
     var isEmpty: Bool { return items.value.isEmpty }
     var screenTitle: String = "Pet List"
 
-    init(petListUseCase: PetListUseCase, showPetdetail: ((PetInfoModel) -> Void)? = nil) {
+    init(petListUseCase: PetListUseCase, showPetdetail: ((PetInfoPresentationModel) -> Void)? = nil) {
         self.petListUseCase = petListUseCase
         self.showPetDetail = showPetdetail
     }
 
-    private func appendPet(list: [PetInfoModel]) {
+    private func appendPet(list: [PetInfoPresentationModel]) {
         petList.append(contentsOf: list)
         items.value = petList.map(PetListItemViewModel.init)
         if items.value.isEmpty {
