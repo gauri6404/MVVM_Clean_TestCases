@@ -1,12 +1,15 @@
 import Foundation
 
+protocol PetListAction {
+    func action_showPetdetail(for model: PetInfoPresentationModel)
+}
+
 protocol PetListViewModelInput {
     func getPetList()
     func showPetDetail(for index: Int)
 }
 
 protocol PetListViewModelOutput {
-    
     var items: Observable<[PetListItemViewModel]> { get }
     var loading: Observable<Bool> { get }
     var error: Observable<String> { get }
@@ -21,7 +24,7 @@ final class PetListViewModelImplementation: PetListViewModel {
 
     private let petListUseCase: PetListUseCase
     private var petList: [PetInfoPresentationModel] = []
-    private let showPetDetail: ((PetInfoPresentationModel) -> Void)?
+    private var actionDelegate: PetListAction?
     
     var items: Observable<[PetListItemViewModel]> = Observable([])
     var loading: Observable<Bool> = Observable(false)
@@ -29,9 +32,9 @@ final class PetListViewModelImplementation: PetListViewModel {
     var isEmpty: Bool { return items.value.isEmpty }
     var screenTitle: String = "Pet List"
 
-    init(petListUseCase: PetListUseCase, showPetdetail: ((PetInfoPresentationModel) -> Void)? = nil) {
+    init(petListUseCase: PetListUseCase, actionDelegate: PetListAction? = nil) {
         self.petListUseCase = petListUseCase
-        self.showPetDetail = showPetdetail
+        self.actionDelegate = actionDelegate
     }
 
     private func appendPet(list: [PetInfoPresentationModel]) {
@@ -64,6 +67,6 @@ final class PetListViewModelImplementation: PetListViewModel {
     }
     
     func showPetDetail(for index: Int) {
-        self.showPetDetail?(petList[index])
+        self.actionDelegate?.action_showPetdetail(for: petList[index])
     }
 }

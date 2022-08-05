@@ -19,17 +19,17 @@ final class PetModuleDIContainer {
 
 extension PetModuleDIContainer: PetModuleFlowDependencies {
     
-    func getPetListViewController(action: ((PetInfoPresentationModel) -> Void)?) -> PetListViewController {
+    func getPetListViewController(actionDelegate: PetListAction? = nil) -> PetListViewController {
         let petListVC = PetListViewController.instantiate()
-        petListVC.viewModel = getPetListViewModel(action: action)
+        petListVC.viewModel = getPetListViewModel(actionDelegate: actionDelegate)
         return petListVC
     }
     
-    func getPetListViewModel(action: ((PetInfoPresentationModel) -> Void)?) -> PetListViewModel {
+    func getPetListViewModel(actionDelegate: PetListAction? = nil) -> PetListViewModel {
         let petService = PetListNetworkServiceImpl(networkManager: dependencies.networkManager)
         let petListRepo = PetListRepositoryImplementation(networkService: petService)
         let petListUsecase =  PetListUseCaseImplementation(petListRepository: petListRepo)
-        return PetListViewModelImplementation(petListUseCase: petListUsecase, showPetdetail: action)
+        return PetListViewModelImplementation(petListUseCase: petListUsecase, actionDelegate: actionDelegate)
     }
     
     func getPetDetailViewController(model: PetInfoPresentationModel) -> PetDetailViewController {
