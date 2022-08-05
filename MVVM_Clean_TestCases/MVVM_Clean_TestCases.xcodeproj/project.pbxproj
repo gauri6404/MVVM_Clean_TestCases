@@ -192,7 +192,7 @@
 		954C2B58289C145500821766 /* PetModule */ = {
 			isa = PBXGroup;
 			children = (
-				954C2B63289D188700821766 /* Common */,
+				954C2B63289D188700821766 /* Presentation */,
 				958C910D288E6CA40096D8F3 /* AccessibilityIdentifier */,
 				954C2B62289D0E2500821766 /* PetModuleDI */,
 				95F45276288557B100581B6E /* PetModuleFlow */,
@@ -238,12 +238,12 @@
 			path = PetModuleDI;
 			sourceTree = "<group>";
 		};
-		954C2B63289D188700821766 /* Common */ = {
+		954C2B63289D188700821766 /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
 				954C2B64289D18A100821766 /* PetInfoPresentationModel.swift */,
 			);
-			path = Common;
+			path = Presentation;
 			sourceTree = "<group>";
 		};
 		95561CA2288089C8000B07B8 = {
