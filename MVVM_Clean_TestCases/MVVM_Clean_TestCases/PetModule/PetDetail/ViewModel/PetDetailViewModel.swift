@@ -11,9 +11,7 @@ protocol PetDetailViewModel: PetDetailViewModelOutput { }
 final class PetDetailViewModelImplementation: PetDetailViewModel {
     
     var title: String {
-        get {
-            return "Pet Detail"
-        }
+        return "Pet Detail"
     }
     
     let petDetail: PetDetailItemViewModel
