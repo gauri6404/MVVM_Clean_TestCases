@@ -20,7 +20,7 @@ final class PetModuleDIContainer {
 extension PetModuleDIContainer: PetModuleFlowDependencies {
     
     func getPetListViewController(action: ((PetInfoModel) -> Void)?) -> PetListViewController {
-        let petListVC = UIStoryboard(name: "PetListStoryboard", bundle: nil).instantiateViewController(withIdentifier: String(describing: PetListViewController.self)) as! PetListViewController
+        let petListVC = PetListViewController.instantiate()
         petListVC.viewModel = getPetListViewModel(action: action)
         return petListVC
     }
@@ -33,7 +33,7 @@ extension PetModuleDIContainer: PetModuleFlowDependencies {
     }
     
     func getPetDetailViewController(model: PetInfoModel) -> PetDetailViewController {
-        let petDetailVC = UIStoryboard(name: "PetDetailStoryboard", bundle: nil).instantiateViewController(withIdentifier: String(describing: PetDetailViewController.self)) as! PetDetailViewController
+        let petDetailVC = PetDetailViewController.instantiate()
         petDetailVC.viewModel = PetDetailViewModelImplementation(petInfo: model)
         return petDetailVC
     }

@@ -1,6 +1,6 @@
 import UIKit
 
-class PetDetailViewController: UIViewController {
+class PetDetailViewController: UIViewController, Storyboardable {
 
     @IBOutlet weak var petName: UILabel!
     @IBOutlet weak var petBreedGroup: UILabel!
@@ -13,14 +13,20 @@ class PetDetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setAccessibilityIdentifier()
+        setNavigationBar()
         setPetDetailView()
     }
     
-    private func setPetDetailView() {
+    private func setAccessibilityIdentifier() {
         self.view.accessibilityIdentifier = PetModuleAccessibilityIdentifier.petDetail
-        
+    }
+    
+    private func setNavigationBar() {
         self.navigationController?.navigationBar.topItem?.backBarButtonItem = UIBarButtonItem()
-        
+    }
+    
+    private func setPetDetailView() {
         self.title = viewModel.title
         self.petName.text = viewModel.petDetail.petName
         self.petBreedGroup.text = viewModel.petDetail.petBreedGroup

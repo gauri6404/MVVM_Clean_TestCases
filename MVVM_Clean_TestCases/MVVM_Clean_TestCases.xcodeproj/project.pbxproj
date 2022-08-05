@@ -7,8 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		954C2B5D289D07D400821766 /* Storyboardable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 954C2B5C289D07D400821766 /* Storyboardable.swift */; };
+		954C2B5F289D0A3800821766 /* TestStoryboardable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 954C2B5E289D0A3800821766 /* TestStoryboardable.swift */; };
+		954C2B60289D0AC500821766 /* Storyboardable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 954C2B5C289D07D400821766 /* Storyboardable.swift */; };
 		95561CAF288089C8000B07B8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95561CAE288089C8000B07B8 /* AppDelegate.swift */; };
-		95561CB6288089C8000B07B8 /* PetListStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 95561CB4288089C8000B07B8 /* PetListStoryboard.storyboard */; };
+		95561CB6288089C8000B07B8 /* PetListViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 95561CB4288089C8000B07B8 /* PetListViewController.storyboard */; };
 		95561CB8288089C9000B07B8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 95561CB7288089C9000B07B8 /* Assets.xcassets */; };
 		95561CBB288089C9000B07B8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 95561CB9288089C9000B07B8 /* LaunchScreen.storyboard */; };
 		95561CC6288089C9000B07B8 /* TestNetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95561CC5288089C9000B07B8 /* TestNetworkService.swift */; };
@@ -35,12 +38,11 @@
 		958C9119288FAA710096D8F3 /* PetListNetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 958C9118288FAA710096D8F3 /* PetListNetworkService.swift */; };
 		958C911A288FAE3D0096D8F3 /* PetListNetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 958C9118288FAA710096D8F3 /* PetListNetworkService.swift */; };
 		95A31ACC289A3C9C009F9AB1 /* PetDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95A31ACB289A3C9C009F9AB1 /* PetDetailViewController.swift */; };
-		95A31ACE289A3CCD009F9AB1 /* PetDetailStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 95A31ACD289A3CCD009F9AB1 /* PetDetailStoryboard.storyboard */; };
+		95A31ACE289A3CCD009F9AB1 /* PetDetailViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 95A31ACD289A3CCD009F9AB1 /* PetDetailViewController.storyboard */; };
 		95A31AD0289A3D20009F9AB1 /* PetDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95A31ACF289A3D20009F9AB1 /* PetDetailViewModel.swift */; };
 		95A31AD4289A796A009F9AB1 /* TestPetDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95A31AD3289A796A009F9AB1 /* TestPetDetailViewModel.swift */; };
 		95A31AD5289A79C2009F9AB1 /* PetDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95A31ACF289A3D20009F9AB1 /* PetDetailViewModel.swift */; };
 		95A31AD6289A79C3009F9AB1 /* PetDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95A31ACF289A3D20009F9AB1 /* PetDetailViewModel.swift */; };
-		95A31AD7289A79C7009F9AB1 /* PetDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95A31ACB289A3C9C009F9AB1 /* PetDetailViewController.swift */; };
 		95A31AD9289A7B42009F9AB1 /* PetdetailItemViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95A31AD8289A7B42009F9AB1 /* PetdetailItemViewModel.swift */; };
 		95A31ADA289A7D28009F9AB1 /* PetdetailItemViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95A31AD8289A7B42009F9AB1 /* PetdetailItemViewModel.swift */; };
 		95A31ADB289A7D28009F9AB1 /* PetdetailItemViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95A31AD8289A7B42009F9AB1 /* PetdetailItemViewModel.swift */; };
@@ -103,9 +105,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		954C2B5C289D07D400821766 /* Storyboardable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storyboardable.swift; sourceTree = "<group>"; };
+		954C2B5E289D0A3800821766 /* TestStoryboardable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestStoryboardable.swift; sourceTree = "<group>"; };
 		95561CAB288089C8000B07B8 /* MVVM_Clean_TestCases.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MVVM_Clean_TestCases.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		95561CAE288089C8000B07B8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		95561CB5288089C8000B07B8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/PetListStoryboard.storyboard; sourceTree = "<group>"; };
+		95561CB5288089C8000B07B8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/PetListViewController.storyboard; sourceTree = "<group>"; };
 		95561CB7288089C9000B07B8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		95561CBA288089C9000B07B8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		95561CBC288089C9000B07B8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -127,7 +131,7 @@
 		958C9113288ECA8B0096D8F3 /* PetInfoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetInfoModel.swift; sourceTree = "<group>"; };
 		958C9118288FAA710096D8F3 /* PetListNetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetListNetworkService.swift; sourceTree = "<group>"; };
 		95A31ACB289A3C9C009F9AB1 /* PetDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetDetailViewController.swift; sourceTree = "<group>"; };
-		95A31ACD289A3CCD009F9AB1 /* PetDetailStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PetDetailStoryboard.storyboard; sourceTree = "<group>"; };
+		95A31ACD289A3CCD009F9AB1 /* PetDetailViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PetDetailViewController.storyboard; sourceTree = "<group>"; };
 		95A31ACF289A3D20009F9AB1 /* PetDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetDetailViewModel.swift; sourceTree = "<group>"; };
 		95A31AD3289A796A009F9AB1 /* TestPetDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestPetDetailViewModel.swift; sourceTree = "<group>"; };
 		95A31AD8289A7B42009F9AB1 /* PetdetailItemViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetdetailItemViewModel.swift; sourceTree = "<group>"; };
@@ -183,6 +187,54 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		954C2B58289C145500821766 /* PetModule */ = {
+			isa = PBXGroup;
+			children = (
+				958C910D288E6CA40096D8F3 /* AccessibilityIdentifier */,
+				954C2B62289D0E2500821766 /* PetModuleDI */,
+				95F45276288557B100581B6E /* PetModuleFlow */,
+				954C2B59289C145E00821766 /* PetList */,
+				954C2B5A289C146400821766 /* PetDetail */,
+			);
+			path = PetModule;
+			sourceTree = "<group>";
+		};
+		954C2B59289C145E00821766 /* PetList */ = {
+			isa = PBXGroup;
+			children = (
+				954C2B5B289CD7E300821766 /* Presentation */,
+				95D4CC1A28846C110091B16D /* Domain */,
+				95D4CC26288476840091B16D /* Data */,
+			);
+			path = PetList;
+			sourceTree = "<group>";
+		};
+		954C2B5A289C146400821766 /* PetDetail */ = {
+			isa = PBXGroup;
+			children = (
+				95A31ACA289A3B39009F9AB1 /* ViewModel */,
+				95A31AC9289A3B33009F9AB1 /* View */,
+			);
+			path = PetDetail;
+			sourceTree = "<group>";
+		};
+		954C2B5B289CD7E300821766 /* Presentation */ = {
+			isa = PBXGroup;
+			children = (
+				95D4CC3D28852E9C0091B16D /* ViewModel */,
+				95D4CC3C28852E960091B16D /* View */,
+			);
+			path = Presentation;
+			sourceTree = "<group>";
+		};
+		954C2B62289D0E2500821766 /* PetModuleDI */ = {
+			isa = PBXGroup;
+			children = (
+				95F4527A2885589900581B6E /* PetModuleDIContainer.swift */,
+			);
+			path = PetModuleDI;
+			sourceTree = "<group>";
+		};
 		95561CA2288089C8000B07B8 = {
 			isa = PBXGroup;
 			children = (
@@ -206,11 +258,9 @@
 		95561CAD288089C8000B07B8 /* MVVM_Clean_TestCases */ = {
 			isa = PBXGroup;
 			children = (
+				954C2B58289C145500821766 /* PetModule */,
 				95725AB0288465C20046FF6F /* AppConfiguration */,
 				95561CE2288095C0000B07B8 /* Utility */,
-				95D4CC3A28852E6F0091B16D /* Presentation */,
-				95D4CC1A28846C110091B16D /* Domain */,
-				95D4CC26288476840091B16D /* Data */,
 				95561CDE28808A3F000B07B8 /* NetworkLayer */,
 				95561CB7288089C9000B07B8 /* Assets.xcassets */,
 				95561CB9288089C9000B07B8 /* LaunchScreen.storyboard */,
@@ -257,6 +307,7 @@
 				95561CE3288095E6000B07B8 /* PListUtility.swift */,
 				95F452722885547F00581B6E /* LoaderUtility.swift */,
 				95F452742885564100581B6E /* AlertUtility.swift */,
+				954C2B5C289D07D400821766 /* Storyboardable.swift */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
@@ -274,8 +325,8 @@
 		95725AB0288465C20046FF6F /* AppConfiguration */ = {
 			isa = PBXGroup;
 			children = (
-				95561CAE288089C8000B07B8 /* AppDelegate.swift */,
 				95F452792885588200581B6E /* DependencyInjection */,
+				95561CAE288089C8000B07B8 /* AppDelegate.swift */,
 				95561CBC288089C9000B07B8 /* Info.plist */,
 				95725AB1288465DE0046FF6F /* Development.xcconfig */,
 				95F4527E2885696000581B6E /* AppFlow.swift */,
@@ -299,20 +350,11 @@
 			path = DataMapping;
 			sourceTree = "<group>";
 		};
-		95A31AC8289A3B1F009F9AB1 /* PetDetail */ = {
-			isa = PBXGroup;
-			children = (
-				95A31ACA289A3B39009F9AB1 /* ViewModel */,
-				95A31AC9289A3B33009F9AB1 /* View */,
-			);
-			path = PetDetail;
-			sourceTree = "<group>";
-		};
 		95A31AC9289A3B33009F9AB1 /* View */ = {
 			isa = PBXGroup;
 			children = (
 				95A31ACB289A3C9C009F9AB1 /* PetDetailViewController.swift */,
-				95A31ACD289A3CCD009F9AB1 /* PetDetailStoryboard.storyboard */,
+				95A31ACD289A3CCD009F9AB1 /* PetDetailViewController.storyboard */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -324,17 +366,6 @@
 				95A31AD8289A7B42009F9AB1 /* PetdetailItemViewModel.swift */,
 			);
 			path = ViewModel;
-			sourceTree = "<group>";
-		};
-		95A31AD2289A7744009F9AB1 /* PetModule */ = {
-			isa = PBXGroup;
-			children = (
-				958C910D288E6CA40096D8F3 /* AccessibilityIdentifier */,
-				95F45276288557B100581B6E /* Flow */,
-				95A31AC8289A3B1F009F9AB1 /* PetDetail */,
-				95D4CC3B28852E7D0091B16D /* PetList */,
-			);
-			path = PetModule;
 			sourceTree = "<group>";
 		};
 		95D4CC1A28846C110091B16D /* Domain */ = {
@@ -400,28 +431,11 @@
 			path = UseCase;
 			sourceTree = "<group>";
 		};
-		95D4CC3A28852E6F0091B16D /* Presentation */ = {
-			isa = PBXGroup;
-			children = (
-				95A31AD2289A7744009F9AB1 /* PetModule */,
-			);
-			path = Presentation;
-			sourceTree = "<group>";
-		};
-		95D4CC3B28852E7D0091B16D /* PetList */ = {
-			isa = PBXGroup;
-			children = (
-				95D4CC3D28852E9C0091B16D /* ViewModel */,
-				95D4CC3C28852E960091B16D /* View */,
-			);
-			path = PetList;
-			sourceTree = "<group>";
-		};
 		95D4CC3C28852E960091B16D /* View */ = {
 			isa = PBXGroup;
 			children = (
 				95F4526B288548E400581B6E /* TableView */,
-				95561CB4288089C8000B07B8 /* PetListStoryboard.storyboard */,
+				95561CB4288089C8000B07B8 /* PetListViewController.storyboard */,
 				95D4CC4828853FDA0091B16D /* PetListViewController.swift */,
 			);
 			path = View;
@@ -454,18 +468,17 @@
 			path = TableView;
 			sourceTree = "<group>";
 		};
-		95F45276288557B100581B6E /* Flow */ = {
+		95F45276288557B100581B6E /* PetModuleFlow */ = {
 			isa = PBXGroup;
 			children = (
 				95F45277288557DB00581B6E /* PetModuleFlow.swift */,
 			);
-			path = Flow;
+			path = PetModuleFlow;
 			sourceTree = "<group>";
 		};
 		95F452792885588200581B6E /* DependencyInjection */ = {
 			isa = PBXGroup;
 			children = (
-				95F4527A2885589900581B6E /* PetModuleDIContainer.swift */,
 				95F4527C28855BA900581B6E /* AppDIContainer.swift */,
 			);
 			path = DependencyInjection;
@@ -494,6 +507,7 @@
 			children = (
 				95F452942885905500581B6E /* TestPetListviewModel.swift */,
 				95A31AD3289A796A009F9AB1 /* TestPetDetailViewModel.swift */,
+				954C2B5E289D0A3800821766 /* TestStoryboardable.swift */,
 			);
 			path = Presentation;
 			sourceTree = "<group>";
@@ -604,9 +618,9 @@
 			files = (
 				95561CBB288089C9000B07B8 /* LaunchScreen.storyboard in Resources */,
 				95F452682885454900581B6E /* PetInfoTableViewCell.xib in Resources */,
-				95A31ACE289A3CCD009F9AB1 /* PetDetailStoryboard.storyboard in Resources */,
+				95A31ACE289A3CCD009F9AB1 /* PetDetailViewController.storyboard in Resources */,
 				95561CB8288089C9000B07B8 /* Assets.xcassets in Resources */,
-				95561CB6288089C8000B07B8 /* PetListStoryboard.storyboard in Resources */,
+				95561CB6288089C8000B07B8 /* PetListViewController.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -654,6 +668,7 @@
 				95A31ACC289A3C9C009F9AB1 /* PetDetailViewController.swift in Sources */,
 				95F452A32886832E00581B6E /* NetworkBaseConfiguration.swift in Sources */,
 				958C9114288ECA8B0096D8F3 /* PetInfoModel.swift in Sources */,
+				954C2B5D289D07D400821766 /* Storyboardable.swift in Sources */,
 				95561CF1288147B8000B07B8 /* NetworkManager.swift in Sources */,
 				95F4527B2885589900581B6E /* PetModuleDIContainer.swift in Sources */,
 				95561CE128808AAB000B07B8 /* APIRequestConfiguration.swift in Sources */,
@@ -680,6 +695,7 @@
 				95561CC6288089C9000B07B8 /* TestNetworkService.swift in Sources */,
 				95F452952885905600581B6E /* TestPetListviewModel.swift in Sources */,
 				95561CF328814A2C000B07B8 /* NetworkService.swift in Sources */,
+				954C2B5F289D0A3800821766 /* TestStoryboardable.swift in Sources */,
 				95561CF228814A24000B07B8 /* APIRequestConfiguration.swift in Sources */,
 				95561CF528814A36000B07B8 /* NetworkError.swift in Sources */,
 				95F452832885842100581B6E /* MockAPIRequestConfiguration.swift in Sources */,
@@ -687,6 +703,7 @@
 				958C9117288ED1770096D8F3 /* PetListResponseDTO.swift in Sources */,
 				95F4528F28858DE800581B6E /* APIEndPoint.swift in Sources */,
 				95A31ADA289A7D28009F9AB1 /* PetdetailItemViewModel.swift in Sources */,
+				954C2B60289D0AC500821766 /* Storyboardable.swift in Sources */,
 				95F452992885927C00581B6E /* PetListViewModel.swift in Sources */,
 				95A31AD4289A796A009F9AB1 /* TestPetDetailViewModel.swift in Sources */,
 				95D4CC4728853EAC0091B16D /* PListUtility.swift in Sources */,
@@ -699,7 +716,6 @@
 				95725AAF2883FC420046FF6F /* TestNetworkManager.swift in Sources */,
 				95F452872885884200581B6E /* TestPetListUseCase.swift in Sources */,
 				95561CFA28814B88000B07B8 /* MockNetworkSessionManager.swift in Sources */,
-				95A31AD7289A79C7009F9AB1 /* PetDetailViewController.swift in Sources */,
 				95561CF828814ADD000B07B8 /* MockAPIRequestConfig.swift in Sources */,
 				958C9116288ED1680096D8F3 /* PetInfoModel.swift in Sources */,
 				958C911A288FAE3D0096D8F3 /* PetListNetworkService.swift in Sources */,
@@ -735,12 +751,12 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		95561CB4288089C8000B07B8 /* PetListStoryboard.storyboard */ = {
+		95561CB4288089C8000B07B8 /* PetListViewController.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				95561CB5288089C8000B07B8 /* Base */,
 			);
-			name = PetListStoryboard.storyboard;
+			name = PetListViewController.storyboard;
 			sourceTree = "<group>";
 		};
 		95561CB9288089C9000B07B8 /* LaunchScreen.storyboard */ = {
@@ -879,7 +895,7 @@
 				INFOPLIST_FILE = "$(SRCROOT)/MVVM_Clean_TestCases/AppConfiguration/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = PetListStoryboard;
+				INFOPLIST_KEY_UIMainStoryboardFile = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -907,7 +923,7 @@
 				INFOPLIST_FILE = "$(SRCROOT)/MVVM_Clean_TestCases/AppConfiguration/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = PetListStoryboard;
+				INFOPLIST_KEY_UIMainStoryboardFile = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -1071,7 +1087,7 @@
 				INFOPLIST_FILE = "$(SRCROOT)/MVVM_Clean_TestCases/AppConfiguration/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = PetListStoryboard;
+				INFOPLIST_KEY_UIMainStoryboardFile = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";

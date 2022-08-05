@@ -1,6 +1,6 @@
 import UIKit
 
-class PetListViewController: UIViewController, AlertUtility {
+class PetListViewController: UIViewController, AlertUtility, Storyboardable {
 
     @IBOutlet weak var petListTableView: PetListTableView!
     

@@ -10,11 +10,15 @@ protocol PetDetailViewModel: PetDetailViewModelOutput { }
 
 final class PetDetailViewModelImplementation: PetDetailViewModel {
     
-    let title: String
+    var title: String {
+        get {
+            return "Pet Detail"
+        }
+    }
+    
     let petDetail: PetDetailItemViewModel
         
     init(petInfo: PetInfoModel) {
-        self.title = "Pet Detail"
         self.petDetail = .init(pet: petInfo)
     }
 }
