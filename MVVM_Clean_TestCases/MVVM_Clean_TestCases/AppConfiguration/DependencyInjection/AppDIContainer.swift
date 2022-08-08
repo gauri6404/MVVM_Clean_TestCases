@@ -10,8 +10,8 @@ final class AppDIContainer {
     }()
     
     // MARK: - DIContainers of scenes
-    func getPetModuleDIContainer() -> PetModuleDIContainer {
-        let dependencies = PetModuleDIContainer.Dependencies(networkManager: networkManager)
-        return PetModuleDIContainer(dependencies: dependencies)
+    func getPetListDIContainer() -> PetListDIContainer {
+        let dependencies = PetListDIContainer.Dependencies(networkManager: networkManager)
+        return PetListDIContainer(dependencies: dependencies)
     }
 }

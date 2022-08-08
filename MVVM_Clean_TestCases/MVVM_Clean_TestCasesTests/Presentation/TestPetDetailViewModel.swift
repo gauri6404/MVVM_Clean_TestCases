@@ -4,7 +4,7 @@ class TestPetDetailViewModel: XCTestCase {
     
     func testViewModel() {
         // Given
-        let petInfoModel = PetInfoModel()
+        let petInfoModel = PetInfoPresentationModel()
         
         // When
         let viewModel = PetDetailViewModelImplementation(petInfo: petInfoModel)

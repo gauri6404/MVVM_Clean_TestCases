@@ -11,8 +11,8 @@ final class AppFlow {
     }
 
     func start() {
-        let petmoduleDIContainer = appDIContainer.getPetModuleDIContainer()
-        let flow = petmoduleDIContainer.getPetmoduleFlow(navigationController: navigationController)
+        let petListDIContainer = appDIContainer.getPetListDIContainer()
+        let flow = petListDIContainer.getPetListFlow(navigationController: navigationController)
         flow.start()
     }
 }

@@ -1,15 +1,15 @@
 import Foundation
 
-protocol PetListAction {
+protocol PetListAction: AnyObject {
     func action_showPetdetail(for model: PetInfoPresentationModel)
 }
 
-protocol PetListViewModelInput {
+protocol PetListViewModelInput: AnyObject {
     func getPetList()
     func showPetDetail(for index: Int)
 }
 
-protocol PetListViewModelOutput {
+protocol PetListViewModelOutput: AnyObject {
     var items: Observable<[PetListItemViewModel]> { get }
     var loading: Observable<Bool> { get }
     var error: Observable<String> { get }
@@ -24,7 +24,7 @@ final class PetListViewModelImplementation: PetListViewModel {
 
     private let petListUseCase: PetListUseCase
     private var petList: [PetInfoPresentationModel] = []
-    private var actionDelegate: PetListAction?
+    private weak var actionDelegate: PetListAction?
     
     var items: Observable<[PetListItemViewModel]> = Observable([])
     var loading: Observable<Bool> = Observable(false)

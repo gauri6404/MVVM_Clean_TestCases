@@ -3,13 +3,13 @@ import XCTest
 class MockPetListUseCase: PetListUseCase {
     var expectation: XCTestExpectation?
     var error: Error?
-    var petlist: [PetInfoModel] = []
+    var petlist: [PetInfoPresentationModel] = []
     
-    func execute(completion: @escaping (Result<[PetInfoModel]?, Error>) -> Void) {
+    func execute(completion: @escaping (Result<[PetInfoPresentationModel]?, Error>) -> Void) {
         if let error = error {
             completion(.failure(error))
         } else {
-            completion(.success([PetInfoModel()]))
+            completion(.success([PetInfoPresentationModel()]))
         }
         expectation?.fulfill()
     }
@@ -33,7 +33,7 @@ class TestPetListViewModel: XCTestCase {
     func testViewModelItemCountIfUseCaseReturnSuccess() {
         // Given
         useCase.expectation = self.expectation(description: "contains only 10 items")
-        useCase.petlist = [PetInfoModel()]
+        useCase.petlist = [PetInfoPresentationModel()]
         
         // When
         let viewModel = PetListViewModelImplementation(petListUseCase: useCase)

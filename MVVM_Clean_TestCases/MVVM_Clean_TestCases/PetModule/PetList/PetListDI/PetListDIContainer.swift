@@ -1,6 +1,6 @@
 import UIKit
 
-final class PetModuleDIContainer {
+final class PetListDIContainer {
     
     struct Dependencies {
         let networkManager: NetworkManager
@@ -12,16 +12,17 @@ final class PetModuleDIContainer {
         self.dependencies = dependencies
     }
     
-    func getPetmoduleFlow(navigationController: UINavigationController) -> PetModuleFlow {
-        return PetModuleFlow(navigationController: navigationController, dependencies: self)
+    func getPetListFlow(navigationController: UINavigationController) -> PetListFlow {
+        return PetListFlow(navigationController: navigationController, dependencies: self)
     }
 }
 
-extension PetModuleDIContainer: PetModuleFlowDependencies {
+extension PetListDIContainer: PetListFlowDependencies {
     
-    func getPetListViewController(actionDelegate: PetListAction? = nil) -> PetListViewController {
+    func getPetListViewController() -> PetListViewController {
         let petListVC = PetListViewController.instantiate()
-        petListVC.viewModel = getPetListViewModel(actionDelegate: actionDelegate)
+        petListVC.router = PetListRouterImplementation(source: petListVC)
+        petListVC.viewModel = getPetListViewModel(actionDelegate: petListVC)
         return petListVC
     }
     
@@ -30,11 +31,5 @@ extension PetModuleDIContainer: PetModuleFlowDependencies {
         let petListRepo = PetListRepositoryImplementation(networkService: petService)
         let petListUsecase =  PetListUseCaseImplementation(petListRepository: petListRepo)
         return PetListViewModelImplementation(petListUseCase: petListUsecase, actionDelegate: actionDelegate)
-    }
-    
-    func getPetDetailViewController(model: PetInfoPresentationModel) -> PetDetailViewController {
-        let petDetailVC = PetDetailViewController.instantiate()
-        petDetailVC.viewModel = PetDetailViewModelImplementation(petInfo: model)
-        return petDetailVC
     }
 }

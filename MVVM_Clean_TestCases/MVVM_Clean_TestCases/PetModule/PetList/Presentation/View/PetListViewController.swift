@@ -5,6 +5,7 @@ class PetListViewController: UIViewController, AlertUtility, Storyboardable {
     @IBOutlet weak var petListTableView: PetListTableView!
     
     var viewModel: PetListViewModel!
+    var router: PetListRouter?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,5 +40,11 @@ class PetListViewController: UIViewController, AlertUtility, Storyboardable {
     private func showError(_ error: String) {
         guard !error.isEmpty else { return }
         showAlert(title: "Error", message: error)
+    }
+}
+
+extension PetListViewController: PetListAction {
+    func action_showPetdetail(for model: PetInfoPresentationModel) {
+        router?.action_showPetdetail(for: model)
     }
 }
